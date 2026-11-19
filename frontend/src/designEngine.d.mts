@@ -1,0 +1,4 @@
+import type {VisualSpec} from './visual-api';
+export type FontCoverage=Record<string,{family:string;sha256:string;ranges:Array<[number,number]>}>;
+export type DesignReport={renderer:string;width:number;height:number;cancelled:boolean;success:boolean;success_scope:string;source_text_sha256:Record<string,string>;source_unchanged:boolean;layers:Array<{id:string;text:string;source_text_sha256:string;structural_success:boolean;layout_error?:string;overflow:Array<{code:string;required?:number;available?:number}>;font:{primary_loaded:boolean;missing_codepoints:string[];unsupported_controls:string[]};unchanged:boolean}>;overlap:Array<[string,string]>;ocr:{available:boolean;performed:boolean};remaining:string[]};
+export function renderDesign(canvas:HTMLCanvasElement,spec:VisualSpec,assets?:Record<string,string>,fontCoverage?:FontCoverage):Promise<{canvas:HTMLCanvasElement;report:DesignReport}>;

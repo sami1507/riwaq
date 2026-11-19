@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { encryptSnapshot, decryptSnapshot } from '../src/backup-crypto.ts';
+const fixture={version:1,project:{name:'اختبار خصوصية',instructions:'Only authorized data'},messages:[{content:'مرحبا بالعالم'}]};
+const passphrase='test-only-distinct-long-passphrase';
+const a=await encryptSnapshot(fixture,passphrase);const b=await encryptSnapshot(fixture,passphrase);
+assert.notEqual(a.nonce,b.nonce);assert.notEqual(a.salt,b.salt);assert.notEqual(a.ciphertext,b.ciphertext);
+assert.deepEqual(await decryptSnapshot(a,passphrase),fixture);
+await assert.rejects(()=>decryptSnapshot(a,'wrong-passphrase-long-enough'));
+const damaged={...a,ciphertext:a.ciphertext.slice(0,8)+(a.ciphertext[8]==='A'?'B':'A')+a.ciphertext.slice(9)};
+await assert.rejects(()=>decryptSnapshot(damaged,passphrase));
+await assert.rejects(()=>decryptSnapshot({...a,iterations:999999999},passphrase));
+await assert.rejects(()=>encryptSnapshot(fixture,'too-short'));
+console.log('BACKUP CRYPTO PASSED: Arabic roundtrip, fresh salts/nonces, wrong passphrase, tamper rejection, bounded parameters.');

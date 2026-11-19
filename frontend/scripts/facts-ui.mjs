@@ -1,0 +1,46 @@
+import {chromium,expect} from '../../tests/browser/node_modules/@playwright/test/index.mjs';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+import assert from 'node:assert/strict';
+const base=process.env.RIWAQ_QA_URL||'http://127.0.0.1:8765',out=fileURLToPath(new URL('../../reports/',import.meta.url));
+await mkdir(out,{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:true}),context=await browser.newContext({viewport:{width:1440,height:1000},extraHTTPHeaders:{'X-Riwaq-Client':'local'}}),page=await context.newPage();
+const errors=[],external=[],generated=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url())&&new URL(r.url()).origin!==new URL(base).origin)external.push(r.url());if(r.url().includes('/generate'))generated.push(r.url());});
+async function api(path,options={}){const r=await context.request.fetch(base+'/api'+path,options);assert(r.ok(),path+': '+r.status()+' '+await r.text());return r.json();}
+const tag='FactTrial'+Date.now(),report={kind:'real API/browser, no model or mocked responses',checks:[]};let project;
+const check=x=>report.checks.push(x),list=()=>api('/projects/'+project.id+'/facts');
+async function waitFact(fn){await expect.poll(async()=>{const rows=await list();return rows.length===1&&fn(rows[0]);},{timeout:20000}).toBe(true);return (await list())[0];}
+async function open(ar=false){if(page.viewportSize().width<=760)await page.locator('.mobile-menu').click();await page.getByRole('button',{name:ar?'سجل الحقائق':'Fact ledger',exact:true}).click();const d=page.getByRole('dialog');await expect(d.getByRole('button',{name:ar?'حقيقة جديدة':'New fact',exact:true})).toBeEnabled();return d;}
+try{
+ const settings=await api('/settings');assert.equal(settings.provider,'ollama');
+ project=await api('/projects',{method:'POST',data:{name:'QA · Fact ledger · '+tag,instructions:'Synthetic UI verification only.'}});report.project_id=project.id;
+ const file=await api('/projects/'+project.id+'/files',{method:'POST',multipart:{file:{name:tag+'.txt',mimeType:'text/plain',buffer:Buffer.from('SYNTHETIC QA FIXTURE ONLY. '+tag+': fictional QA chamber pressure is 42 kPa. Not a real measurement.\n')}}});report.fixture_file_id=file.id;
+ await context.addInitScript(pid=>{if(!sessionStorage.getItem('facts-qa')){localStorage.setItem('riwaq.v1.lang','en');localStorage.setItem('riwaq.v1.project',pid);localStorage.removeItem('riwaq.v1.conversation');sessionStorage.setItem('facts-qa','1');}},project.id);
+ await page.goto(base);let d=await open();
+ await d.getByRole('button',{name:'New fact',exact:true}).click();
+ for(const [name,value] of [['Entity','QA chamber'],['Property','Pressure'],['Value','42'],['Unit','kPa']])await d.getByLabel(name,{exact:true}).fill(value);
+ await d.getByText('Time, version and comparison conditions',{exact:true}).click();
+ await d.getByLabel('Entity key',{exact:true}).fill(tag);await d.getByLabel('Property key',{exact:true}).fill('pressure');
+ await d.getByLabel('Time scope',{exact:true}).selectOption('timeless');await d.getByLabel('Version scope',{exact:true}).selectOption('not_applicable');await d.getByRole('checkbox',{name:'I declare this property single-valued under these conditions',exact:true}).check();
+ await d.getByLabel('Search local sources',{exact:true}).fill(tag);await d.getByRole('button',{name:'Search excerpts',exact:true}).click();
+ const option=d.locator('.fact-source-option').filter({hasText:tag+'.txt'});await expect(option).toHaveCount(1);await option.getByRole('checkbox').check();await d.getByRole('button',{name:'Save as draft',exact:true}).click();
+ let fact=await waitFact(f=>f.version===1&&f.review_state==='draft'&&f.source_state==='current');const id=fact.id;
+ assert.equal(fact.usable,false);assert.equal(fact.evidence[0].file_id,file.id);check('draft bound to exact project source, unusable before review');
+ async function review(){await d.getByRole('checkbox',{name:/^I reviewed the claim and source\./}).check();await d.getByRole('button',{name:'Record review',exact:true}).click();}
+ await review();await waitFact(f=>f.version===2&&f.usable);await d.getByLabel('Value',{exact:true}).fill('43');await expect(d.getByRole('button',{name:'Record review',exact:true})).toBeDisabled();await d.getByRole('button',{name:'Save as draft',exact:true}).click();await waitFact(f=>f.version===3&&f.value.value==='43'&&!f.usable);
+ await d.getByRole('button',{name:'Version history',exact:true}).click();const first=d.locator('.fact-history > details').filter({has:page.locator('summary').filter({hasText:/^Version 1\s*·/})});await first.locator(':scope > summary').click();await expect(first).toContainText('42');page.once('dialog',x=>x.accept());await first.getByRole('button',{name:'Restore as draft',exact:true}).click();await waitFact(f=>f.version===4&&f.value.value==='42'&&!f.usable);check('review/edit/version restore persisted; restore does not approve');
+ await page.reload();d=await open();await d.locator('.fact-open').first().click();await expect(d.getByLabel('Value',{exact:true})).toHaveValue('42');await review();await waitFact(f=>f.version===5&&f.usable);
+ await d.getByRole('checkbox',{name:'Attach to next request',exact:true}).check();await d.getByRole('button',{name:'Use in next message',exact:true}).click();await expect(page.getByRole('note',{name:'Selected fact context'})).toContainText('1 / 8');
+ await page.getByRole('button',{name:'Change selection',exact:true}).click();d=page.getByRole('dialog');await expect(d.getByRole('checkbox',{name:'Attach to next request',exact:true})).toBeChecked();await d.getByRole('button',{name:'Close / إغلاق',exact:true}).click();
+ await expect(page.getByRole('checkbox',{name:'Enable experimental reasoning tools',exact:true})).not.toBeChecked();await page.getByRole('checkbox',{name:'Specified JSON format · advanced',exact:true}).check();await page.getByRole('textbox',{name:'JSON schema',exact:true}).fill('{broken');
+ const composer=page.locator('.composer textarea');await composer.fill('Keep QA draft');await composer.press('Enter');await expect(page.getByRole('alert').filter({hasText:'Invalid JSON syntax'})).toBeVisible();await expect(composer).toHaveValue('Keep QA draft');await expect(page.getByRole('textbox',{name:'JSON schema',exact:true})).toHaveValue('{broken');assert.equal(generated.length,0);check('invalid schema preserves draft and fact selection without a request');
+ await page.getByRole('button',{name:/^New conversation/}).click();await expect(composer).toHaveValue('');await expect(page.getByRole('checkbox',{name:'Specified JSON format · advanced',exact:true})).not.toBeChecked();await expect(page.getByRole('note',{name:'Selected fact context'})).toHaveCount(0);
+ d=await open();await d.locator('.fact-open').first().click();await page.screenshot({path:out+'/facts-desktop.png',fullPage:true,animations:'disabled'});
+ await page.evaluate(()=>localStorage.setItem('riwaq.v1.lang','ar'));await page.setViewportSize({width:390,height:844});await page.reload();d=await open(true);await d.locator('.fact-open').first().click();await expect(page.locator('html')).toHaveAttribute('dir','rtl');await expect(d.getByLabel('الكيان',{exact:true})).toHaveValue('QA chamber');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert.equal(await d.evaluate(el=>el.scrollWidth>el.clientWidth+1),false);await page.screenshot({path:out+'/facts-mobile-ar.png',fullPage:true,animations:'disabled'});check('Arabic mobile390 and desktop1440 rendered without horizontal overflow');
+ await page.evaluate(()=>localStorage.setItem('riwaq.v1.lang','en'));await page.setViewportSize({width:1440,height:1000});await page.reload();d=await open();await d.locator('.fact-open').first().click();await d.getByRole('button',{name:'Withdraw record',exact:true}).click();await d.getByRole('button',{name:'Confirm withdrawal',exact:true}).click();await waitFact(f=>f.version===6&&f.review_state==='withdrawn'&&!f.usable);await expect(d.getByRole('checkbox',{name:'Attach to next request',exact:true})).toBeDisabled();
+ await page.reload();d=await open();await d.locator('.fact-open').first().click();await expect(d.locator('.fact-editor')).toContainText('Withdrawn');await d.getByRole('button',{name:'Delete record',exact:true}).click();await d.getByRole('button',{name:'Confirm deletion',exact:true}).click();await expect.poll(async()=>(await list()).length).toBe(0);const gone=await context.request.get(base+'/api/projects/'+project.id+'/facts/'+id+'/versions');assert.equal(gone.status(),404);check('withdrawal survives reload; explicit delete removes fact and history');
+ assert.deepEqual(errors,[]);assert.deepEqual(external,[]);assert.equal(generated.length,0);report.passed=true;
+}catch(e){report.passed=false;report.error=String(e);await page.screenshot({path:out+'/facts-ui-failure.png',fullPage:true}).catch(()=>{});throw e;}
+finally{report.errors=errors;report.external=external;report.generate_requests=generated;await writeFile(out+'/facts-ui.json',JSON.stringify(report,null,2));await browser.close();}
+console.log(JSON.stringify(report));

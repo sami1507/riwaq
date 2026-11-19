@@ -1,0 +1,16 @@
+.math-explanation{border:1px solid var(--line);border-radius:12px;padding:16px;margin-block:18px;background:var(--surface);min-width:0}
+.math-explanation h3{margin-block:0 10px}.education-actions{display:flex;gap:8px;flex-wrap:wrap;margin-block:10px}
+.education-actions button,.math-explanation>button{border:1px solid var(--line);min-height:44px;padding:9px 14px;border-radius:8px;background:var(--surface);color:inherit;cursor:pointer}
+.education-actions button[aria-pressed=true]{font-weight:700;text-decoration:underline;text-underline-offset:5px}
+.math-explanation pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);padding:8px}.math-explanation p{line-height:1.75}
+.math-plot{margin:10px 0}.math-plot svg{width:100%;max-width:650px;display:block;direction:ltr}.math-plot text{font-size:11px;fill:currentColor}.math-plot figcaption{font-size:.85rem;line-height:1.6}
+.math-plot table{border-collapse:collapse;width:100%}.math-plot th,.math-plot td{border:1px solid var(--line);padding:4px 8px;text-align:center}
+.medical-workbench{padding:16px;max-height:calc(90dvh - 90px);overflow:auto}.medical-workbench form{display:grid;gap:12px}.medical-workbench label{display:grid;gap:6px}.medical-workbench .medical-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.medical-workbench input,.medical-workbench select,.medical-workbench textarea{max-width:100%;min-width:0}.medical-result{border-block-start:1px solid var(--line);margin-block-start:20px;padding-block:12px}.medical-result p{line-height:1.8}.medical-result li{margin-block:6px}.medical-result pre{white-space:pre-wrap;overflow-wrap:anywhere}.medical-workbench .urgent{border-inline-start:4px solid currentColor;padding-inline:12px;font-weight:700}
+
+.medical-workbench input:not([type=checkbox]),.medical-workbench select{min-height:44px;width:100%;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);padding:9px 12px;font:inherit}
+.medical-workbench label.checkbox{display:flex;align-items:center;gap:10px;min-height:44px}.medical-workbench input[type=checkbox]{width:18px;height:18px;flex:none;accent-color:var(--accent)}
+.medical-workbench fieldset{border:1px solid var(--line);border-radius:10px;padding:14px}.medical-workbench legend{padding-inline:7px}
+.medical-workbench button:focus-visible,.medical-workbench input:focus-visible,.medical-workbench select:focus-visible,.math-explanation button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.medical-workbench button:disabled{opacity:.6;cursor:wait}.medical-workbench button[type=submit]{background:var(--accent);border-color:var(--accent);color:var(--on-accent,#fff);font-weight:600}
+.math-explanation bdi{unicode-bidi:isolate}.math-explanation dd{margin-inline-start:0;padding-block:5px}.math-explanation dt{font-weight:600}
+@media(max-width:600px){.medical-workbench{padding:12px;max-height:calc(90dvh - 80px)}.medical-workbench .medical-fields{grid-template-columns:minmax(0,1fr)}.math-explanation{padding:12px}.education-actions{gap:6px}}

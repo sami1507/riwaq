@@ -1,0 +1,39 @@
+{
+  "license": "CC0-1.0: original controlled fixture text authored for Riwaq tests; embedded IBM Plex retains OFL license.",
+  "purpose": "Development fixtures. Not a hidden quality benchmark.",
+  "fixtures": [
+    {
+      "name": "arabic-columns-long.pdf",
+      "sha256": "6fe39a1b12450980ef13d85885ac14678cd831d239a9b259d8ede323c40cf2c1",
+      "expected": {
+        "pages": 12,
+        "question": "ما رمز التسليم النهائي للمشروع؟",
+        "answer": "RQ-742",
+        "answer_page": 12,
+        "absent": "ميزانية المشروع"
+      }
+    },
+    {
+      "name": "arabic-scan-mixed.pdf",
+      "sha256": "f573e77edf4feccf770dfd38a3ef98e0802295ab5cb7ce9a60eb95ec28cac83e",
+      "expected": {
+        "pages": 2,
+        "page1_kind": "scan",
+        "page2_kind": "mixed",
+        "ocr_text": "يحتوي المشروع على 12 ملفا."
+      }
+    },
+    {
+      "name": "verified-table.csv",
+      "sha256": "7e70ce84ae407a0f8553eb241c73871a028525a3e22bf940240c74f120916760",
+      "expected": {
+        "range": "B2:B3",
+        "exact": "3/10",
+        "decimal": "0.3",
+        "unit": "ILS",
+        "blank": "B4",
+        "identifier": "A2"
+      }
+    }
+  ]
+}

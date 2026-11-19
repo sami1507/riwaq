@@ -1,0 +1,1155 @@
+{
+  "version": 1,
+  "reviewed_at": "2026-11-12",
+  "limits": {
+    "max_documents": 100,
+    "max_sources": 5,
+    "download_bytes": 1073741824,
+    "file_bytes": 26214400,
+    "run_seconds": 1800,
+    "concurrent_domains": 1
+  },
+  "embedding": {
+    "model": "embeddinggemma-2:270m-q8_0-text",
+    "dimensions": 768,
+    "license": "Apache-2.0",
+    "model_card": "https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2"
+  },
+  "external_downloads": [
+    {
+      "id": "embeddinggemma2-text-pilot",
+      "name": "EmbeddingGemma 2 text weights and manifest",
+      "bytes": 303958663
+    },
+    {
+      "id": "source-verification-pilot",
+      "name": "Official licenses and verification samples",
+      "bytes": 395562
+    }
+  ],
+  "sources": [
+    {
+      "id": "python312",
+      "name": "Python 3.12 documentation",
+      "base_url": "https://docs.python.org/3.12/",
+      "allowed_hosts": [
+        "docs.python.org"
+      ],
+      "allowed_prefixes": [
+        "/3.12/"
+      ],
+      "allowed_paths": [
+        "/3.12/"
+      ],
+      "status": "allowed",
+      "rights_confirmed": true,
+      "pack": "project-stack",
+      "domain": "programming",
+      "language": "en",
+      "content_type": "html",
+      "source_type": "documentation",
+      "access_method": "official HTML documentation",
+      "access_type": "official repository",
+      "version": "3.12",
+      "owner": "Python Software Foundation",
+      "priority": 10,
+      "max_documents": 30,
+      "update_policy": {
+        "interval_days": 30
+      },
+      "fetch_limits": {
+        "delay_seconds": 1.0,
+        "max_documents": 30
+      },
+      "license": {
+        "name": "PSF-2.0; documentation examples also 0BSD",
+        "url": "https://docs.python.org/3.12/license.html",
+        "storage_allowed": true,
+        "redistribution_allowed": true,
+        "training_allowed": false,
+        "attribution": "Python Software Foundation; original URL and license retained. Extraction/chunking only; no generated translation.",
+        "reviewed_at": "2026-11-12",
+        "evidence": "Official license verified HTTP 200 on 2026-11-12; snapshot reports/source-verification/python_license.txt",
+        "sha256": "c3ac3c8efc55dd8c11f8c6d7c365ddf29624e9836c10fc0f3db20f4d5c5e1859"
+      },
+      "urls": [
+        {
+          "url": "https://docs.python.org/3.12/tutorial/controlflow.html",
+          "title": "Python 3.12 — Control flow",
+          "version": "3.12",
+          "language": "en"
+        },
+        {
+          "url": "https://docs.python.org/3.12/tutorial/datastructures.html",
+          "title": "Python 3.12 — Data structures",
+          "version": "3.12",
+          "language": "en"
+        }
+      ],
+      "publisher": {
+        "name": "Python Software Foundation",
+        "kind": "project",
+        "url": "https://docs.python.org/3.12/"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Documentation for the explicitly registered software/version only",
+        "evidence_urls": [
+          "https://docs.python.org/3.12/license.html"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Publisher category is descriptive, not a correctness score or proof that any retrieved claim is true."
+      },
+      "rights_review": {
+        "status": "reviewed_scoped",
+        "evidence_urls": [
+          "https://docs.python.org/3.12/license.html"
+        ],
+        "reviewed_at": "2026-11-15",
+        "scope": "Registered documentation text; preserve source attribution and the exact version license",
+        "limitations": "Metadata review does not replace per-job license byte verification, robots checks or material-specific exceptions. No training permission is inferred."
+      }
+    },
+    {
+      "id": "react19",
+      "name": "React documentation",
+      "base_url": "https://react.dev/",
+      "allowed_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "allowed_prefixes": [
+        "/reactjs/react.dev/main/"
+      ],
+      "allowed_paths": [
+        "/reactjs/react.dev/main/"
+      ],
+      "status": "allowed",
+      "rights_confirmed": true,
+      "pack": "project-stack",
+      "domain": "programming",
+      "language": "en",
+      "content_type": "markdown",
+      "source_type": "documentation",
+      "access_method": "official repository",
+      "access_type": "official repository",
+      "version": "19 (rolling docs snapshot)",
+      "owner": "Meta Platforms and React documentation contributors",
+      "priority": 10,
+      "max_documents": 30,
+      "update_policy": {
+        "interval_days": 30
+      },
+      "fetch_limits": {
+        "delay_seconds": 1.0,
+        "max_documents": 30
+      },
+      "license": {
+        "name": "CC-BY-4.0",
+        "url": "https://raw.githubusercontent.com/reactjs/react.dev/main/LICENSE-DOCS.md",
+        "storage_allowed": true,
+        "redistribution_allowed": true,
+        "training_allowed": false,
+        "attribution": "Meta Platforms and React documentation contributors; original URL and license retained. Extraction/chunking only; no generated translation.",
+        "reviewed_at": "2026-11-12",
+        "evidence": "Official license verified HTTP 200 on 2026-11-12; snapshot reports/source-verification/react_license.txt",
+        "sha256": "61b098d905d9799fc4f4625b476dac117630a1740a02e032594ff2fccbbb6206"
+      },
+      "urls": [
+        {
+          "url": "https://raw.githubusercontent.com/reactjs/react.dev/main/src/content/reference/react/useState.md",
+          "title": "React — useState",
+          "version": "19 (rolling docs snapshot)",
+          "language": "en"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/reactjs/react.dev/main/src/content/reference/react/useEffect.md",
+          "title": "React — useEffect",
+          "version": "19 (rolling docs snapshot)",
+          "language": "en"
+        }
+      ],
+      "publisher": {
+        "name": "Meta Platforms and React documentation contributors",
+        "kind": "project",
+        "url": "https://react.dev/"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Documentation for the explicitly registered software/version only",
+        "evidence_urls": [
+          "https://raw.githubusercontent.com/reactjs/react.dev/main/LICENSE-DOCS.md"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Publisher category is descriptive, not a correctness score or proof that any retrieved claim is true."
+      },
+      "rights_review": {
+        "status": "reviewed_scoped",
+        "evidence_urls": [
+          "https://raw.githubusercontent.com/reactjs/react.dev/main/LICENSE-DOCS.md"
+        ],
+        "reviewed_at": "2026-11-15",
+        "scope": "Registered documentation text; preserve source attribution and the exact version license",
+        "limitations": "Metadata review does not replace per-job license byte verification, robots checks or material-specific exceptions. No training permission is inferred."
+      }
+    },
+    {
+      "id": "typescript59",
+      "name": "TypeScript documentation",
+      "base_url": "https://www.typescriptlang.org/",
+      "allowed_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "allowed_prefixes": [
+        "/microsoft/TypeScript-Website/v2/"
+      ],
+      "allowed_paths": [
+        "/microsoft/TypeScript-Website/v2/"
+      ],
+      "status": "allowed",
+      "rights_confirmed": true,
+      "pack": "project-stack",
+      "domain": "programming",
+      "language": "en",
+      "content_type": "markdown",
+      "source_type": "documentation",
+      "access_method": "official repository",
+      "access_type": "official repository",
+      "version": "handbook (rolling snapshot)",
+      "owner": "Microsoft and TypeScript documentation contributors",
+      "priority": 10,
+      "max_documents": 30,
+      "update_policy": {
+        "interval_days": 30
+      },
+      "fetch_limits": {
+        "delay_seconds": 1.0,
+        "max_documents": 30
+      },
+      "license": {
+        "name": "CC-BY-4.0",
+        "url": "https://raw.githubusercontent.com/microsoft/TypeScript-Website/v2/LICENSE",
+        "storage_allowed": true,
+        "redistribution_allowed": true,
+        "training_allowed": false,
+        "attribution": "Microsoft and TypeScript documentation contributors; original URL and license retained. Extraction/chunking only; no generated translation.",
+        "reviewed_at": "2026-11-12",
+        "evidence": "Official license verified HTTP 200 on 2026-11-12; snapshot reports/source-verification/typescript_license.txt",
+        "sha256": "d6239afa918961b465b07bf7411cbe34ff6685854f58553db7966f4881a0211f"
+      },
+      "urls": [
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/TypeScript-Website/v2/packages/documentation/copy/en/handbook-v2/Narrowing.md",
+          "title": "TypeScript — Narrowing",
+          "version": "handbook (rolling snapshot)",
+          "language": "en"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/TypeScript-Website/v2/packages/documentation/copy/en/handbook-v2/Everyday%20Types.md",
+          "title": "TypeScript — Everyday types",
+          "version": "handbook (rolling snapshot)",
+          "language": "en"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/TypeScript-Website/v2/packages/documentation/copy/en/release-notes/TypeScript%205.9.md",
+          "title": "TypeScript 5.9 release notes",
+          "version": "5.9",
+          "language": "en"
+        }
+      ],
+      "publisher": {
+        "name": "Microsoft and TypeScript documentation contributors",
+        "kind": "project",
+        "url": "https://www.typescriptlang.org/"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Documentation for the explicitly registered software/version only",
+        "evidence_urls": [
+          "https://raw.githubusercontent.com/microsoft/TypeScript-Website/v2/LICENSE"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Publisher category is descriptive, not a correctness score or proof that any retrieved claim is true."
+      },
+      "rights_review": {
+        "status": "reviewed_scoped",
+        "evidence_urls": [
+          "https://raw.githubusercontent.com/microsoft/TypeScript-Website/v2/LICENSE"
+        ],
+        "reviewed_at": "2026-11-15",
+        "scope": "Registered documentation text; preserve source attribution and the exact version license",
+        "limitations": "Metadata review does not replace per-job license byte verification, robots checks or material-specific exceptions. No training permission is inferred."
+      }
+    },
+    {
+      "id": "fastapi0162",
+      "name": "FastAPI 0.162.5 documentation",
+      "base_url": "https://fastapi.tiangolo.com/",
+      "allowed_hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "allowed_prefixes": [
+        "/fastapi/fastapi/0.162.5/"
+      ],
+      "allowed_paths": [
+        "/fastapi/fastapi/0.162.5/"
+      ],
+      "status": "allowed",
+      "rights_confirmed": true,
+      "pack": "project-stack",
+      "domain": "programming",
+      "language": "en",
+      "content_type": "markdown",
+      "source_type": "documentation",
+      "access_method": "official repository",
+      "access_type": "official repository",
+      "version": "0.162.5",
+      "owner": "Sebastián Ramírez and FastAPI contributors",
+      "priority": 10,
+      "max_documents": 30,
+      "update_policy": {
+        "interval_days": 30
+      },
+      "fetch_limits": {
+        "delay_seconds": 1.0,
+        "max_documents": 30
+      },
+      "license": {
+        "name": "MIT",
+        "url": "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/LICENSE",
+        "storage_allowed": true,
+        "redistribution_allowed": true,
+        "training_allowed": false,
+        "attribution": "Sebastián Ramírez and FastAPI contributors; original URL and license retained. Extraction/chunking only; no generated translation.",
+        "reviewed_at": "2026-11-12",
+        "evidence": "Official license verified HTTP 200 on 2026-11-12; snapshot reports/source-verification/fastapi_license.txt",
+        "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e"
+      },
+      "urls": [
+        {
+          "url": "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/docs/en/docs/tutorial/body.md",
+          "title": "FastAPI — Request body",
+          "version": "0.162.5",
+          "language": "en"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/docs/en/docs/tutorial/path-params.md",
+          "title": "FastAPI — Path parameters",
+          "version": "0.162.5",
+          "language": "en"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/docs/en/docs/tutorial/query-params.md",
+          "title": "FastAPI — Query parameters",
+          "version": "0.162.5",
+          "language": "en"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/docs/en/docs/tutorial/dependencies/index.md",
+          "title": "FastAPI — Dependencies",
+          "version": "0.162.5",
+          "language": "en"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/docs_src/body/tutorial001.py",
+          "title": "FastAPI request-body code example",
+          "version": "0.162.5",
+          "language": "en"
+        }
+      ],
+      "publisher": {
+        "name": "Sebastián Ramírez and FastAPI contributors",
+        "kind": "project",
+        "url": "https://fastapi.tiangolo.com/"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Documentation for the explicitly registered software/version only",
+        "evidence_urls": [
+          "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/LICENSE"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Publisher category is descriptive, not a correctness score or proof that any retrieved claim is true."
+      },
+      "rights_review": {
+        "status": "reviewed_scoped",
+        "evidence_urls": [
+          "https://raw.githubusercontent.com/fastapi/fastapi/0.162.5/LICENSE"
+        ],
+        "reviewed_at": "2026-11-15",
+        "scope": "Registered documentation text; preserve source attribution and the exact version license",
+        "limitations": "Metadata review does not replace per-job license byte verification, robots checks or material-specific exceptions. No training permission is inferred."
+      }
+    },
+    {
+      "id": "wikidata-general",
+      "name": "Wikidata structured descriptions",
+      "base_url": "https://www.wikidata.org/",
+      "allowed_hosts": [
+        "www.wikidata.org"
+      ],
+      "allowed_prefixes": [
+        "/w/api.php",
+        "/wiki/Wikidata:Licensing"
+      ],
+      "allowed_paths": [
+        "/w/api.php",
+        "/wiki/Wikidata:Licensing"
+      ],
+      "status": "link_only",
+      "rights_confirmed": true,
+      "pack": "general-starter",
+      "domain": "general",
+      "language": "mul",
+      "content_type": "wikidata-json",
+      "source_type": "documentation",
+      "access_method": "MediaWiki Action API",
+      "access_type": "official repository",
+      "version": "live entity snapshot",
+      "owner": "Wikidata contributors",
+      "priority": 20,
+      "max_documents": 30,
+      "update_policy": {
+        "interval_days": 30
+      },
+      "fetch_limits": {
+        "delay_seconds": 1.0,
+        "max_documents": 30
+      },
+      "license": {
+        "name": "CC0-1.0 (structured entity data only)",
+        "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "storage_allowed": true,
+        "redistribution_allowed": true,
+        "training_allowed": false,
+        "attribution": "Wikidata contributors; original URL and license retained. Extraction/chunking only; no generated translation.",
+        "reviewed_at": "2026-11-12",
+        "evidence": "Official license verified HTTP 200 on 2026-11-12; snapshot reports/source-verification/wikidata_license.txt",
+        "sha256": "61087a6ca1b4c4e1a3eccf9caa5031527f0737d070fbee7333aee55813b28235"
+      },
+      "urls": [
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q2 — Earth",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q405&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q405 — Moon",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q525&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q525 — Sun",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q111&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q111 — Mars",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q283&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q283 — Water",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q629&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q629 — Oxygen",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q395&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q395 — Mathematics",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q413&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q413 — Physics",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q13955&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q13955 — Arabic",
+          "version": "live entity snapshot",
+          "language": "mul"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q9288&props=labels%7Cdescriptions&languages=en%7Car%7Che&format=json&maxlag=5",
+          "title": "Wikidata Q9288 — Hebrew",
+          "version": "live entity snapshot",
+          "language": "mul"
+        }
+      ],
+      "access_note": "API and Special:EntityData paths disallowed by robots.txt for this importer. Ten attempted URLs were not imported. No override performed.",
+      "publisher": {
+        "name": "Wikidata contributors",
+        "kind": "community",
+        "url": "https://www.wikidata.org/"
+      },
+      "trust": {
+        "level": "community_reference",
+        "scope": "Structured Wikidata statements, which still need claim-level source assessment",
+        "evidence_urls": [
+          "https://www.wikidata.org/wiki/Wikidata:Licensing"
+        ],
+        "reviewed_at": null,
+        "limitations": "Publisher category is descriptive, not a correctness score or proof that any retrieved claim is true."
+      },
+      "rights_review": {
+        "status": "access_blocked",
+        "evidence_urls": [
+          "https://www.wikidata.org/wiki/Wikidata:Licensing"
+        ],
+        "reviewed_at": "2026-11-12",
+        "scope": "Structured entity data only; no pages or media",
+        "limitations": "Prior robots restrictions remain; this review could not fetch the licensing page, so link_only is unchanged."
+      }
+    },
+    {
+      "id": "mdn",
+      "name": "MDN Web Docs",
+      "base_url": "https://developer.mozilla.org/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "web",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "MDN Web Docs contributors",
+        "kind": "community",
+        "url": "https://developer.mozilla.org/"
+      },
+      "trust": {
+        "level": "community_reference",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Open contribution reference, not a Web standards specification."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Open contribution reference, not a Web standards specification."
+      }
+    },
+    {
+      "id": "android",
+      "name": "Android Developers",
+      "base_url": "https://developer.android.com/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "android",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "Android Developers",
+        "kind": "project",
+        "url": "https://developer.android.com/"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://developer.android.com/license"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Official licensing page distinguishes documentation, samples, other content, and exceptions; no material has been approved here."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://developer.android.com/license"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Official licensing page distinguishes documentation, samples, other content, and exceptions; no material has been approved here."
+      }
+    },
+    {
+      "id": "kotlin",
+      "name": "Kotlin documentation",
+      "base_url": "https://kotlinlang.org/docs/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "kotlin",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "Kotlin documentation project",
+        "kind": "project",
+        "url": "https://kotlinlang.org/docs/"
+      },
+      "trust": {
+        "level": "unreviewed",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://kotlinlang.org/docs/home.html"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Official page returned no readable text during this metadata review; publisher identity and specific material rights need review."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://kotlinlang.org/docs/home.html"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Official page returned no readable text during this metadata review; publisher identity and specific material rights need review."
+      }
+    },
+    {
+      "id": "java",
+      "name": "OpenJDK",
+      "base_url": "https://openjdk.org/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "java",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "OpenJDK project",
+        "kind": "project",
+        "url": "https://openjdk.org/"
+      },
+      "trust": {
+        "level": "unreviewed",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://openjdk.org/legal/"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Official legal page returned HTTP 403 during this review; no rights approval inferred."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://openjdk.org/legal/"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Official legal page returned HTTP 403 during this review; no rights approval inferred."
+      }
+    },
+    {
+      "id": "cpp",
+      "name": "C/C++ references",
+      "base_url": "https://en.cppreference.com/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "cpp",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "cppreference.com contributors",
+        "kind": "community",
+        "url": "https://en.cppreference.com/"
+      },
+      "trust": {
+        "level": "community_reference",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://en.cppreference.com/Cppreference:About"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Community language reference; not the ISO standards publisher or authoritative standards text."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://en.cppreference.com/Cppreference:About"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Community language reference; not the ISO standards publisher or authoritative standards text."
+      }
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL documentation",
+      "base_url": "https://www.postgresql.org/docs/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "sql",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "PostgreSQL Global Development Group",
+        "kind": "project",
+        "url": "https://www.postgresql.org/docs/"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://www.postgresql.org/about/licence/"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Official license includes documentation, but selected version, files, attribution and crawl scope still need material review."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://www.postgresql.org/about/licence/"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Official license includes documentation, but selected version, files, attribution and crawl scope still need material review."
+      }
+    },
+    {
+      "id": "git",
+      "name": "Git documentation",
+      "base_url": "https://git-scm.com/docs",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "git",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "Git project",
+        "kind": "project",
+        "url": "https://git-scm.com/docs"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://git-scm.com/about"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Official project site; software GPL licensing does not itself approve every book, graphic or site material."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://git-scm.com/about"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Official project site; software GPL licensing does not itself approve every book, graphic or site material."
+      }
+    },
+    {
+      "id": "linux",
+      "name": "Linux kernel documentation",
+      "base_url": "https://docs.kernel.org/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "programming",
+      "domain": "linux",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "Linux kernel documentation project",
+        "kind": "project",
+        "url": "https://docs.kernel.org/"
+      },
+      "trust": {
+        "level": "primary_documentation",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://docs.kernel.org/process/license-rules.html"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Per-file SPDX and license exceptions require review; kernel-wide terms are not blanket approval of all materials."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://docs.kernel.org/process/license-rules.html"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Per-file SPDX and license exceptions require review; kernel-wide terms are not blanket approval of all materials."
+      }
+    },
+    {
+      "id": "pytorch",
+      "name": "PyTorch documentation",
+      "base_url": "https://docs.pytorch.org/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "ai",
+      "domain": "machine-learning",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "PyTorch documentation project",
+        "kind": "project",
+        "url": "https://docs.pytorch.org/"
+      },
+      "trust": {
+        "level": "unreviewed",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://docs.pytorch.org/docs/stable/index.html"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Versioned documentation redirect observed; precise version, publisher and material license not verified in this pass."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://docs.pytorch.org/docs/stable/index.html"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Versioned documentation redirect observed; precise version, publisher and material license not verified in this pass."
+      }
+    },
+    {
+      "id": "owasp",
+      "name": "OWASP prompt injection guidance",
+      "base_url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "ai",
+      "domain": "security",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "OWASP Cheat Sheet Series contributors",
+        "kind": "community",
+        "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html"
+      },
+      "trust": {
+        "level": "community_reference",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://owasp.org/projects/cheat-sheet-series"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Official OWASP project describes community-maintained guidance and CC BY-SA 4.0; selected material/scope still needs ingestion review."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://owasp.org/projects/cheat-sheet-series"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Official OWASP project describes community-maintained guidance and CC BY-SA 4.0; selected material/scope still needs ingestion review."
+      }
+    },
+    {
+      "id": "wikimedia",
+      "name": "Wikimedia content",
+      "base_url": "https://www.wikimedia.org/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "general",
+      "domain": "encyclopedia",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "Wikimedia Foundation and project communities",
+        "kind": "organization",
+        "url": "https://www.wikimedia.org/"
+      },
+      "trust": {
+        "level": "community_reference",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://www.wikimedia.org/"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Foundation hosts community-authored projects; licenses vary across text, data and individual media files."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://www.wikimedia.org/"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Foundation hosts community-authored projects; licenses vary across text, data and individual media files."
+      }
+    },
+    {
+      "id": "openstax",
+      "name": "OpenStax books",
+      "base_url": "https://openstax.org/",
+      "allowed_hosts": [],
+      "allowed_prefixes": [],
+      "urls": [],
+      "pack": "open-references",
+      "domain": "education",
+      "language": "mul",
+      "status": "candidate",
+      "priority": 50,
+      "rights_confirmed": false,
+      "license": {
+        "name": "Unverified per material",
+        "url": "",
+        "storage_allowed": false,
+        "redistribution_allowed": false,
+        "training_allowed": false,
+        "attribution": "Pending material-specific review",
+        "reviewed_at": null,
+        "evidence": "Discovery only; no content imported."
+      },
+      "publisher": {
+        "name": "OpenStax",
+        "kind": "organization",
+        "url": "https://openstax.org/"
+      },
+      "trust": {
+        "level": "unreviewed",
+        "scope": "Discovery metadata only; no corpus ingestion approved.",
+        "evidence_urls": [
+          "https://openstax.org/blog/openstax-licensing"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Official licensing page returned no readable text in this review; title, edition and exact license must be checked separately."
+      },
+      "rights_review": {
+        "status": "requires_material_review",
+        "evidence_urls": [
+          "https://openstax.org/blog/openstax-licensing"
+        ],
+        "reviewed_at": null,
+        "scope": "No selected document rights have been approved.",
+        "limitations": "Official licensing page returned no readable text in this review; title, edition and exact license must be checked separately."
+      }
+    },
+    {
+      "id": "usgs-water",
+      "name": "USGS Water Science School — water facts",
+      "base_url": "https://www.usgs.gov/water-science-school/",
+      "allowed_hosts": [
+        "www.usgs.gov"
+      ],
+      "allowed_prefixes": [
+        "/water-science-school/science/facts-about-water"
+      ],
+      "status": "allowed",
+      "rights_confirmed": true,
+      "pack": "general-starter",
+      "domain": "general",
+      "language": "en",
+      "content_type": "html",
+      "access_method": "official institutional HTML text; no media fetched",
+      "version": "page-date 2026-08-24",
+      "owner": "U.S. Geological Survey — Water Science School",
+      "priority": 20,
+      "update_policy": {
+        "interval_days": 90
+      },
+      "fetch_limits": {
+        "delay_seconds": 2,
+        "max_documents": 1
+      },
+      "training_allowed": false,
+      "license": {
+        "name": "U.S. Public Domain — USGS-authored text only",
+        "url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+        "storage_allowed": true,
+        "redistribution_allowed": true,
+        "training_allowed": false,
+        "attribution": "U.S. Geological Survey, Water Science School: Facts About Water; original URL and rights statement retained. Text extraction/chunking only. No endorsement implied. No linked third-party media included.",
+        "reviewed_at": "2026-11-12",
+        "evidence": "Official Copyrights and Credits policy explicitly covers USGS-authored data/information. Facts About Water credits Water Science School; displayed media is Public Domain but no media is downloaded. robots.txt permits this article path. Policy reviewed via official indexed text; importer must fetch policy successfully before activation."
+      },
+      "urls": [
+        {
+          "url": "https://www.usgs.gov/water-science-school/science/facts-about-water",
+          "title": "USGS — Facts About Water",
+          "language": "en",
+          "version": "page-date 2026-08-24",
+          "published_at": null,
+          "modified_at": null
+        }
+      ],
+      "publisher": {
+        "name": "U.S. Geological Survey — Water Science School",
+        "kind": "government",
+        "url": "https://www.usgs.gov/water-science-school/"
+      },
+      "trust": {
+        "level": "government_reference",
+        "scope": "USGS-authored water science text",
+        "evidence_urls": [
+          "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+        ],
+        "reviewed_at": "2026-11-15",
+        "limitations": "Publisher category is descriptive, not a correctness score or proof that any retrieved claim is true."
+      },
+      "rights_review": {
+        "status": "reviewed_scoped",
+        "evidence_urls": [
+          "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+        ],
+        "reviewed_at": "2026-11-15",
+        "scope": "USGS-authored text only; exclude third-party illustrations, photos, personal likeness/voice and trademark endorsement",
+        "limitations": "Metadata review does not replace per-job license byte verification, robots checks or material-specific exceptions. No training permission is inferred."
+      }
+    }
+  ],
+  "metadata_reviewed_at": "2026-11-15",
+  "metadata_review_note": "Official publisher/license pages inspected for descriptive provenance. Existing license snapshot dates, hashes, statuses, URLs and ingestion permissions remain unchanged. No import or training was performed."
+}

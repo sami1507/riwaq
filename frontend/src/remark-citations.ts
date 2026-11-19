@@ -1,0 +1,5 @@
+// Link only prose citation markers. Code, existing links and raw HTML stay untouched.
+type Node={type:string;value?:string;children?:Node[];url?:string};
+export default function remarkCitations(options:{messageId:string;count:number}){
+ return (tree:unknown)=>{function visit(node:Node){if(!node.children||['link','code','inlineCode','html'].includes(node.type))return;node.children=node.children.flatMap(child=>{if(child.type!=='text'||!child.value){visit(child);return [child];}const pieces:Node[]=[];let offset=0;for(const match of child.value.matchAll(/\[S(\d+)\]/g)){const index=Number(match[1]);if(index<1||index>options.count)continue;const start=match.index??0;if(start>offset)pieces.push({type:'text',value:child.value.slice(offset,start)});pieces.push({type:'link',url:`#evidence-${options.messageId}-${index}`,children:[{type:'text',value:match[0]}]});offset=start+match[0].length;}if(!offset)return [child];if(offset<child.value.length)pieces.push({type:'text',value:child.value.slice(offset)});return pieces;});}visit(tree as Node);};
+}

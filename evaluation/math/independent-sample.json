@@ -1,0 +1,198 @@
+{
+  "cases": [
+    {
+      "id": "NEW-01",
+      "request": {
+        "operation": "exact",
+        "expression": "7/12-1/8"
+      },
+      "expected": {
+        "value": "11/24"
+      }
+    },
+    {
+      "id": "NEW-02",
+      "request": {
+        "operation": "round",
+        "value": "-1.235",
+        "places": 2,
+        "rounding": "ROUND_HALF_UP"
+      },
+      "expected": {
+        "value": "-1.24"
+      }
+    },
+    {
+      "id": "NEW-03",
+      "request": {
+        "operation": "unit_sum",
+        "terms": [
+          {
+            "value": "750",
+            "unit": "mm"
+          },
+          {
+            "value": "1.25",
+            "unit": "m"
+          }
+        ],
+        "output_unit": "m"
+      },
+      "expected": {
+        "value": "2"
+      }
+    },
+    {
+      "id": "NEW-04",
+      "request": {
+        "operation": "solve",
+        "expression": "(x-4)/(x-4)=0",
+        "domain": "real"
+      },
+      "expected": {
+        "solutions": []
+      }
+    },
+    {
+      "id": "NEW-05",
+      "request": {
+        "operation": "solve",
+        "expression": "x^2=9",
+        "constraints": [
+          "x>0"
+        ],
+        "domain": "real"
+      },
+      "expected": {
+        "solutions": [
+          "3"
+        ]
+      }
+    },
+    {
+      "id": "NEW-06",
+      "request": {
+        "operation": "system",
+        "equations": [
+          "u+v=8",
+          "u-v=2"
+        ],
+        "variables": [
+          "u",
+          "v"
+        ],
+        "domain": "real"
+      },
+      "expected": {
+        "solutions": [
+          {
+            "u": "5",
+            "v": "3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NEW-07",
+      "request": {
+        "operation": "entailment",
+        "premises": [
+          "P or Q",
+          "not P"
+        ],
+        "conclusion": "Q"
+      },
+      "expected": {
+        "entailed": true
+      }
+    },
+    {
+      "id": "NEW-08",
+      "request": {
+        "operation": "ordering",
+        "items": [
+          "D",
+          "E",
+          "F"
+        ],
+        "before": [
+          [
+            "F",
+            "D"
+          ],
+          [
+            "D",
+            "E"
+          ]
+        ]
+      },
+      "expected": {
+        "orders": [
+          [
+            "F",
+            "D",
+            "E"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "NEW-09",
+      "request": {
+        "operation": "integrate",
+        "expression": "x^3",
+        "variable": "x",
+        "bounds": [
+          "0",
+          "2"
+        ]
+      },
+      "expected": {
+        "value": "4"
+      }
+    },
+    {
+      "id": "NEW-10",
+      "request": {
+        "operation": "statistics",
+        "values": [
+          "0",
+          "4",
+          null,
+          "8"
+        ]
+      },
+      "expected": {
+        "sum": "12",
+        "mean": "4",
+        "known": 3,
+        "missing": 1
+      }
+    },
+    {
+      "id": "NEW-11",
+      "request": {
+        "operation": "combinations",
+        "n": 8,
+        "k": 2
+      },
+      "expected": {
+        "value": "28"
+      }
+    },
+    {
+      "id": "NEW-12",
+      "request": {
+        "operation": "probability",
+        "a": "1/2",
+        "b": "1/4",
+        "intersection": "1/8"
+      },
+      "expected": {
+        "union": "5/8",
+        "conditional": "1/2"
+      }
+    }
+  ],
+  "scope": "Separately authored engineering variants, visible to developers; not blinded or family-disjoint generalization evidence."
+}

@@ -1,0 +1,138 @@
+{
+  "version": "video-capabilities-v1",
+  "reviewed_on": "2026-11-15",
+  "generation": {
+    "status": "needs_configuration",
+    "available": false,
+    "tested": false,
+    "processing": "unconfigured",
+    "reason": "No local video-generation weights or enabled Riwaq cloud video adapter have been configured and validated. A connected Runway chat plugin is not an application API credential.",
+    "candidate_provider": "runway",
+    "model_id": null,
+    "api_base": "https://api.dev.runwayml.com/v1",
+    "api_version": "2024-11-06",
+    "credential_reference_name": "keyring:Riwaq/runway (proposed, not read or configured)",
+    "required_configuration": [
+      "Explicitly implemented provider adapter",
+      "Chosen current model and verified operation limits",
+      "Application API credentials in OS keyring",
+      "Hybrid mode and exact input/upload consent",
+      "Per-job quoted cost ceiling and explicit spending approval",
+      "Task status/cancellation and verified bounded output download"
+    ],
+    "official_docs": [
+      "https://docs.dev.runwayml.com/guides/using-the-api/",
+      "https://docs.dev.runwayml.com/guides/models/",
+      "https://docs.dev.runwayml.com/api/"
+    ]
+  },
+  "arabic_tts": {
+    "status": "needs_configuration",
+    "available": false,
+    "tested": false,
+    "processing": "unconfigured",
+    "reason": "No installed and validated Arabic synthesis engine/voice is selected. English Windows voices do not establish Arabic narration support. User-provided narration remains separate.",
+    "candidate_engine": "Piper, not installed",
+    "required_configuration": [
+      "Pinned local engine with license notices",
+      "Arabic voice weights/config and exact hashes",
+      "Voice training-chain rights review, distinct from engine license",
+      "Local Arabic pronunciation/listening evaluation and timing test"
+    ],
+    "official_docs": [
+      "https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/LICENSING.md",
+      "https://huggingface.co/rhasspy/piper-voices/blob/main/ar/ar_JO/kareem/medium/MODEL_CARD"
+    ]
+  },
+  "capabilities": [
+    {
+      "id": "local_timeline",
+      "kind": "editing",
+      "processing": "local",
+      "status": "runtime_probe_required",
+      "description": "Trim, reorder, letterbox and compose existing project media; this is not AI video generation."
+    },
+    {
+      "id": "local_pan_zoom",
+      "kind": "animation",
+      "processing": "local",
+      "status": "experimental",
+      "description": "Deterministic camera motion over an existing image; does not synthesize new scene motion."
+    },
+    {
+      "id": "provided_audio",
+      "kind": "audio_import",
+      "processing": "local",
+      "status": "requires_render_validation",
+      "description": "Explicit user-provided narration, music or effect tracks; no speech generation."
+    },
+    {
+      "id": "generated_video",
+      "kind": "generation",
+      "processing": "unconfigured",
+      "status": "needs_configuration"
+    },
+    {
+      "id": "arabic_speech",
+      "kind": "speech_synthesis",
+      "processing": "unconfigured",
+      "status": "needs_configuration"
+    },
+    {
+      "id": "exact_text",
+      "kind": "typography",
+      "processing": "local",
+      "status": "requires_render_validation",
+      "description": "Literal independent text layers rendered by local Chromium/IBM Plex and burned into timed frames. Geometry and source checks; not a guarantee of all-language readability."
+    },
+    {
+      "id": "mp4_export",
+      "kind": "export",
+      "processing": "local",
+      "status": "requires_render_validation",
+      "description": "H264 yuv420p with optional AAC, checked fast-start and complete decode; 24/30fps in supported landscape/portrait presets."
+    },
+    {
+      "id": "subtitle_sidecars",
+      "kind": "subtitles",
+      "processing": "local",
+      "status": "requires_render_validation",
+      "description": "SRT/WebVTT with explicit manual cue times. No automatic translation, speech alignment or certified behavior across external players."
+    },
+    {
+      "id": "generated_multishot",
+      "kind": "generation",
+      "status": "needs_configuration",
+      "processing": "unconfigured"
+    },
+    {
+      "id": "video_extension_or_edit_model",
+      "kind": "generation",
+      "status": "not_supported",
+      "processing": "unconfigured"
+    },
+    {
+      "id": "lip_sync",
+      "kind": "audio_visual",
+      "status": "not_supported",
+      "processing": "unconfigured"
+    },
+    {
+      "id": "frame_interpolation",
+      "kind": "enhancement",
+      "status": "not_supported",
+      "processing": "unconfigured"
+    },
+    {
+      "id": "crossfade_transitions",
+      "kind": "editing",
+      "status": "not_supported",
+      "description": "Only direct cuts are implemented; timing does not include transition overlaps."
+    },
+    {
+      "id": "native_3d_project",
+      "kind": "3d",
+      "status": "not_supported"
+    }
+  ]
+}

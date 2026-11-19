@@ -1,0 +1,13 @@
+{
+  "license": "CC0-1.0 synthetic fixture content; local installed Arial glyph raster, font not distributed",
+  "expected_clear": "10.50",
+  "ambiguous": "decimal point pixels removed; value not uniquely recoverable, do not label1050 verified",
+  "fixtures": {
+    "receipt-clear.png": {
+      "sha256": "4c9de71ec26f39d91e826a5052531c62b3951ceae31a26839ee8fe18f00a45f0"
+    },
+    "receipt-ambiguous.png": {
+      "sha256": "8a685e8950a6819a96e5d4eb2499a35117b9eec8401d39e2c311431de4aede0f"
+    }
+  }
+}

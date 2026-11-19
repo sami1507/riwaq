@@ -1,0 +1,135 @@
+{
+  "version": "coding-sandbox-v1",
+  "mode": "preview_only",
+  "execution_enabled": false,
+  "observed_at": "2026-11-15",
+  "observed_scope": "Windows host completion acceptance: real Docker Engine on WSL2, pinned Python/Node images and synthetic container checks. This evidence file alone grants no execution; server-owned runtime configuration and per-run checks are required.",
+  "reason_code": "sandbox_unavailable",
+  "reason_ar": "لا توجد بيئة عزل تنفيذ مُهيأة ومتحقق منها. يمكن مراجعة الملفات والتعديلات؛ لم تُشغّل اختبارات المشروع.",
+  "reason_en": "No configured and verified code-execution isolation is available. File and patch review remain available; project tests have not run.",
+  "runtime_observations": {
+    "docker": {
+      "executable": "C:/Users/User/AppData/Local/Programs/DockerDesktop/resources/bin/docker.exe",
+      "sha256": "326fc37135eccfb538e5e536c94a6845dc98d33dd5c60967c486cc71837f4cc1",
+      "on_current_path": false,
+      "client_version": "29.9.3",
+      "client_commit": "5457199",
+      "desktop_executable": "C:/Users/User/AppData/Local/Programs/DockerDesktop/Docker Desktop.exe",
+      "desktop_version": "4.99.0.245822",
+      "daemon_verified": true,
+      "server_version": "29.9.3",
+      "server_api_version": "1.56",
+      "server_commit": "70efc0e",
+      "endpoint": "npipe:////./pipe/dockerDesktopLinuxEngine",
+      "daemon_id": "b3bee62d-874b-401b-b96e-402d9d1acc22",
+      "os": "linux",
+      "architecture": "amd64",
+      "kernel": "6.18.58.1-microsoft-standard-WSL2",
+      "security_options": [
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ],
+      "storage_driver": "overlayfs",
+      "docker_root_dir": "/var/lib/docker",
+      "context_names": [
+        "default",
+        "desktop-linux"
+      ],
+      "current_context": "desktop-linux",
+      "initial_image_list": [],
+      "initial_image_list_command_exit_code": 0,
+      "images_after_acquisition": "See reports/completion-image-acquisition.json; this initial inventory precedes the separately authorized pull.",
+      "containers_started_by_this_auditor": false,
+      "startup": "Parent agent reported successful explicitly authorized hidden start; child independently verified the resulting host daemon. Child startup attempt was previously rejected under its stale read-only task context and was not bypassed.",
+      "discovery_caveat": "Sandbox LOCALAPPDATA is redirected. Per-user Docker exists under the actual known User profile despite absence from PATH and machine-wide Program Files locations."
+    },
+    "podman": {
+      "cli_on_path": false,
+      "checked_binaries": [
+        "C:/Program Files/RedHat/Podman/podman.exe",
+        "C:/Program Files/Podman/podman.exe"
+      ],
+      "checked_binaries_exist": false,
+      "machine_verified": false,
+      "local_image_digest": null
+    },
+    "wsl": {
+      "status_verified_outside_restricted_sandbox": true,
+      "default_distribution": "docker-desktop",
+      "default_version": 2,
+      "distributions": [
+        {
+          "name": "docker-desktop",
+          "state": "Running",
+          "version": 2
+        }
+      ],
+      "hypervisor_present": true,
+      "processor_cim": {
+        "VirtualizationFirmwareEnabled": false,
+        "SecondLevelAddressTranslationExtensions": false,
+        "VMMonitorModeExtensions": false
+      },
+      "interpretation": "An actually running WSL2 Linux Docker engine establishes operational virtualization. CPU CIM false fields under an active hypervisor are recorded, not interpreted as a disabled firmware feature. Earlier sandbox E_ACCESSDENIED did not establish missing WSL."
+    },
+    "windows_sandbox": {
+      "checked_binary": "C:/Windows/System32/WindowsSandbox.exe",
+      "checked_binary_exists": false,
+      "runtime_verified": false
+    },
+    "hyper_v": {
+      "get_vm_cmdlet_found": false,
+      "get_vmhost_cmdlet_found": false,
+      "hcsdiag_binary_found": false,
+      "optional_feature_install_state": "unknown",
+      "optional_feature_query": "Win32_OptionalFeature CIM query denied access; installation state is not inferred from that failure."
+    },
+    "service_names_not_returned": [
+      "com.docker.service",
+      "vmcompute",
+      "hns",
+      "LxssManager",
+      "WslService"
+    ],
+    "service_query_scope": "Get-Service returned no requested services in this execution environment; this alone is not proof that Windows optional features are disabled.",
+    "acceptance_reports": [
+      "reports/completion-isolation-live/report.json",
+      "reports/completion-coding-live/report.json",
+      "reports/completion-recovery-live/report.json",
+      "reports/completion-parser-live.json"
+    ]
+  },
+  "limits": {
+    "max_targets": 20,
+    "max_seconds": 120,
+    "max_memory_mb": 2048,
+    "max_output_bytes": 65536
+  },
+  "declared_runners": [
+    "python_unittest",
+    "node_test"
+  ],
+  "not_isolation": [
+    "Windows Job Object",
+    "Python socket monkeypatch",
+    "temporary folder",
+    "Git worktree",
+    "process timeout",
+    "Python isolated mode",
+    "Node test runner"
+  ],
+  "future_enablement_requires": [
+    "Server-owned isolated-workers.json with reviewed executable hash, local endpoint, daemon identity and immutable local images",
+    "Fresh daemon/image/policy validation and active authorization on each operation",
+    "Bounded selected input bytes only; no host mounts, secrets or network",
+    "Verified cleanup or fail-closed recovery; never automatically replay an interrupted execution"
+  ],
+  "official_sources": [
+    "https://docs.docker.com/engine/containers/run/",
+    "https://docs.docker.com/engine/security/",
+    "https://docs.docker.com/engine/security/seccomp/",
+    "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/",
+    "https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file",
+    "https://learn.microsoft.com/en-us/windows/wsl/faq"
+  ]
+}

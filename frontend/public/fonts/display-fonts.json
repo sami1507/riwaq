@@ -1,0 +1,19 @@
+{
+  "upstream": "https://github.com/aliftype/reem-kufi",
+  "package": "@fontsource/reem-kufi@5.3.0",
+  "license": "OFL-1.1",
+  "license_file": "ReemKufi-OFL.txt",
+  "use": "Arabic display headings only",
+  "files": [
+    {
+      "file": "ReemKufi-Arabic-Medium.woff2",
+      "bytes": 9232,
+      "sha256": "474d6088df966006402c3a9aceaf9775c3525ac84974b82131b345b92a8a351c"
+    },
+    {
+      "file": "ReemKufi-Arabic-Bold.woff2",
+      "bytes": 9092,
+      "sha256": "83476ed9efbae512f34a50166f9b992584674e14045bea4d1da698e4ae64a661"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+From: Synthetic Sender <sender@example.test>
+To: owner@example.test
+Subject: Automatic reply
+Message-ID: <batch04-auto@example.test>
+In-Reply-To: <batch04-update@example.test>
+References: <batch04-request@example.test> <batch04-update@example.test>
+Date: Tue, 10 Nov 2026 11:00:00 +0200
+Auto-Submitted: auto-replied
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+I am away. This automated reply does not answer the report request.

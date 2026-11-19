@@ -1,0 +1,14 @@
+{
+  "version": "explanation-public-development-v1",
+  "disclosure": "Original user acceptance events are retained outside runtime. These are public development cases, not an independent holdout. Backend checks cannot establish UI interaction, copying, visual layout or comprehension.",
+  "cases": [
+    {"id":"EXPL-001","event_ar":"اطلب شرح المفهوم نفسه لمبتدئ ثم لطالب جامعي.","acceptance_ar":"تتغير المصطلحات والعمق مع بقاء الحقائق والشروط نفسها؛ لا يوصف الشرح المبسط بأنه حقيقة مختلفة.","input":{"topic":"symptom_diagnosis"},"expected":{"same_summary":true,"increasing_depth":true}},
+    {"id":"EXPL-002","event_ar":"حل 2x+3=11 مع شرح سبب كل خطوة.","acceptance_ar":"يطرح 3 من الطرفين ثم يقسم على 2، فيجد x=4 ويتحقق بأن 2×4+3=11.","input":"حل 2x+3=11 مع شرح سبب كل خطوة","expected":{"solution":"4","original_substitution":"11"}},
+    {"id":"EXPL-003","event_ar":"يرد المستخدم بعد الشرح: لم أفهم الفرق بين العمليتين.","acceptance_ar":"يغيّر المثال أو يقسم الخطوة الملتبسة؛ لا يكرر الفقرة نفسها ولا يلوم المستخدم.","input":"لم أفهم الفرق بين العمليتين","expected":{"alternative_representation":true,"general_followup_not_implemented":true}},
+    {"id":"EXPL-004","event_ar":"قدّم درسًا ثم فرصة اختيارية ليشرح المستخدم الفكرة بكلماته.","acceptance_ar":"يحصل المستخدم على الجواب الكامل دون انتظار امتحان؛ تُستخدم إجابته لتحسين الشرح ولا تُحفظ كصفة نفسية عنه.","input":{"topic":"symptom_diagnosis","optional_understanding_check":true},"expected":{"complete_answer_before_optional_check":true}},
+    {"id":"EXPL-005","event_ar":"مثال افتراضي لنفس السكان والسنة: انخفض الخطر من 2 في 1000 إلى 1 في 1000.","acceptance_ar":"انخفاض مطلق 1 في 1000=0.1 نقطة مئوية؛ انخفاض نسبي 50%. لا يقول إن الخطر زال أو إن هذه نسبة شخصية.","input":"مثال افتراضي لنفس السكان والسنة: انخفض الخطر من 2 في 1000 إلى 1 في 1000","expected":{"absolute_reduction":"1/1000","percentage_points":"1/10","relative_percent":"50","period":"year"}},
+    {"id":"EXPL-006","event_ar":"ارسم 1/x واشرح سلوكها قرب الصفر.","acceptance_ar":"يرسم من بيانات محسوبة ويبين انقطاع المجال، ولا يصل الفرعين عبر الصفر أو يوحي بأن الدالة معرفة فيه.","input":"ارسم 1/x واشرح سلوكها قرب الصفر","expected":{"excluded":"{0}","branches":2}},
+    {"id":"EXPL-007","event_ar":"يظهر النص العربي مع التعبير 1/2x دون أقواس، ويختلف المعنى بحسب القراءة.","acceptance_ar":"يعرض القراءتين المؤثرتين ويسأل عند غياب قرينة؛ يبقى ترتيب الرموز سليمًا عند العرض والنسخ.","input":"1/2x","expected":{"problem_status":"ambiguous","readings":["(1/2)*x","1/(2*x)"]}},
+    {"id":"EXPL-008","event_ar":"اطلب اختصار حل كان مشروطًا بمجال معين، ثم اطلب تفصيله.","acceptance_ar":"تحافظ النسختان على النتيجة والشرط والوحدة، ولا تحذف النسخة القصيرة قيدًا يجعل الإجابة خاطئة.","input":{"operation":"solve","expression":"2*x+3=11","domain":"real","constraints":["x<5"]},"expected":{"solutions":["4"],"conditions":["x < 5"]}}
+  ]
+}

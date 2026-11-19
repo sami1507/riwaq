@@ -1,0 +1,8 @@
+{
+  "version": "reasoning-limits-v1",
+  "quick": {"model_calls": 2, "tool_calls": 2, "wall_seconds": 45, "reserved_tokens": 16384},
+  "analytical": {"model_calls": 4, "tool_calls": 6, "wall_seconds": 90, "reserved_tokens": 32768},
+  "research": {"model_calls": 6, "tool_calls": 10, "wall_seconds": 180, "reserved_tokens": 49152},
+  "checker_wall_seconds": 5,
+  "paid_reasoning_enabled": false
+}

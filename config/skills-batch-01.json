@@ -1,0 +1,4377 @@
+{
+  "version": "5.0.0",
+  "policy_version": "riwaq-skills-1",
+  "max_active_skills": 8,
+  "instruction_budget_chars": 14000,
+  "skills": [
+    {
+      "number": 1,
+      "slug": "intent-routing",
+      "display_name": "فهم نية المستخدم",
+      "description": "Interpret the current request, outputs and constraints before selecting tools.",
+      "version": "1.1.0",
+      "execution_kind": "core",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "planning-engine"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "533dcf7bdc03e1ea3c915c7fbdd7decd2b058fa9e0c5aa11817ba9906ac5ce52",
+      "description_ar": "يميز المطلوب والقيود والمخرجات قبل العمل."
+    },
+    {
+      "number": 2,
+      "slug": "task-decomposition",
+      "display_name": "تفكيك المهام",
+      "description": "Plan dependent steps for a compound task and preserve completed outputs.",
+      "version": "1.1.0",
+      "execution_kind": "core",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "planning-engine"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "4ad7106a6f64fdc490016397905aebc9c233d804f1dee4d0971b9a1681b3c46a",
+      "description_ar": "يرتب الخطوات بحسب اعتمادها على نتائج سابقة."
+    },
+    {
+      "number": 3,
+      "slug": "acceptance-criteria",
+      "display_name": "معايير القبول",
+      "description": "Define observable success and required evidence before executing a task.",
+      "version": "1.1.0",
+      "execution_kind": "core",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "planning-engine"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "1023634cb9731b7e175d9a80752950ebd6dc7ff17164d4de6758da04ad6993fc",
+      "description_ar": "يحدد الدليل اللازم قبل إعلان النجاح."
+    },
+    {
+      "number": 4,
+      "slug": "tool-routing",
+      "display_name": "اختيار الأداة",
+      "description": "Select a real available tool with validated arguments and minimum scope.",
+      "version": "1.1.0",
+      "execution_kind": "core",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "planning-engine"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "5a24fe19d821de217704fd242a0897ef137ce0d9c40ba3b6917e7f2db447021f",
+      "description_ar": "يختار محول تنفيذ موجودًا ويبين المدخلات الناقصة."
+    },
+    {
+      "number": 5,
+      "slug": "tool-result-verification",
+      "display_name": "التحقق من النتيجة",
+      "description": "Check trusted executor receipts and artifacts before claiming success.",
+      "version": "1.1.0",
+      "execution_kind": "core",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "planning-engine"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "62c67b844ed418525a8143d11a0b25230ddfb984438054ae1ab3c9b87d764294",
+      "description_ar": "يفحص إيصال مهمة محفوظة ووجود ناتجها."
+    },
+    {
+      "number": 6,
+      "slug": "web-research",
+      "display_name": "البحث في الويب",
+      "description": "Read evidence from the approved catalogue or saved index.",
+      "version": "1.1.0",
+      "execution_kind": "research",
+      "status": "partial",
+      "reason": "مقاطع ومراجع من مصادر مسجلة؛ لا بحث ويب عام أو حكم دلالي شامل. القراءة الحية تحتاج إذن اتصال والوضع الهجين.",
+      "tools": [
+        "approved-catalogue-research"
+      ],
+      "dependencies": [
+        "registered-eligible-sources"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "explicit-approved-public-reads",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "ef042a7a11cb16d843d5927d05bdb6fd28ed75cf56b131f5b600444d8f6be259",
+      "description_ar": "يقرأ مقاطع موثقة من فهرس المصادر المعتمدة ويصلها بالمستند."
+    },
+    {
+      "number": 7,
+      "slug": "fact-checking",
+      "display_name": "التحقق من الادعاءات",
+      "description": "Assess whether a specific claim is supported by available evidence.",
+      "version": "1.0.0",
+      "execution_kind": "evidence",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "project-extracted-content"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "3ae3e1524c6a93c20a41e3b667351fb4d303ae0f9696db073e42b6135bf5c26c",
+      "description_ar": "يعرض الأدلة وحدود الحكم على الادعاء."
+    },
+    {
+      "number": 8,
+      "slug": "citation-grounding",
+      "display_name": "إسناد المراجع",
+      "description": "Attach server-owned source locations to statements supported by those locations.",
+      "version": "1.1.0",
+      "execution_kind": "evidence",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "project-extracted-content"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "a3fee7ba46b8481f5811030b74f56861b274b1bcbcd8dcb0b721a3a8f70f838a",
+      "description_ar": "يربط مقتطفات الملفات بمواضع يمكن فتحها."
+    },
+    {
+      "number": 9,
+      "slug": "hybrid-retrieval",
+      "display_name": "البحث في المعرفة",
+      "description": "Retrieve scoped evidence from the existing indexes.",
+      "version": "1.1.0",
+      "execution_kind": "evidence",
+      "status": "partial",
+      "reason": "استرجاع نصي ودلالي محلي محدود مع بديل نصي معلن؛ المقاطع مرشحة وليست إجابة مثبتة، وحد64مقطعًا و64000محرف.",
+      "tools": [
+        "project-extracted-content",
+        "private-hybrid-retrieval"
+      ],
+      "dependencies": [
+        "extracted-authorized-files",
+        "optional-installed-local-embedding"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "1f7d131c99dc86d5454187f1a886a26fbdb043b7cbe52df6b9b42569a9201a70",
+      "description_ar": "يسترجع المعرفة ضمن صلاحية المشروع واختيارات الملفات."
+    },
+    {
+      "number": 10,
+      "slug": "persistent-memory",
+      "display_name": "الذاكرة الشخصية",
+      "description": "Review personal-memory availability and preserve its security acceptance gate.",
+      "version": "1.0.0",
+      "execution_kind": "blocked",
+      "status": "blocked",
+      "reason": "بوابة قبول الذاكرة الشخصية لم تجتز المراجعة الأمنية المستقلة.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "44ea7ab6c431c3d068a242b321e165dd6c80a64b11abd76230c58cdc75066f2b",
+      "description_ar": "يحافظ على بوابة أمان الذاكرة الشخصية."
+    },
+    {
+      "number": 11,
+      "slug": "project-memory",
+      "display_name": "ذاكرة المشروع",
+      "description": "Review explicit project records and decisions in the existing project panels.",
+      "version": "1.0.0",
+      "execution_kind": "memory",
+      "status": "partial",
+      "reason": "متاح عبر مساحة العمل القائمة؛ التشغيل الآلي لهذه المهارة من مهمة مركبة غير موصول بعد.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "f993d1244d85577982ee3be6b580a26826b1a904909fc090822355f054cce777",
+      "description_ar": "يفتح سجلات المشروع وقراراته المنفصلة."
+    },
+    {
+      "number": 12,
+      "slug": "memory-correction",
+      "display_name": "تصحيح الذاكرة",
+      "description": "Correct an existing project record with expected-version conflict detection.",
+      "version": "1.0.0",
+      "execution_kind": "memory",
+      "status": "partial",
+      "reason": "متاح عبر مساحة العمل القائمة؛ التشغيل الآلي لهذه المهارة من مهمة مركبة غير موصول بعد.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "1d8a5f373f37c5fc48c8ec68a332b86c6e62267986858548e6cc9c35b593fccc",
+      "description_ar": "يصحح سجل المشروع مع منع تعارض التحديثات."
+    },
+    {
+      "number": 13,
+      "slug": "pdf-reading",
+      "display_name": "قراءة PDF",
+      "description": "Read authorized extracted PDF pages and identify incomplete extraction.",
+      "version": "1.0.0",
+      "execution_kind": "documents",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "project-extracted-content"
+      ],
+      "dependencies": [
+        "document_page Docker image"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "83bd9bdd519a43ca0b8f5a8d2842cba4756c99b072253226d0c67a4697d76e78",
+      "description_ar": "يقرأ نص الصفحات المعالجة ومراجعها."
+    },
+    {
+      "number": 14,
+      "slug": "ocr-extraction",
+      "display_name": "قراءة النص من الصور",
+      "description": "Read locally extracted image text with quality notes and locations.",
+      "version": "1.0.0",
+      "execution_kind": "documents",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "project-extracted-content"
+      ],
+      "dependencies": [
+        "document_page Docker image"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "615cb4423e0f7dcfe7e9fcc16eb38d9c213faf6b54421b7262cccf12b3687950",
+      "description_ar": "يعرض النص المستخرج وملاحظات جودته في مساحة المستندات."
+    },
+    {
+      "number": 15,
+      "slug": "spreadsheet-creation",
+      "display_name": "إنشاء Excel",
+      "description": "Create editable typed spreadsheets with native formulas from supplied table data.",
+      "version": "1.1.0",
+      "execution_kind": "artifact",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "local-office-writer"
+      ],
+      "dependencies": [
+        "native-ooxml-writer"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "50a162e48732f04b05f739963ba3bde3c86758c7267118398a4f28251aad1e78",
+      "description_ar": "ينشئ مصنفًا قابلًا للتحرير بخلايا وصيغ مجموع."
+    },
+    {
+      "number": 16,
+      "slug": "docx-authoring",
+      "display_name": "إنشاء مستند Word",
+      "description": "Create editable Word paragraphs, headings and tables from supplied content.",
+      "version": "1.1.0",
+      "execution_kind": "artifact",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "local-office-writer"
+      ],
+      "dependencies": [
+        "native-ooxml-writer"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "c881a6fef8540915b2723717aca1cd9b80ba117ce69145308fc80636525fdd4d",
+      "description_ar": "ينشئ مستندًا قابلًا للتحرير بعناوين وفقرات وجداول."
+    },
+    {
+      "number": 17,
+      "slug": "slide-authoring",
+      "display_name": "إنشاء عرض تقديمي",
+      "description": "Create editable slides from structured content and source notes.",
+      "version": "1.1.0",
+      "execution_kind": "artifact",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "local-office-writer"
+      ],
+      "dependencies": [
+        "native-ooxml-writer"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "aed9f0cb22491ca7ef393f137eec36d8ba9dc05553c77f7b47987709606a0642",
+      "description_ar": "ينشئ شرائح بنصوص وجداول قابلة للتحرير."
+    },
+    {
+      "number": 18,
+      "slug": "code-generation",
+      "display_name": "كتابة الشيفرة",
+      "description": "Prepare scoped code changes using the existing coding workbench.",
+      "version": "1.0.0",
+      "execution_kind": "coding",
+      "status": "partial",
+      "reason": "متاح عبر مساحة العمل القائمة؛ التشغيل الآلي لهذه المهارة من مهمة مركبة غير موصول بعد.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "95e707d570ad742139e33b0141df8b29cda318801ef4137b58e8f0342ecc6fc6",
+      "description_ar": "يفتح مساحة البرمجة لتعديل محدود قابل للمراجعة."
+    },
+    {
+      "number": 19,
+      "slug": "root-cause-debugging",
+      "display_name": "تشخيص العطل",
+      "description": "Reproduce a reported failure and separate confirmed cause from hypothesis.",
+      "version": "1.0.0",
+      "execution_kind": "coding",
+      "status": "partial",
+      "reason": "متاح عبر مساحة العمل القائمة؛ التشغيل الآلي لهذه المهارة من مهمة مركبة غير موصول بعد.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "00151311e9b5229a4b695e3ec63b67b62cb24b71e1a14ad3e0cc1e812962efeb",
+      "description_ar": "يربط تشخيص العطل بأدلة وفحوص فعلية."
+    },
+    {
+      "number": 20,
+      "slug": "code-review",
+      "display_name": "مراجعة الشيفرة",
+      "description": "Review scoped code and report actionable findings at real source locations.",
+      "version": "1.0.0",
+      "execution_kind": "coding",
+      "status": "partial",
+      "reason": "متاح عبر مساحة العمل القائمة؛ التشغيل الآلي لهذه المهارة من مهمة مركبة غير موصول بعد.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "821157bcb9a46c79b899932909ce3a9abe75174ee3a4658a4d50eb391a88beef",
+      "description_ar": "يفتح مراجعة الشيفرة دون منح إذن بالتعديل."
+    },
+    {
+      "number": 21,
+      "slug": "end-to-end-testing",
+      "display_name": "اختبار المسار الكامل",
+      "description": "Run existing acceptance journeys against isolated synthetic projects.",
+      "version": "1.0.0",
+      "execution_kind": "testing",
+      "status": "partial",
+      "reason": "متاح عبر مساحة العمل القائمة؛ التشغيل الآلي لهذه المهارة من مهمة مركبة غير موصول بعد.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "b9cd7d73d5ab50f5de8eaecc69627facb3fbbc9d24e08b30aa804f427e6378ae",
+      "description_ar": "يربط التحقق بمسار المستخدم وبيئته الفعلية."
+    },
+    {
+      "number": 22,
+      "slug": "translation",
+      "display_name": "الترجمة السياقية",
+      "description": "Translate every supplied text segment locally while checking protected tokens.",
+      "version": "1.0.0",
+      "execution_kind": "translation",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "local-translation"
+      ],
+      "dependencies": [
+        "installed-local-ollama"
+      ],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "eb10b0ad568e3a1b5ca17e4d62eec2a6ce8b3fff3b679c910f572bcec8da9904",
+      "description_ar": "يترجم النص محليًا مع فحص الفقرات والأرقام والروابط."
+    },
+    {
+      "number": 23,
+      "slug": "speech-transcription",
+      "display_name": "تفريغ الكلام",
+      "description": "Transcribe audio using the existing permissioned local voice workbench.",
+      "version": "1.0.0",
+      "execution_kind": "voice",
+      "status": "partial",
+      "reason": "متاح عبر مساحة العمل القائمة؛ التشغيل الآلي لهذه المهارة من مهمة مركبة غير موصول بعد.",
+      "tools": [],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "8e3102b6b843b58bab4760926ec454f5c923bbf2543896dbb12eb6f5d4ef2b6b",
+      "description_ar": "يفتح جلسة الصوت المحلية وتفريغ التسجيل."
+    },
+    {
+      "number": 24,
+      "slug": "permission-enforcement",
+      "display_name": "فرض الصلاحيات",
+      "description": "Enforce server identity, project scope, resource revisions and execution boundaries.",
+      "version": "1.1.0",
+      "execution_kind": "core",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "planning-engine"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "2650175d38d685db8e19e122b34988f8b44db01306c849fbdc45f8cb2abe0bd6",
+      "description_ar": "يفرض حدود المشروع والمصادر عند التنفيذ والتسليم."
+    },
+    {
+      "number": 25,
+      "slug": "skill-routing",
+      "display_name": "توجيه المهارات",
+      "description": "Choose a minimal trusted set of skills and load instructions only when selected.",
+      "version": "1.1.0",
+      "execution_kind": "core",
+      "status": "partial",
+      "reason": "الدعم محدود بالنطاق المختبر؛ راجع إيصال كل تنفيذ.",
+      "tools": [
+        "planning-engine"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": 0
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "6aff6224d437f7d72658ba8a62a985922f7afd59608e5e7544ef793591f80450",
+      "description_ar": "يختار المهارات اللازمة ويحمل تعليماتها عند الحاجة."
+    },
+    {
+      "number": 26,
+      "original_index": 27,
+      "slug": "tool-input-validation",
+      "display_name": "التحقق من مدخلات الأدوات",
+      "description": "Validate runtime tool contracts before dispatch",
+      "description_ar": "التحقق من مدخلات الأدوات ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-contracts"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "deac37d15ec6007ab007a26ad062b352bd3d02e666dfa7b54308c51b2d6b09b8"
+    },
+    {
+      "number": 27,
+      "original_index": 477,
+      "slug": "prompt-injection-defense",
+      "display_name": "مقاومة حقن التعليمات",
+      "description": "Keep source content separate from execution authority",
+      "description_ar": "مقاومة حقن التعليمات ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "guard"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "1d32933534a4eb4f06233f5456b5ebedd369bed18a5e69b74baea89cf8b26c53"
+    },
+    {
+      "number": 28,
+      "original_index": 478,
+      "slug": "secret-management",
+      "display_name": "إدارة الأسرار",
+      "description": "Inspect credential availability without exposing values",
+      "description_ar": "إدارة الأسرار ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "os-credential-store"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "2f9662120d004eb30cef0bc73499810213af033f4f6a6bbf743cfe7f34b58e11"
+    },
+    {
+      "number": 29,
+      "original_index": 30,
+      "slug": "sandbox-execution",
+      "display_name": "التنفيذ داخل بيئة معزولة",
+      "description": "Run reviewed bounded checks in the existing isolated coding workspace",
+      "description_ar": "التنفيذ داخل بيئة معزولة ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "coding-checks"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "03820e9bef7ac644d69caa2c45139a619fbb9ff11b50ed8f835950eff3250429"
+    },
+    {
+      "number": 30,
+      "original_index": 20,
+      "slug": "completion-review",
+      "display_name": "مراجعة اكتمال المهمة",
+      "description": "Check all requested outputs against actual receipts before final delivery",
+      "description_ar": "مراجعة اكتمال المهمة ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-lifecycle"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "35c7bdb3bf8d0f1dec5684810141b7f0f06d8821e004dac75203a2d3d65b56f5"
+    },
+    {
+      "number": 31,
+      "original_index": 21,
+      "slug": "uncertainty-communication",
+      "display_name": "توضيح عدم اليقين",
+      "description": "Explain an evidence or execution limitation next to the affected result",
+      "description_ar": "توضيح عدم اليقين ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-lifecycle"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "28bd49fe555330c99fb052141241837d6a734b570428aa0d58d146e87afe039a"
+    },
+    {
+      "number": 32,
+      "original_index": 78,
+      "slug": "primary-source-search",
+      "display_name": "العثور على المصدر الأصلي",
+      "description": "Identify original-source evidence from the registered research results",
+      "description_ar": "العثور على المصدر الأصلي ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "registered-source-evidence"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "273ca5c4246e3f9ad4759a5ea9051e82e29593ad65e41c896c0a02d87c1064be"
+    },
+    {
+      "number": 33,
+      "original_index": 82,
+      "slug": "freshness-check",
+      "display_name": "فحص حداثة المعلومات",
+      "description": "Compare known source dates with the time scope of the question",
+      "description_ar": "فحص حداثة المعلومات ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "registered-source-evidence"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "2c0e6eebd0e7ef514a6e9515983044b96f26cac2d23b77509a5e55af59fd554e"
+    },
+    {
+      "number": 34,
+      "original_index": 126,
+      "slug": "file-search",
+      "display_name": "البحث في ملفات المستخدم",
+      "description": "Find authorized files by name or indexed content in the current project",
+      "description_ar": "البحث في ملفات المستخدم ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "project-extracted-content"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "416d30e7fbcd136ac72886c93d32077af21104569a0b9f53bf261e471007795e"
+    },
+    {
+      "number": 35,
+      "original_index": 127,
+      "slug": "file-content-reading",
+      "display_name": "قراءة محتوى الملفات",
+      "description": "Read existing extracted file content with its source positions and coverage",
+      "description_ar": "قراءة محتوى الملفات ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "project-extracted-content"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "54d915b6b8a49831527b489cd0655f3f3f63160064f3d13a317d7f11a2a80d9a"
+    },
+    {
+      "number": 36,
+      "original_index": 101,
+      "slug": "document-ingestion",
+      "display_name": "إدخال الوثائق للمعرفة",
+      "description": "Inspect or start the existing document ingestion lifecycle",
+      "description_ar": "إدخال الوثائق للمعرفة ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "document-ingestion"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "3bf07f299ffac36b42fc9932b51b2a8c4fa9d239f7096faad012329491fb8752"
+    },
+    {
+      "number": 37,
+      "original_index": 112,
+      "slug": "retrieval-permission-filter",
+      "display_name": "تصفية المعرفة حسب الصلاحيات",
+      "description": "Filter knowledge before it enters model context and recheck at delivery",
+      "description_ar": "تصفية المعرفة حسب الصلاحيات ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "guard"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "54f15efbecad93bb330f01120699180848df50c3405c067e64ecec5ecae2f079"
+    },
+    {
+      "number": 38,
+      "original_index": 53,
+      "slug": "memory-retrieval",
+      "display_name": "استرجاع الذكريات المناسبة",
+      "description": "Retrieve relevant current project memory with a small context budget",
+      "description_ar": "استرجاع الذكريات المناسبة ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "project-memory"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "c4a480fc517389f6a6ec8fe02b8c77692fc7c537e7b7b7a100c8e86f2fc12b8f"
+    },
+    {
+      "number": 39,
+      "original_index": 56,
+      "slug": "memory-deletion",
+      "display_name": "نسيان المعلومات",
+      "description": "Delete explicitly selected memory records with expected versions",
+      "description_ar": "نسيان المعلومات ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "project-memory"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "b725267f9347bf7f9585a6924b7c056d202726bf556e37f51c15a3153b181d00"
+    },
+    {
+      "number": 40,
+      "original_index": 60,
+      "slug": "tenant-memory-isolation",
+      "display_name": "عزل ذاكرة المستخدمين",
+      "description": "Enforce owner and project scope on memory operations",
+      "description_ar": "عزل ذاكرة المستخدمين ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "guard"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "c065f9555a00da24d375b1cb73c5d6d6090afd473b47c71b0567231fffd90b27"
+    },
+    {
+      "number": 41,
+      "original_index": 276,
+      "slug": "repository-understanding",
+      "display_name": "فهم المستودع البرمجي",
+      "description": "Read a granted repository and build a bounded evidence map",
+      "description_ar": "فهم المستودع البرمجي ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "coding-context"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "39c70fcac5b0a9bede3f87c6e167b9feabcf738f3c2bee661f13e4d9a3ef7429"
+    },
+    {
+      "number": 42,
+      "original_index": 427,
+      "slug": "unit-testing",
+      "display_name": "اختبارات الوحدات",
+      "description": "Run meaningful scoped unit checks through the existing isolated runner",
+      "description_ar": "اختبارات الوحدات ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "coding-checks"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "c5055a20243e7b49bd0b2f5ab682c8749864692aa7c9dbc99890f613f7f55e5b"
+    },
+    {
+      "number": 43,
+      "original_index": 152,
+      "slug": "text-summarization",
+      "display_name": "تلخيص النصوص",
+      "description": "Summarize authorized text with exact source references and explicit coverage",
+      "description_ar": "تلخيص النصوص ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "local-summary"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "673ab0eb73c890f7758780c75d80fed00ae111ad1d5aac2f8c6d77f8577510da"
+    },
+    {
+      "number": 44,
+      "original_index": 184,
+      "slug": "text-to-speech",
+      "display_name": "تحويل النص إلى كلام",
+      "description": "Generate and persist audio using a discovered compatible local voice",
+      "description_ar": "تحويل النص إلى كلام ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "local-speech"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "2e287da194eaaf2a7f85216ad3b5eba094293bbfb22cf452dedd4ed69bfa6ed7"
+    },
+    {
+      "number": 45,
+      "original_index": 604,
+      "slug": "browser-result-verification",
+      "display_name": "التحقق من نتيجة الإجراء",
+      "description": "Verify a browser action through current operation readback",
+      "description_ar": "التحقق من نتيجة الإجراء ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-readback"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "e2ad96641b8267457b8863567d32c3865d7b73667ca95af6923a9ee343443b68"
+    },
+    {
+      "number": 46,
+      "original_index": 46,
+      "slug": "artifact-delivery",
+      "display_name": "تسليم الملفات الناتجة",
+      "description": "Verify and deliver persisted artifacts to their authorized owner",
+      "description_ar": "تسليم الملفات الناتجة ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-artifacts"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "9224ef71fdeb3a59ecec958f1dc72f05db6da5188ad514964884bbbd5b5658e4"
+    },
+    {
+      "number": 47,
+      "original_index": 33,
+      "slug": "task-cancellation",
+      "display_name": "إلغاء المهام",
+      "description": "Request cancellation and observe actual worker acknowledgment",
+      "description_ar": "إلغاء المهام ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-lifecycle"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "49824b32a1d271f77885d701215523dda2bba9c885cfebfcbdc321270c19536f"
+    },
+    {
+      "number": 48,
+      "original_index": 34,
+      "slug": "task-checkpoints",
+      "display_name": "حفظ نقاط الاستئناف",
+      "description": "Save safe step boundaries and resume without duplicate effects",
+      "description_ar": "حفظ نقاط الاستئناف ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-lifecycle"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "794bb2ffee1d3076000feb6fe2b6df72e14577f3f80caf94774ff3441ae4495c"
+    },
+    {
+      "number": 49,
+      "original_index": 37,
+      "slug": "cost-budgeting",
+      "display_name": "إدارة تكلفة التشغيل",
+      "description": "Reserve and settle shared operation limits before dispatch",
+      "description_ar": "إدارة تكلفة التشغيل ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-lifecycle"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "2c4d2e9ccdac4b29c6bb1115e1be7f1d46bddb2b0ce5245409a6326e2955cbdf"
+    },
+    {
+      "number": 50,
+      "original_index": 979,
+      "slug": "progressive-skill-loading",
+      "display_name": "تحميل السكيل عند الحاجة",
+      "description": "Load only selected reviewed skill packages and needed references",
+      "description_ar": "تحميل السكيل عند الحاجة ضمن الأدوات والصلاحيات المتاحة.",
+      "version": "1.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "يُعتمد المسار المحدد في إيصال التنفيذ فقط؛ راجع حدود الدفعة الثانية.",
+      "tools": [
+        "skill-loader"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "2a2646f10f8261063ef64af044d9a04a47f321fda1034f303bea0e85af6760ff"
+    },
+    {
+      "number": 51,
+      "original_index": 120,
+      "slug": "cross-document-synthesis",
+      "display_name": "دمج المعرفة بين الوثائق",
+      "description": "Combine authorized document evidence without merging distinct entities.",
+      "description_ar": "دمج المعرفة بين الوثائق ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "project-extracted-content"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "b66630b4f320d2b0e1cdf33d1e1cf5b8c0bd1c034d8905e3418ae16e1bc561e4"
+    },
+    {
+      "number": 52,
+      "original_index": 129,
+      "slug": "pdf-creation",
+      "display_name": "إنشاء PDF",
+      "description": "Create a searchable PDF from confirmed text and structured tables.",
+      "description_ar": "إنشاء PDF ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "b7da88ace6e05c2a782ee80c46f7f9878c6f7b66bd0d22116fa762084fe9fff4"
+    },
+    {
+      "number": 53,
+      "original_index": 130,
+      "slug": "pdf-form-filling",
+      "display_name": "تعبئة نماذج PDF",
+      "description": "Fill actual PDF form controls with confirmed values.",
+      "description_ar": "تعبئة نماذج PDF ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "7d2ab6e19ef1251550bc399f8c171cecf92919c8c91bdba12a002847254c2f5d"
+    },
+    {
+      "number": 54,
+      "original_index": 131,
+      "slug": "pdf-merge-split",
+      "display_name": "دمج وتقسيم PDF",
+      "description": "Merge or extract explicit physical PDF pages in the requested order.",
+      "description_ar": "دمج وتقسيم PDF ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "da176e9ae5bf5a4697046d2b8f4b7f9fba93a66f22dc0857605ae755fbf83c4d"
+    },
+    {
+      "number": 55,
+      "original_index": 132,
+      "slug": "pdf-redaction",
+      "display_name": "تنقيح بيانات PDF الحساسة",
+      "description": "Remove selected sensitive PDF regions with bounded verification.",
+      "description_ar": "تنقيح بيانات PDF الحساسة ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "01a579bffff85612929af807f4466641f1624980c0e9afa0283faac08f912d2b"
+    },
+    {
+      "number": 56,
+      "original_index": 134,
+      "slug": "docx-editing",
+      "display_name": "تحرير مستندات Word",
+      "description": "Edit targeted DOCX paragraphs, cells or headers while preserving other parts.",
+      "description_ar": "تحرير مستندات Word ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "96265f7259a708d6d513525accc9d920a6518927c294ad6ce20d70096441f1a2"
+    },
+    {
+      "number": 57,
+      "original_index": 136,
+      "slug": "document-comparison",
+      "display_name": "مقارنة نسخ المستندات",
+      "description": "Compare ordered document versions with locations and literal changes.",
+      "description_ar": "مقارنة نسخ المستندات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "4eb657a77ffcbf3c22551619caffe12a02a98c477d0c88737361eb59ce91e496"
+    },
+    {
+      "number": 58,
+      "original_index": 137,
+      "slug": "template-population",
+      "display_name": "تعبئة قوالب المستندات",
+      "description": "Populate supported document templates from confirmed structured fields.",
+      "description_ar": "تعبئة قوالب المستندات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "660a3665dd61c54212077d6e11119c03064d9e6a420fa59ff630ee13a831b7d0"
+    },
+    {
+      "number": 59,
+      "original_index": 140,
+      "slug": "file-conversion",
+      "display_name": "تحويل صيغ الملفات",
+      "description": "Convert only supported file-format pairs with visible loss disclosures.",
+      "description_ar": "تحويل صيغ الملفات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "6f049df2cec700d5643a5ce0054681406985545be5c6cea47b6c76b3c43b4032"
+    },
+    {
+      "number": 60,
+      "original_index": 141,
+      "slug": "document-table-extraction",
+      "display_name": "استخراج جداول المستندات",
+      "description": "Extract supported document table structures with cell evidence.",
+      "description_ar": "استخراج جداول المستندات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-document-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "e7224e8709dd86a4bbaa0e7bc91acaa43a9bceb443d24bc4ffe60029d956511f"
+    },
+    {
+      "number": 61,
+      "original_index": 144,
+      "slug": "folder-organization",
+      "display_name": "تنظيم المجلدات",
+      "description": "Preview and apply scoped logical output-folder changes.",
+      "description_ar": "تنظيم المجلدات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "skill-file-versions"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "71db09d113f9c4254fcd1df2c899e55acbf636ec9658782edc42a5a0934bab40"
+    },
+    {
+      "number": 62,
+      "original_index": 150,
+      "slug": "artifact-versioning",
+      "display_name": "إدارة إصدارات الملفات",
+      "description": "Keep stable output identities, fixed versions and conflict-safe restoration.",
+      "description_ar": "إدارة إصدارات الملفات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "skill-file-versions"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "80f5f26d5051f7c7cd85015c2d999dc49a463e663c70455807af47c31afe279b"
+    },
+    {
+      "number": 63,
+      "original_index": 201,
+      "slug": "spreadsheet-reading",
+      "display_name": "فهم جداول البيانات",
+      "description": "Inspect workbook structure and distinguish formula, cached and computed values.",
+      "description_ar": "فهم جداول البيانات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "8c6a648258c58bdb5f588dd0cb44adab068c1c21e531bba4b3dd6baf2c8b9295"
+    },
+    {
+      "number": 64,
+      "original_index": 204,
+      "slug": "formula-debugging",
+      "display_name": "إصلاح أخطاء الصيغ",
+      "description": "Diagnose and patch explicitly targeted formulas using supported calculation.",
+      "description_ar": "إصلاح أخطاء الصيغ ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "6008eff3b25536d5be0d270f80dfe6d80f8eaf5a3f081ea79ab767ccddcfac83"
+    },
+    {
+      "number": 65,
+      "original_index": 205,
+      "slug": "spreadsheet-cleaning",
+      "display_name": "تنظيف جداول البيانات",
+      "description": "Apply explicit data cleaning rules without implicit deletion or imputation.",
+      "description_ar": "تنظيف جداول البيانات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "1a4cb950040e699d36cab7efc253b8c0cac4e49c3338411ee334d6de034321cf"
+    },
+    {
+      "number": 66,
+      "original_index": 206,
+      "slug": "csv-import-export",
+      "display_name": "استيراد وتصدير CSV",
+      "description": "Import or export bounded CSV with explicit delimiter and type policy.",
+      "description_ar": "استيراد وتصدير CSV ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "28fcaf2e67f4d0a683fd05c06f49d6fa0c31a2c5f580f0711cfccbb822dc056f"
+    },
+    {
+      "number": 67,
+      "original_index": 207,
+      "slug": "table-joins",
+      "display_name": "ربط الجداول بالمفاتيح",
+      "description": "Join tables with explicit keys, join type and expected cardinality.",
+      "description_ar": "ربط الجداول بالمفاتيح ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "72d9d5106c098010cecd9e4c41d9698ddd2fea225bf22f95bb19aa9f108404e8"
+    },
+    {
+      "number": 68,
+      "original_index": 208,
+      "slug": "pivot-analysis",
+      "display_name": "تحليل الجداول المحورية",
+      "description": "Aggregate table dimensions with explicit metrics and missing-value rules.",
+      "description_ar": "تحليل الجداول المحورية ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "f4d88eccc1337d77d4ec91b1c0f95dbc42133af361235807db7c980b1003cc09"
+    },
+    {
+      "number": 69,
+      "original_index": 209,
+      "slug": "spreadsheet-charts",
+      "display_name": "إنشاء رسوم في الجداول",
+      "description": "Create native editable workbook charts bound to actual cell ranges.",
+      "description_ar": "إنشاء رسوم في الجداول ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "5951387408dc1cb06c1f8c20d14f8439665ce92165fdf36508003e6f2221189c"
+    },
+    {
+      "number": 70,
+      "original_index": 226,
+      "slug": "data-profiling",
+      "display_name": "استكشاف جودة البيانات",
+      "description": "Describe data quality without modifying the supplied dataset.",
+      "description_ar": "استكشاف جودة البيانات ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "71bf38c768716a6e423d06e6517645d4fc9055b191f4b4da592dafb1e085df35"
+    },
+    {
+      "number": 71,
+      "original_index": 227,
+      "slug": "exploratory-analysis",
+      "display_name": "التحليل الاستكشافي",
+      "description": "Explore reproducible descriptive patterns after checking data quality.",
+      "description_ar": "التحليل الاستكشافي ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "ea563c98284147b84127b81b7b5b9def9436260be99de2f0b11148429bb488cf"
+    },
+    {
+      "number": 72,
+      "original_index": 230,
+      "slug": "descriptive-statistics",
+      "display_name": "الإحصاء الوصفي",
+      "description": "Compute descriptive metrics with explicit sample and weighting definitions.",
+      "description_ar": "الإحصاء الوصفي ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "isolated-data-transform"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "4f51232f5bc7166e6818c3c3df7f446718d7f47cb5d27e58a579d9b71853e451"
+    },
+    {
+      "number": 73,
+      "original_index": 601,
+      "slug": "browser-navigation",
+      "display_name": "التنقل في المواقع",
+      "description": "Reach a registered permitted static page and report observed navigation.",
+      "description_ar": "التنقل في المواقع ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "registered-static-web"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "explicit-registered-page-read-or-form-target",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "41216edcedf71fc282c94350debcaf64e6861c6c3d0dc3ddbd19f20f270f1780"
+    },
+    {
+      "number": 74,
+      "original_index": 602,
+      "slug": "page-content-extraction",
+      "display_name": "استخراج محتوى الصفحة",
+      "description": "Extract actually fetched permitted HTML with source and coverage.",
+      "description_ar": "استخراج محتوى الصفحة ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "registered-static-web"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "explicit-registered-page-read-or-form-target",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "51299c8153f53f0a4616b6c129b46ae96305a306be35064264a7c10082d75461"
+    },
+    {
+      "number": 75,
+      "original_index": 603,
+      "slug": "web-form-filling",
+      "display_name": "تعبئة نماذج المواقع",
+      "description": "Prepare supported observed form fields and submit only under explicit scope.",
+      "description_ar": "تعبئة نماذج المواقع ضمن الملفات والصلاحيات المحددة.",
+      "version": "3.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "الاعتماد مرتبط بالصيغة والمسار المختبرين؛ راجع حدود الدفعة الثالثة.",
+      "tools": [
+        "registered-static-web"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "explicit-registered-page-read-or-form-target",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "f6ba485aad69e6de05b54c4d7b4f8030589d8fb86299ac154f216263aa7e0e84"
+    },
+    {
+      "number": 76,
+      "original_index": 626,
+      "slug": "daily-planning",
+      "display_name": "تخطيط اليوم",
+      "description": "تخطيط اليوم: Calculate a realistic day proposal with explicit windows, commitments, task durations and unallocated work.",
+      "description_ar": "تخطيط اليوم ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "324521ba3ffc5bbe872ea63b247641a11f89e6adeaf778f03b51cab996d5d7a8"
+    },
+    {
+      "number": 77,
+      "original_index": 627,
+      "slug": "weekly-planning",
+      "display_name": "تخطيط الأسبوع",
+      "description": "تخطيط الأسبوع: Use explicit week start and work windows, dependencies and deadlines.",
+      "description_ar": "تخطيط الأسبوع ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "fc82101e4b063df45b720c68ad3d7d9610b0cc02785c80b66f73358c9f46cf56"
+    },
+    {
+      "number": 78,
+      "original_index": 628,
+      "slug": "shift-schedule-planning",
+      "display_name": "التخطيط حسب الورديات",
+      "description": "التخطيط حسب الورديات: Require confirmed shift dates, overnight indication, per-direction commute and rest.",
+      "description_ar": "التخطيط حسب الورديات ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "55a3701489f48d7a811582fe009ccc54e55e060ff503185d4c80b1466f4224e5"
+    },
+    {
+      "number": 79,
+      "original_index": 629,
+      "slug": "calendar-event-creation",
+      "display_name": "إنشاء أحداث التقويم",
+      "description": "إنشاء أحداث التقويم: Create or update the selected local calendar event only under explicit request.",
+      "description_ar": "إنشاء أحداث التقويم ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-schedule"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "0420f25e61f655493c5ea9718e03ae823282241b18791503d6c22a7060993bb3"
+    },
+    {
+      "number": 80,
+      "original_index": 630,
+      "slug": "calendar-conflict-check",
+      "display_name": "كشف تعارض المواعيد",
+      "description": "كشف تعارض المواعيد: Use half-open intervals and declared buffers, current calendar state and explicit coverage.",
+      "description_ar": "كشف تعارض المواعيد ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "5342612106e8437c8bdb0807d6e89957f4ebd9ea53a588d056f9bf1984cc3490"
+    },
+    {
+      "number": 81,
+      "original_index": 631,
+      "slug": "timezone-scheduling",
+      "display_name": "جدولة عبر المناطق الزمنية",
+      "description": "جدولة عبر المناطق الزمنية: Use installed IANA ZoneInfo data.",
+      "description_ar": "جدولة عبر المناطق الزمنية ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "a3aaf4ded7be894f9d1fd649eea3864f043b2575146281933f75149cb8beaa91"
+    },
+    {
+      "number": 82,
+      "original_index": 632,
+      "slug": "reminder-creation",
+      "display_name": "إنشاء التذكيرات",
+      "description": "إنشاء التذكيرات: Save a bounded reminder and revocable durable in-app delivery grant.",
+      "description_ar": "إنشاء التذكيرات ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-schedule"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "b5da418504b4019cda14c5da0aa1d3b25b42dbe680704b949888d589031ea62e"
+    },
+    {
+      "number": 83,
+      "original_index": 633,
+      "slug": "recurring-task-setup",
+      "display_name": "إعداد مهام متكررة",
+      "description": "إعداد مهام متكررة: Use only the implemented bounded local reminder recurrence with per-occurrence identity.",
+      "description_ar": "إعداد مهام متكررة ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-schedule"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "4deefc19e34fa492eeef0da09552cf4a738c4b72e42bdf5319ad7b8f55edc491"
+    },
+    {
+      "number": 84,
+      "original_index": 634,
+      "slug": "task-inbox-triage",
+      "display_name": "فرز قائمة المهام الواردة",
+      "description": "فرز قائمة المهام الواردة: Classify explicit labeled notes with source lines.",
+      "description_ar": "فرز قائمة المهام الواردة ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-meetings"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "c3ed44b1699557ad119c3191acf8b803980e953e1f17cd4906a77f9574f92d74"
+    },
+    {
+      "number": 85,
+      "original_index": 635,
+      "slug": "time-blocking",
+      "display_name": "حجز فترات التركيز",
+      "description": "حجز فترات التركيز: Calculate available contiguous or explicitly splittable task blocks.",
+      "description_ar": "حجز فترات التركيز ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "94b582dedbd61369eeabeffae73eb3100451b20d6d2c8b7e4cd9641bba45a074"
+    },
+    {
+      "number": 86,
+      "original_index": 640,
+      "slug": "meeting-time-search",
+      "display_name": "إيجاد وقت اجتماع",
+      "description": "إيجاد وقت اجتماع: Intersect confirmed participant windows with busy periods and required duration.",
+      "description_ar": "إيجاد وقت اجتماع ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "2dea563d105b1d2ac5b03fa9397133822f90aa5c28e36709f508efb1927255e5"
+    },
+    {
+      "number": 87,
+      "original_index": 650,
+      "slug": "contingency-scheduling",
+      "display_name": "إعادة الجدولة عند الطوارئ",
+      "description": "إعادة الجدولة عند الطوارئ: Replan only remaining flexible work around new constraints.",
+      "description_ar": "إعادة الجدولة عند الطوارئ ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "f5dd750fbccc36dbd3426abd24f92d39badfde05fc85fbdcc4419761b3b88abf"
+    },
+    {
+      "number": 88,
+      "original_index": 651,
+      "slug": "email-search",
+      "display_name": "البحث في البريد",
+      "description": "البحث في البريد: Search the selected project account and actually imported RFC822 content.",
+      "description_ar": "البحث في البريد ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "efe3d1dd05f51a5a2a3e9dcbe4ee3f55fe4fae0e962ae7f708fac3532f8b7f4e"
+    },
+    {
+      "number": 89,
+      "original_index": 652,
+      "slug": "email-thread-summary",
+      "display_name": "تلخيص سلاسل البريد",
+      "description": "تلخيص سلاسل البريد: Read actual selected thread messages, separate authored text from quotes/signatures, retain dates and message anchors.",
+      "description_ar": "تلخيص سلاسل البريد ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "ddb5e680837425d4276cc26202f8dadde206c9d0389b030505b5629581183729"
+    },
+    {
+      "number": 90,
+      "original_index": 653,
+      "slug": "email-action-extraction",
+      "display_name": "استخراج إجراءات البريد",
+      "description": "استخراج إجراءات البريد: Extract source-bound action candidates and explicit updates/cancellations.",
+      "description_ar": "استخراج إجراءات البريد ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "6d031ab870e512e93ca638cd23940b7886765ce7e453e94b3783f6f07d037a7e"
+    },
+    {
+      "number": 91,
+      "original_index": 654,
+      "slug": "email-drafting",
+      "display_name": "صياغة رسائل البريد",
+      "description": "صياغة رسائل البريد: Save a local editable draft from confirmed subject, body, recipients and file references.",
+      "description_ar": "صياغة رسائل البريد ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "7bcc4236c134f8d94f3d148d52a040559177dbd3fdcedd8b73859e2a5d48e4fb"
+    },
+    {
+      "number": 92,
+      "original_index": 655,
+      "slug": "email-reply-context",
+      "display_name": "كتابة رد بسياق المحادثة",
+      "description": "كتابة رد بسياق المحادثة: Bind a reply draft to actual Message-ID/References and current thread revision.",
+      "description_ar": "كتابة رد بسياق المحادثة ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "e499c130fb4d95c3c231136ab64e804e6cfb477d45fc38182e3a4ef547a3dd47"
+    },
+    {
+      "number": 93,
+      "original_index": 656,
+      "slug": "recipient-resolution",
+      "display_name": "التحقق من المستلمين",
+      "description": "التحقق من المستلمين: Resolve exact addresses or scoped contacts.",
+      "description_ar": "التحقق من المستلمين ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "a0afa0f75f4c7b72982c9369fcb1e69b3dd4b36c5bc7ee86906843090c0fecc5"
+    },
+    {
+      "number": 94,
+      "original_index": 657,
+      "slug": "attachment-verification",
+      "display_name": "التحقق من المرفقات",
+      "description": "التحقق من المرفقات: Check stable file identity/version/hash, bounded format and upload size.",
+      "description_ar": "التحقق من المرفقات ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "b6256c3030a0a7d242ae16ac5552631dfc2ccd996a7ec623e9b233dbe1e3baea"
+    },
+    {
+      "number": 95,
+      "original_index": 658,
+      "slug": "authorized-email-send",
+      "display_name": "إرسال البريد المصرح",
+      "description": "إرسال البريد المصرح: Only the reviewed send endpoint creates a short-lived grant bound to session/account/draft/revision/hash/transport/operation.",
+      "description_ar": "إرسال البريد المصرح ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "becc3b0d310544c0031b6d887d540d6bed376f91fad8b8caa459d0a30fb92f04"
+    },
+    {
+      "number": 96,
+      "original_index": 660,
+      "slug": "email-followup-tracking",
+      "display_name": "متابعة الردود المنتظرة",
+      "description": "متابعة الردود المنتظرة: Track source-specific replies from imported mail and distinguish automated, partial and unrelated responses.",
+      "description_ar": "متابعة الردود المنتظرة ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "671c697c20ec619b959b1d416c8806ce188216d309c2e2fabda36daa37ec4352"
+    },
+    {
+      "number": 97,
+      "original_index": 661,
+      "slug": "bounce-analysis",
+      "display_name": "تحليل رسائل فشل التسليم",
+      "description": "تحليل رسائل فشل التسليم: Parse evidence-supported delivery-status fields and match the original message and affected recipient.",
+      "description_ar": "تحليل رسائل فشل التسليم ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-mail"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "explicit-reviewed-configured-smtp-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "3aa51fb8f9afe3de70df2b57efb51aefaecfd20ac1e09bc153afe9e652dfc83f"
+    },
+    {
+      "number": 98,
+      "original_index": 662,
+      "slug": "meeting-agenda",
+      "display_name": "إعداد جدول الاجتماع",
+      "description": "إعداد جدول الاجتماع: Budget explicit agenda topics within the meeting duration and preserve dependency order.",
+      "description_ar": "إعداد جدول الاجتماع ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-planning"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "396897d665b4e834368524bd3d26e4ec06afc125a4d95d88b70e068ff4d28bf1"
+    },
+    {
+      "number": 99,
+      "original_index": 663,
+      "slug": "meeting-minutes",
+      "display_name": "كتابة محضر الاجتماع",
+      "description": "كتابة محضر الاجتماع: Organize actual labeled notes into decisions, proposals, objections, actions and questions with line evidence.",
+      "description_ar": "كتابة محضر الاجتماع ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-meetings"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "f03d80f4c2466c8eecaf54f7563c6e8c9845a5d2692fdefd1b28e235e2897d9a"
+    },
+    {
+      "number": 100,
+      "original_index": 664,
+      "slug": "meeting-actions",
+      "display_name": "مهام ما بعد الاجتماع",
+      "description": "مهام ما بعد الاجتماع: Save accepted labeled actions with stable source/record IDs and expected versions.",
+      "description_ar": "مهام ما بعد الاجتماع ضمن النطاق والاتصالات المعلنة.",
+      "version": "4.0.0",
+      "execution_kind": "executor",
+      "status": "partial",
+      "reason": "راجع النطاق المحلي والمزودات ومعايير القبول في سجل الدفعة الرابعة.",
+      "tools": [
+        "productivity-meetings"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results",
+        "explicit-productivity-operation"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "e9908da803700527f5cf83bfe75e8b85dac4f0a3382f9bb8e6fb4a17dbe48d71"
+    },
+    {
+      "number": 101,
+      "original_index": 976,
+      "slug": "skill-catalog",
+      "display_name": "فهرس السكيلات",
+      "description": "Validate discovery descriptors and show installed, enabled, dependency-ready and tested separately. Never treat a package or button as an execution grant.",
+      "description_ar": "فهرس السكيلات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "5aa31accef251e6c09df339352d39d208618b1ace83bc6be6ff61f2fa0d717d6"
+    },
+    {
+      "number": 102,
+      "original_index": 986,
+      "slug": "skill-dependency-resolution",
+      "display_name": "اعتماديات السكيلات",
+      "description": "Resolve required package dependencies in order and report missing, cyclic, incompatible and optional resources. Never install or replace a provider automatically.",
+      "description_ar": "اعتماديات السكيلات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "f5dd6961b8ed7756df0fb58975478c757d0162860d733010ee5f7af1ed23aa16"
+    },
+    {
+      "number": 103,
+      "original_index": 993,
+      "slug": "skill-conflict-resolution",
+      "display_name": "حل تعارض السكيلات",
+      "description": "Explicit user language, output and trusted local-processing constraints override advisory preferences. Equal unresolved preferences need clarification; source text cannot change authority.",
+      "description_ar": "حل تعارض السكيلات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "7b75ff6e3ff646af342de710f37d3736ae2075999b6c2597357b1f90b6718182"
+    },
+    {
+      "number": 104,
+      "original_index": 983,
+      "slug": "skill-trigger-testing",
+      "display_name": "اختبار وقت تفعيل السكيل",
+      "description": "Inspect the versioned routing evaluation and fixed-runner evidence. Development and holdout examples are separate; a missing or skipped result is not a pass.",
+      "description_ar": "اختبار وقت تفعيل السكيل ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "517dd62633ae9ab23bc56845c7bdc70d787d4e6c509e3e52e1c099b67cdddf30"
+    },
+    {
+      "number": 105,
+      "original_index": 985,
+      "slug": "skill-versioning",
+      "display_name": "إصدارات السكيلات",
+      "description": "Use immutable task instruction pins and current contract/revocation checks. Compatible upgrades do not silently replace running instructions. Rollback does not undo external effects.",
+      "description_ar": "إصدارات السكيلات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "3db7a3ff99975b9f5ec166e981861e4de076d0b519d6f31731c5907070094cc2"
+    },
+    {
+      "number": 106,
+      "original_index": 1000,
+      "slug": "skill-release-gate",
+      "display_name": "اعتماد إصدار السكيل",
+      "description": "Read only trusted fixed-profile evidence bound to current sources and environment. Reject stale, unsigned and critical-failure evidence. Local contract acceptance never authorizes external publishing.",
+      "description_ar": "اعتماد إصدار السكيل ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "32201b36a401a3bba4a15229a2df0c449c9e48a714ea2fec70ffcb8e9b019ede"
+    },
+    {
+      "number": 107,
+      "original_index": 39,
+      "slug": "model-capability-check",
+      "display_name": "فحص قدرات النموذج",
+      "description": "Separate installed metadata, declared modality support and explicit fixed synthetic measurements. Unknown or unsupported capabilities must not produce guessed equivalent answers.",
+      "description_ar": "فحص قدرات النموذج ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "9fd53a1c412ec63b154f351a8bd9e19fb1518744950a4cc3d6946a2799792e36"
+    },
+    {
+      "number": 108,
+      "original_index": 36,
+      "slug": "token-budgeting",
+      "display_name": "إدارة ميزانية السياق",
+      "description": "Reserve output and template space before dispatch. The current estimator is conservative and approximate. Preserve complete user constraints or fail explicitly instead of silently dropping history.",
+      "description_ar": "إدارة ميزانية السياق ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "8a8e523dba2ac1978d95995a30c47e0758c265990389f798f4a2fa1c66e681a3"
+    },
+    {
+      "number": 109,
+      "original_index": 40,
+      "slug": "structured-output-validation",
+      "display_name": "فحص المخرجات المنظمة",
+      "description": "Validate bounded JSON output before exposing it to consumers. Reject malformed, extra, nonfinite, missing or incompatible values. Structural conformance is neither factual support nor permission.",
+      "description_ar": "فحص المخرجات المنظمة ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "a7e302c955482ff633dd4e0397325848c827eab3c315448307fd784b6812a189"
+    },
+    {
+      "number": 110,
+      "original_index": 38,
+      "slug": "provider-fallback",
+      "display_name": "التحويل بين المزودين",
+      "description": "Only explicitly configured compatible local models may be recovery candidates before any output. No cloud fallback, unknown-write replay or automatic budget increase.",
+      "description_ar": "التحويل بين المزودين ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "929dd2520e1626ec78b04eff2799b192ef05ae77d1737bc2bb1f93bcb58a0b18"
+    },
+    {
+      "number": 111,
+      "original_index": 31,
+      "slug": "retry-backoff",
+      "display_name": "إعادة المحاولة المنظمة",
+      "description": "Classify trusted transient failures, use bounded backoff and Retry-After, and check cancellation and the shared deadline. Invalid inputs, authorization failures and uncertain effects are not retried.",
+      "description_ar": "إعادة المحاولة المنظمة ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "0753afebf470c6da15ea49a6c4aca1f1b2a48b53e4d7feea71bcdd4295ce3c29"
+    },
+    {
+      "number": 112,
+      "original_index": 32,
+      "slug": "idempotent-actions",
+      "display_name": "منع تكرار الإجراءات",
+      "description": "Bind operation keys to owner, project and parameter hash. Coalesce repeated requests; reject a changed payload under the same key. A new explicit key represents a new intended operation.",
+      "description_ar": "منع تكرار الإجراءات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "aaf9aeba0d0f2a11784bc3fc9fc874ff9850cf8b86ece64be46507455f2ad38c"
+    },
+    {
+      "number": 113,
+      "original_index": 35,
+      "slug": "execution-timeouts",
+      "display_name": "ضبط مهلة التنفيذ",
+      "description": "Apply the total persisted task deadline including queued time. Check before tools and publication; reject late results. Report surviving committed effects without claiming a remote process stopped.",
+      "description_ar": "ضبط مهلة التنفيذ ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "42894be3c2ffcae53dd755281046bb5efb4f52a5568ca88dbc66bf74003f08d2"
+    },
+    {
+      "number": 114,
+      "original_index": 44,
+      "slug": "concurrency-control",
+      "display_name": "تنظيم التوازي",
+      "description": "Use existing bounded task admission, atomic claims, expected versions and resume leases. Cancellation requested still consumes capacity until acknowledged; independent work may overlap.",
+      "description_ar": "تنظيم التوازي ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "29aae2d17798d506d83049ec42accee24696d275c4cd6044b4cba0db93cc0afc"
+    },
+    {
+      "number": 115,
+      "original_index": 45,
+      "slug": "rate-limit-handling",
+      "display_name": "معالجة حدود الطلبات",
+      "description": "Use bounded provider admission and shared cooldowns with cancellation and deadlines. Limits are local product safeguards, not invented provider quotas.",
+      "description_ar": "معالجة حدود الطلبات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "40deacda0308b0e2b11972805f2230997a907b8322269918b332eb7a79c20ba9"
+    },
+    {
+      "number": 116,
+      "original_index": 48,
+      "slug": "connector-health",
+      "display_name": "فحص اتصال الخدمات",
+      "description": "Read current local connector metadata without side effects and report time, capabilities and uncertainty. A read-capable connector does not imply write or send authority.",
+      "description_ar": "فحص اتصال الخدمات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "8203f0bfe9fb35d11bc8f6fe3c1a978e3eb58a256080d8f330d7023bb573e04c"
+    },
+    {
+      "number": 117,
+      "original_index": 43,
+      "slug": "workflow-state-machine",
+      "display_name": "إدارة حالات سير العمل",
+      "description": "Persist allowed task transitions with state revisions and truthful receipts. Cancelled or terminal work cannot be revived by a delayed event; explicit safe resume rechecks access and inputs.",
+      "description_ar": "إدارة حالات سير العمل ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "564149a57e93c98cd79e07d9bef02585787e3b1a5f0b38b20b0644b906e6de9b"
+    },
+    {
+      "number": 118,
+      "original_index": 42,
+      "slug": "audit-events",
+      "display_name": "سجل عمليات المساعد",
+      "description": "Use allowlisted correlated events in the existing Guard log. Never capture request bodies, secrets or internal reasoning. Recording failures block the associated critical transaction.",
+      "description_ar": "سجل عمليات المساعد ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "cf17f4285b3c18b3461f80e720c597e04398ee1629c49eff10163eb35c620ea4"
+    },
+    {
+      "number": 119,
+      "original_index": 50,
+      "slug": "tool-contract-testing",
+      "display_name": "اختبار عقود الأدوات",
+      "description": "Read fixed-runner contract results through the real adapter boundaries. Mutation cases must reveal incompatible types, late tasks and unavailable outputs; mocks do not verify a provider.",
+      "description_ar": "اختبار عقود الأدوات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "862798117d938df621c07162de2d8f044570ffb9060731e123b1e88de341e4a4"
+    },
+    {
+      "number": 120,
+      "original_index": 453,
+      "slug": "ci-pipeline",
+      "display_name": "بناء خط تكامل مستمر",
+      "description": "Use the existing framework through the fixed local CI profile, without deployment or arbitrary commands. Show local, skipped and remote-unverified separately.",
+      "description_ar": "بناء خط تكامل مستمر ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "5a76ad9363b5b6f32f9a1dc0a43b08b5a768c594abc9fc7efaa2d2bb8385ff83"
+    },
+    {
+      "number": 121,
+      "original_index": 456,
+      "slug": "environment-variable-audit",
+      "display_name": "تدقيق متغيرات البيئة",
+      "description": "Inspect variable names, code locations and configuration validity without printing values. Separate client-safe names from server secrets and preserve user configuration.",
+      "description_ar": "تدقيق متغيرات البيئة ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "e24f7241cd7c424614ec51beb34810f701f5789bff2dbcd83b4f2fbfc6d40691"
+    },
+    {
+      "number": 122,
+      "original_index": 459,
+      "slug": "service-monitoring",
+      "display_name": "مراقبة الخدمات",
+      "description": "Inspect scoped queue age, persisted outcomes, database checks and worker heartbeat. Missing or stale observations are unknown or degraded, never default green.",
+      "description_ar": "مراقبة الخدمات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "8b615c222cb054e8d663ee000c1d7674dd880604d749c909396b0848af4e5dbf"
+    },
+    {
+      "number": 123,
+      "original_index": 469,
+      "slug": "backup-disaster-recovery",
+      "display_name": "خطة التعافي من الكوارث",
+      "description": "Use sealed consistent SQLite backup and isolated quarantined recovery. Verify stored file bytes and reconcile old grants, timers and unknown sends. Inspection alone does not perform a restore.",
+      "description_ar": "خطة التعافي من الكوارث ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "25de2798b0e859782e003b025b67e7dd09f8ec49624730588b4d16991381f82d"
+    },
+    {
+      "number": 124,
+      "original_index": 513,
+      "slug": "llm-evaluation-dataset",
+      "display_name": "بناء بيانات تقييم للمساعد",
+      "description": "Use versioned synthetic cases with explicit expectations, forbidden effects and development/holdout separation. Unreviewed semantic labels are proposed, not human-approved truth.",
+      "description_ar": "بناء بيانات تقييم للمساعد ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "e6779da1800cd463e1a447cb73de072a23c18e2f233b2fe92be8af15a3e33630"
+    },
+    {
+      "number": 125,
+      "original_index": 995,
+      "slug": "skill-regression-suite",
+      "display_name": "حزمة اختبارات السكيلات",
+      "description": "Run the fixed affected regression profile and bind its result to source and dataset hashes. Critical failure is an independent blocker; do not regenerate expected answers to hide defects.",
+      "description_ar": "حزمة اختبارات السكيلات ضمن المسار النظامي والنطاق الموثق.",
+      "version": "5.0.0",
+      "execution_kind": "system",
+      "status": "partial",
+      "reason": "فحص الحالة لا ينفذ نشرًا أو استعادة أو اختبار مزود حي. راجع دليل القبول المحدد.",
+      "tools": [
+        "system-runtime"
+      ],
+      "dependencies": [],
+      "read_scopes": [
+        "current-project"
+      ],
+      "write_scopes": [
+        "skill-task-results"
+      ],
+      "egress_policy": "local-only",
+      "limits": {
+        "seconds": 180,
+        "attempts": 1,
+        "cost_usd": null
+      },
+      "input_schema": {
+        "$ref": "SkillRequest"
+      },
+      "output_schema": {
+        "$ref": "SkillRun"
+      },
+      "instructions_sha256": "0ffdc9ff8a9b9510fad30c1ba00fef8370a72a78f41d6c5623fd4f53af564112"
+    }
+  ]
+}

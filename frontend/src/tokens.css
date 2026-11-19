@@ -1,0 +1,24 @@
+/* Riwaq: contemporary Arabic knowledge house. Single source of design values. */
+:root {
+ --font-ui:"IBM Plex Sans Arabic","IBM Plex Sans","IBM Plex Sans Hebrew",sans-serif; --font-code:"IBM Plex Mono","IBM Plex Sans Arabic",monospace;
+ --color-background:#F5F1E8; --color-surface:#FFFCF6; --color-text:#172B2A; --color-secondary:#52625D;
+ --color-brand:#126456; --color-on-brand:#FFFCF6; --color-copper:#B47C46; --color-border:#DDD8CC; --color-control-border:#7D8B83;
+ --color-on-error:#FFFCF6; --color-copper-ink:#87582F;
+ --color-code-background:#101C1B; --color-code-text:#F5F1E8; --color-code-border:#344B44;
+ --color-success:#246345; --color-warning:#785100; --color-error:#A53030; --color-focus:#126456;
+ --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px;
+ --radius-threshold:32px; --type-caption:.75rem; --type-label:.875rem; --type-body:1rem; --type-reading:1.0625rem; --leading-reading:1.85;
+ --radius-sm:10px; --radius-md:12px; --radius-lg:14px; --shadow:0 6px 24px #172b2a0a;
+ --duration:180ms; --layer-panel:30; --layer-nav:40; --layer-dialog:100; --layer-notice:150;
+ --bg:var(--color-background); --surface:var(--color-surface); --text:var(--color-text); --muted:var(--color-secondary);
+ --sidebar:#ECE8DE; --panel:var(--color-surface); --surface2:#E9E9DE; --line:var(--color-border);
+ --accent:var(--color-brand); --accent-dark:#0C5045; --accent-soft:#E3EDE5; --green:var(--color-success);
+ font-family:var(--font-ui); color:var(--text); background:var(--bg); font-size:16px; line-height:1.7;
+}
+:root[data-theme=dark] {
+ --color-background:#101C1B; --color-surface:#182B28; --color-text:#F5F1E8; --color-secondary:#B6C7BF;
+ --color-brand:#88C9B2; --color-on-brand:#101C1B; --color-copper:#D2A46E; --color-border:#344B44; --color-control-border:#768F81;
+ --color-on-error:#101C1B; --color-copper-ink:#D2A46E;
+ --color-success:#96D4A8; --color-warning:#E6C37E; --color-error:#FFAAA0; --color-focus:#88C9B2;
+ --sidebar:#13231F; --panel:var(--color-surface); --surface2:#243D35; --accent-dark:#A5DDC9; --accent-soft:#233F34; --shadow:0 8px 28px #0002;
+}

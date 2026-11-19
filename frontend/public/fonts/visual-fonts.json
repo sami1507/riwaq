@@ -1,0 +1,20 @@
+{
+  "source": "https://github.com/IBM/plex",
+  "commit": "2f9ba1b25957d958db71a849e85d72e3ecfb845a",
+  "license": "OFL-1.1",
+  "files": [
+    {
+      "file": "IBMPlexSansHebrew-Regular.woff2",
+      "weight": 400,
+      "sha256": "9e56b8035b123978d479e50c6fcccaebc462888dc49902d8572f7869210a077e",
+      "bytes": 33260
+    },
+    {
+      "file": "IBMPlexSansHebrew-SemiBold.woff2",
+      "weight": 600,
+      "sha256": "22792f09b91eeac408bce0df1aea7849a103e993a9ee31c707b8b9b6396dddf4",
+      "bytes": 35152
+    }
+  ],
+  "license_sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da"
+}

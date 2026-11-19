@@ -1,0 +1,6 @@
+{
+  "frozen_at": "2026-11-16T14:38:48.672422+00:00",
+  "sha256": "e521fdbe8af009b0b9d1ffa4c11281ac8099990ba4739944d31e8fdb17f1e233",
+  "cases": 6,
+  "separation": "engineering-only; reviewers may inspect after final evaluation; not independently blinded human labels"
+}

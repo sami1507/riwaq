@@ -1,0 +1,4 @@
+.draft-status{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:.8rem;line-height:1.5;color:var(--muted);margin-block:6px}
+.draft-status[data-state=save],.draft-status[data-state=conflict],.draft-status[data-state=load]{color:var(--color-error)}
+.draft-status button{min-height:36px;border:1px solid var(--line);border-radius:7px;padding:5px 9px;color:inherit;background:var(--surface);cursor:pointer}
+.new-response-button{align-self:center;margin:5px auto;padding:8px 14px;min-height:44px;border:1px solid var(--accent);border-radius:20px;color:var(--accent);background:var(--surface);cursor:pointer;z-index:2}

@@ -1,0 +1,28 @@
+{
+  "version": "voice-evaluation-synthetic-example-v1",
+  "created_at": "2026-11-15",
+  "pairs_file": "synthetic-smoke-en.jsonl",
+  "pairs_sha256": "c2351a97f054fd0589e608595e8e78e043340ebc98ce841ecb320bfd35602d0b",
+  "rows": 1,
+  "languages": [
+    "en-US"
+  ],
+  "splits": [
+    "dev"
+  ],
+  "human_recordings": 0,
+  "audio_included": false,
+  "source_report": "reports/voice-audio-smoke.json",
+  "source_report_sha256": "1b643725fcfd48c7fae29921798d204706fb864782e6787e40b9e66dd202a691",
+  "scope": "One original synthetic English sentence, actually synthesized locally and transcribed by installed Whisper-small. Text-pair demonstration only.",
+  "rights_scope": "Transcript evaluation only. No audio redistribution, voice binary license, training rights or legal certification asserted.",
+  "not_a_benchmark": true,
+  "heldout": false,
+  "training_permitted_by_this_manifest": false,
+  "limitations": [
+    "Not a human microphone recording or dialect evaluation.",
+    "One clean synthetic utterance cannot establish real-world accuracy.",
+    "No new audio, model call or download was performed to create this manifest.",
+    "Existing smoke report is retained unchanged."
+  ]
+}

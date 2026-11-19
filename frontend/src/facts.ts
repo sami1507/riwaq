@@ -1,0 +1,15 @@
+import {api} from './api';
+export type FactValue={type:'number'|'text'|'boolean';value:string|boolean};
+export type FactTime={kind:'unknown'|'timeless'|'instant'|'interval';as_of?:string|null;valid_from?:string|null;valid_until?:string|null};
+export type FactScope={kind:'unknown'|'not_applicable'|'exact';value?:string|null};
+export type FactSource={kind:'public_chunk'|'private_chunk';chunk_id:string;expected_hash:string;expected_version_id?:string;selection?:string;occurrence?:number};
+export type FactEvidence={kind:'public_chunk'|'private_chunk';chunk_id?:string;source_state:'current'|'stale_version'|'revoked'|'unbound';title?:string|null;filename?:string|null;url?:string|null;quote?:string;page?:number|null;line_start?:number|null;line_end?:number|null;version?:string|null;source_sha256?:string;chunk_sha256?:string;version_id?:string;origin?:'local_binding'|'imported_snapshot';license?:{name?:string;url?:string}|null};
+export type FactClaim={entity_key:string;entity_label:string;property_key:string;property_label:string;value:FactValue;unit:string|null;qualifiers:Record<string,string>;time:FactTime;version_scope:FactScope;exclusive:boolean};
+export type Fact=Partial<FactClaim>&{id:string;project_id:string;version:number;review_state:'draft'|'user_reviewed'|'withdrawn';source_state:'current'|'stale_version'|'revoked'|'unbound';usable:boolean;redacted?:boolean;evidence:FactEvidence[];created_at:string;updated_at:string;reviewed_at?:string|null;review_note?:string};
+export type FactRevision={version:number;created_at:string;data:Fact};
+export type FactOption={selector:FactSource;title?:string|null;filename?:string|null;url?:string|null;page?:number|null;line_start?:number|null;line_end?:number|null;text:string};
+export type FactConflicts={pairs:{left_id:string;right_id:string;left_version?:number;right_version?:number;result:'agreement'|'candidate_conflict'}[];not_comparable:{id:string;reason:string}[];truncated:boolean;notice?:string};
+export const factsPath=(projectId:string)=>`/projects/${encodeURIComponent(projectId)}/facts`;
+export const factsApi=api;
+export const sourceName=(source:{title?:string|null;filename?:string|null})=>source.title||source.filename||'';
+export const factName=(fact:Fact)=>fact.redacted?'':`${fact.entity_label||fact.entity_key||''} · ${fact.property_label||fact.property_key||''}`;

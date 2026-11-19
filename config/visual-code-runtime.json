@@ -1,0 +1,7 @@
+{
+  "protocol": "isolated-visual-code-v1",
+  "image_id": "sha256:83c57a1aa99e26afa3e6f3ab185ad69dac84f78b013a20aa4b7377d1edbf3518",
+  "tested": true,
+  "evidence": "reports/closure-20261116/visual-normalize/live/report.json",
+  "scope": "QR UTF-8 and Code128 printable ASCII; generated PNG decoded with zxing-cpp before publication. No print/scene-text certification."
+}

@@ -1,0 +1,8 @@
+{
+  "frozen_at": "2026-11-16T11:51:06.822854+00:00",
+  "dataset_sha256": "e45c2a056f620a24fede4639835165e182bdc61527e35f7f233bb23f3d898f66",
+  "baseline_manifest_sha256": "a2b157a015784b10abb2ca7a0eb34193e557fcd13eb8ba60f0993d6804784b44",
+  "cases": 12,
+  "scope": "fresh deterministic component sample; visible engineering labels, not blinded holdout",
+  "reference_changes_after_outputs_allowed": false
+}

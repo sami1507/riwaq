@@ -1,0 +1,1 @@
+{"main-capability":{"identifier":"main-capability","description":"The remote local-service UI receives no Tauri commands or filesystem permissions.","local":true,"windows":["main"],"permissions":[]}}

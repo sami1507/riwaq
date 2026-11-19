@@ -1,0 +1,12 @@
+{
+  "dataset_sha256": "2b6ab2e9cd1c05085712d3e1f7e1525cd6c6a1d18e32f2fb0456c02c6f8f50b7",
+  "date": "2026-11-13",
+  "cases": 80,
+  "dev": 30,
+  "heldout": 50,
+  "language_counts": {
+    "ar": 65,
+    "en": 15
+  },
+  "reference_changes_after_outputs_allowed": false
+}

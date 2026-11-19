@@ -1,0 +1,8 @@
+{
+  "operation": "daily",
+  "zone": "Asia/Jerusalem",
+  "startDate": "2026-11-17",
+  "windows": [{"id":"day","start":{"kind":"local","value":"2026-11-17T09:00:00"},"end":{"kind":"local","value":"2026-11-17T12:00:00"}}],
+  "commitments": [{"id":"meeting","title":"اجتماع ثابت","start":{"kind":"local","value":"2026-11-17T10:00:00"},"end":{"kind":"local","value":"2026-11-17T11:00:00"},"bufferBeforeMinutes":15,"bufferAfterMinutes":15}],
+  "tasks": [{"id":"a","title":"كتابة التقرير","minutes":45},{"id":"b","title":"בדיקת נתונים","minutes":45},{"id":"c","title":"Review references","minutes":15}]
+}

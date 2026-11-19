@@ -1,0 +1,22 @@
+{
+  "license": "CC0-1.0; synthetic test text authored for Riwaq",
+  "purpose": "Editable Arabic Word layout and exact values; not user data",
+  "payload": {
+    "title": "تقرير الطلبات التجريبي",
+    "language": "ar",
+    "direction": "rtl",
+    "paragraphs": [
+      {"text": "ملخص الطلبات", "style": "heading1"},
+      {"text": "تتضمن هذه العينة أربعة طلبات. مجموع القيم المعروفة 30 ومتوسطها 10. القيمة الناقصة ليست صفرًا.", "style": "normal"},
+      {"text": "ملاحظة متعددة اللغات", "style": "heading2"},
+      {"text": "مرجع عربي مع English وשלום. معرف الطلب 001 يبقى نصًا، والمبلغ السالب -5 يبقى سالبًا.", "style": "normal"}
+    ],
+    "tables": [{
+      "headers": ["الطلب", "العميل", "القيمة", "الحالة"],
+      "rows": [["O1", "C1", "10", "معروف"], ["O2", "C1", "0", "صفر حقيقي"], ["O3", "C2", "20", "معروف"], ["O4", "C9", "غير متاحة", "قيمة ناقصة"]]
+    }],
+    "sources": [{"label": "بيانات اصطناعية للاختبار", "location": "O1–O4"}]
+  },
+  "expected": {"native_tables": 1, "rows_including_header": 5, "columns": 4, "original_o3_value": "20", "edited_o3_value": "25", "known_sum": 30, "known_mean": 10},
+  "visual_review": "Every rendered page must be inspected for Arabic shaping, heading order, mixed-script readability, table clipping and preserved zero/missing distinction. Structural checks are not native render acceptance."
+}

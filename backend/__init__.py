@@ -1,0 +1,1 @@
+"""Riwaq local assistant service."""

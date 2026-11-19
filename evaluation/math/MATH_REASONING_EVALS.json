@@ -1,0 +1,1986 @@
+{
+  "schema_version": "riwaq-math-evals-1",
+  "version": "1.0.0",
+  "source_date": "2026-11-16",
+  "known_development_cases": true,
+  "human_blind_review": false,
+  "reference_time": "2026-11-16T10:00:00+02:00",
+  "timezone": "Asia/Jerusalem",
+  "input_policy": "source_text preserves each original user problem statement. input_text is a concise mathematical transcription tested separately; requests are typed test inputs, never substituted for untested natural-language understanding.",
+  "case_count": 60,
+  "cases": [
+    {
+      "id": "MATH-001",
+      "group": 1,
+      "input_text": "0.1 + 0.2",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "exact",
+          "expression": "0.1 + 0.2"
+        }
+      ],
+      "expected": {
+        "value": "3/10"
+      },
+      "acceptance": "Exact decimal sum; no binary loss.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب 0.1 + 0.2 بوصفهما قيمتين عشريتين دقيقتين."
+    },
+    {
+      "id": "MATH-002",
+      "group": 1,
+      "input_text": "9007199254740993 + 1",
+      "domain": "integer",
+      "requests": [
+        {
+          "operation": "exact",
+          "expression": "9007199254740993 + 1"
+        }
+      ],
+      "expected": {
+        "value": "9007199254740994"
+      },
+      "acceptance": "Exact integer parsing, transport and output.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب 9007199254740993 + 1 على الأعداد الصحيحة."
+    },
+    {
+      "id": "MATH-003",
+      "group": 1,
+      "input_text": "3/7 + 2/5",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "exact",
+          "expression": "3/7 + 2/5"
+        }
+      ],
+      "expected": {
+        "value": "29/35"
+      },
+      "acceptance": "Reduced exact fraction.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب 3/7 + 2/5 في صورة كسر مبسط."
+    },
+    {
+      "id": "MATH-004",
+      "group": 1,
+      "input_text": "100 ترتفع20% ثم تنخفض20% من الجديدة",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "percent_changes",
+          "value": "100",
+          "changes": [
+            "20",
+            "-20"
+          ]
+        }
+      ],
+      "expected": {
+        "value": "96",
+        "intermediate": "120"
+      },
+      "acceptance": "Second percentage uses the updated value.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "قيمة 100 زادت 20% ثم انخفضت 20% من القيمة الجديدة."
+    },
+    {
+      "id": "MATH-005",
+      "group": 1,
+      "input_text": "قرب 2.675 إلى منزلتين باستخدام ROUND_HALF_UP",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "round",
+          "value": "2.675",
+          "places": 2,
+          "rounding": "ROUND_HALF_UP"
+        }
+      ],
+      "expected": {
+        "value": "2.68"
+      },
+      "acceptance": "Round the exact decimal under the named rule.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "قرّب القيمة العشرية الدقيقة 2.675 إلى منزلتين باستخدام ROUND_HALF_UP."
+    },
+    {
+      "id": "MATH-006",
+      "group": 1,
+      "input_text": "150 cm + 2 m",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "unit_sum",
+          "terms": [
+            {
+              "value": "150",
+              "unit": "cm"
+            },
+            {
+              "value": "2",
+              "unit": "m"
+            }
+          ],
+          "output_unit": "m"
+        }
+      ],
+      "expected": {
+        "value": "7/2",
+        "unit": "m"
+      },
+      "acceptance": "Compatible length conversion; output meters.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "اجمع 150 سنتيمترًا و2 متر، وأخرج النتيجة بالمتر."
+    },
+    {
+      "id": "MATH-007",
+      "group": 1,
+      "input_text": "10 m + 3 s",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "unit_sum",
+          "terms": [
+            {
+              "value": "10",
+              "unit": "m"
+            },
+            {
+              "value": "3",
+              "unit": "s"
+            }
+          ],
+          "output_unit": "m"
+        }
+      ],
+      "expected": {
+        "problem_status": "undefined"
+      },
+      "acceptance": "Reject addition across dimensions; never invent 13 with a unit.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "اجمع 10 أمتار و3 ثوانٍ ككمية واحدة."
+    },
+    {
+      "id": "MATH-008",
+      "group": 1,
+      "input_text": "احسب -2^2 و(-2)^2",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "evaluate",
+          "expression": "-2^2"
+        },
+        {
+          "operation": "evaluate",
+          "expression": "(-2)^2"
+        }
+      ],
+      "expected": {
+        "values": [
+          "-4",
+          "4"
+        ]
+      },
+      "acceptance": "Math exponent precedence; parentheses affect the base.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب -2^2 و(-2)^2 وفق ترتيب العمليات الرياضي المعتاد."
+    },
+    {
+      "id": "MATH-009",
+      "group": 1,
+      "input_text": "حل ٢س + ٣ = ١١",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "٢س + ٣ = ١١",
+          "variable": "س",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          "4"
+        ]
+      },
+      "acceptance": "Arabic digits and symbol preserve the equation.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل «٢س + ٣ = ١١» على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-010",
+      "group": 1,
+      "input_text": "1/2x",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "evaluate",
+          "expression": "1/2x"
+        }
+      ],
+      "expected": {
+        "problem_status": "ambiguous"
+      },
+      "acceptance": "Do not silently select x/2 or 1/(2x).",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "ورد التعبير 1/2x دون أقواس أو اصطلاح يحدد التجميع."
+    },
+    {
+      "id": "MATH-011",
+      "group": 2,
+      "input_text": "حل (x^2-1)/(x-1)=2",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "(x^2-1)/(x-1)=2",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [],
+        "excluded": [
+          "1"
+        ]
+      },
+      "acceptance": "No solutions in original domain; x=1 is excluded.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل (x^2-1)/(x-1)=2 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-012",
+      "group": 2,
+      "input_text": "حل sqrt(x+1)=x-1",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "sqrt(x+1)=x-1",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          "3"
+        ],
+        "rejected": [
+          "0"
+        ]
+      },
+      "acceptance": "Substitute into original equation; squared extraneous 0 rejected.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل sqrt(x+1)=x-1 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-013",
+      "group": 2,
+      "input_text": "حل x^2+1=0 على الحقيقيات ثم المركبة",
+      "domain": "real,complex",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "x^2+1=0",
+          "domain": "real"
+        },
+        {
+          "operation": "solve",
+          "expression": "x^2+1=0",
+          "domain": "complex"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          [],
+          [
+            "I",
+            "-I"
+          ]
+        ]
+      },
+      "acceptance": "Keep real and complex solution sets separate.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل x^2+1=0 مرة على الأعداد الحقيقية ومرة على المركبة."
+    },
+    {
+      "id": "MATH-014",
+      "group": 2,
+      "input_text": "حل a*x=1",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "a*x=1",
+          "variable": "x",
+          "variables": [
+            "x",
+            "a"
+          ],
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "nonzero_solution": "1/a",
+        "zero_parameter_no_solution": true
+      },
+      "acceptance": "Separate a=0 and a!=0 cases.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل a*x=1 على الأعداد الحقيقية مع معامل a غير محدد."
+    },
+    {
+      "id": "MATH-015",
+      "group": 2,
+      "input_text": "حل x*(x-2)=0",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "x*(x-2)=0",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          "0",
+          "2"
+        ]
+      },
+      "acceptance": "Do not lose zero by dividing by x.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل x*(x-2)=0 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-016",
+      "group": 2,
+      "input_text": "حل ln(x-1)+ln(x+1)=ln(3)",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "ln(x-1)+ln(x+1)=ln(3)",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          "2"
+        ],
+        "excluded": [
+          "-2"
+        ],
+        "domain": "x>1"
+      },
+      "acceptance": "Preserve both logarithm domains before combining.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل ln(x-1)+ln(x+1)=ln(3) على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-017",
+      "group": 2,
+      "input_text": "حل (x-1)/(x+2)>0",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "inequality",
+          "expression": "(x-1)/(x+2)>0",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "intervals": [
+          [
+            "-oo",
+            "-2",
+            true,
+            true
+          ],
+          [
+            "1",
+            "oo",
+            true,
+            true
+          ]
+        ]
+      },
+      "acceptance": "Strict sign intervals exclude pole and zero.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل (x-1)/(x+2)>0 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-018",
+      "group": 2,
+      "input_text": "حل abs(2*x-1)=3",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "abs(2*x-1)=3",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          "-1",
+          "2"
+        ]
+      },
+      "acceptance": "Both absolute-value branches satisfy the original.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل |2*x-1|=3 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-019",
+      "group": 2,
+      "input_text": "حل sin(x)=0",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "sin(x)=0",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "family": "k*pi",
+        "parameter_domain": "integer"
+      },
+      "acceptance": "All periodic real solutions in radians, not a finite sample.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "أوجد جميع حلول sin(x)=0 على الأعداد الحقيقية، والزوايا بالراديان."
+    },
+    {
+      "id": "MATH-020",
+      "group": 2,
+      "input_text": "حل x^2=4 مع x<0",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "solve",
+          "expression": "x^2=4",
+          "constraints": [
+            "x<0"
+          ],
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          "-2"
+        ]
+      },
+      "acceptance": "Filter roots by the explicit constraint.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل x^2=4 مع القيد x<0."
+    },
+    {
+      "id": "MATH-021",
+      "group": 3,
+      "input_text": "حل النظام x+y=3; x-y=1",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "system",
+          "equations": [
+            "x+y=3",
+            "x-y=1"
+          ],
+          "variables": [
+            "x",
+            "y"
+          ],
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          {
+            "x": "2",
+            "y": "1"
+          }
+        ]
+      },
+      "acceptance": "Unique pair checks in both original equations.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل النظام x+y=3 وx-y=1 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-022",
+      "group": 3,
+      "input_text": "حل النظام x+y=1; 2*x+2*y=3",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "system",
+          "equations": [
+            "x+y=1",
+            "2*x+2*y=3"
+          ],
+          "variables": [
+            "x",
+            "y"
+          ],
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "problem_status": "inconsistent"
+      },
+      "acceptance": "Inconsistent augmented system; no solution.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل النظام x+y=1 و2*x+2*y=3."
+    },
+    {
+      "id": "MATH-023",
+      "group": 3,
+      "input_text": "حل النظام x+y=2; 2*x+2*y=4",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "system",
+          "equations": [
+            "x+y=2",
+            "2*x+2*y=4"
+          ],
+          "variables": [
+            "x",
+            "y"
+          ],
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "family": {
+          "x": "t",
+          "y": "2-t"
+        }
+      },
+      "acceptance": "Parametric real solution family, not an arbitrary point.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل النظام x+y=2 و2*x+2*y=4 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-024",
+      "group": 3,
+      "input_text": "معكوس [[1,2],[2,4]]",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "matrix_inverse",
+          "matrix": [
+            [
+              "1",
+              "2"
+            ],
+            [
+              "2",
+              "4"
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "determinant": "0",
+        "invertible": false
+      },
+      "acceptance": "Singular matrix has no inverse.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "أوجد معكوس المصفوفة [[1,2],[2,4]]."
+    },
+    {
+      "id": "MATH-025",
+      "group": 3,
+      "input_text": "القيم والمتجهات الذاتية [[2,1],[1,2]]",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "eigen",
+          "matrix": [
+            [
+              "2",
+              "1"
+            ],
+            [
+              "1",
+              "2"
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "eigenvalues": [
+          "1",
+          "3"
+        ]
+      },
+      "acceptance": "Eigenvectors nonzero and satisfy A*v=lambda*v; scaled vectors allowed.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "أوجد القيم والمتجهات الذاتية للمصفوفة [[2,1],[1,2]]."
+    },
+    {
+      "id": "MATH-026",
+      "group": 3,
+      "input_text": "حل النظام x+y=1; x^2+y^2=1",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "system",
+          "equations": [
+            "x+y=1",
+            "x^2+y^2=1"
+          ],
+          "variables": [
+            "x",
+            "y"
+          ],
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "solutions": [
+          {
+            "x": "1",
+            "y": "0"
+          },
+          {
+            "x": "0",
+            "y": "1"
+          }
+        ]
+      },
+      "acceptance": "Both ordered solutions and completeness within algebraic domain.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل x+y=1 وx^2+y^2=1 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-027",
+      "group": 3,
+      "input_text": "حل 2*x+3*y=7 على الأعداد الصحيحة",
+      "domain": "integer",
+      "requests": [
+        {
+          "operation": "diophantine",
+          "expression": "2*x+3*y=7",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "domain": "integer"
+        }
+      ],
+      "expected": {
+        "family": {
+          "x": "2+3*t",
+          "y": "1-2*t"
+        }
+      },
+      "acceptance": "Integer parametric family covers every solution.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "أوجد جميع الحلول الصحيحة للمعادلة 2*x+3*y=7."
+    },
+    {
+      "id": "MATH-028",
+      "group": 3,
+      "input_text": "عظم 3*x+2*y مع x+y<=4 وx<=2 وx>=0 وy>=0",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "optimize",
+          "expression": "3*x+2*y",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "constraints": [
+            "x+y<=4",
+            "x<=2",
+            "x>=0",
+            "y>=0"
+          ],
+          "sense": "max",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "value": "10",
+        "point": {
+          "x": "2",
+          "y": "2"
+        }
+      },
+      "acceptance": "Feasible optimum and verified upper bound.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "عظّم 3*x+2*y حيث x+y≤4 وx≤2 وx≥0 وy≥0 على الحقيقيات."
+    },
+    {
+      "id": "MATH-029",
+      "group": 3,
+      "input_text": "عظم x الصحيح مع 2*x<=3 وx>=0",
+      "domain": "integer",
+      "requests": [
+        {
+          "operation": "optimize",
+          "expression": "x",
+          "variables": [
+            "x"
+          ],
+          "constraints": [
+            "2*x<=3",
+            "x>=0"
+          ],
+          "sense": "max",
+          "domain": "integer"
+        }
+      ],
+      "expected": {
+        "value": "1",
+        "point": {
+          "x": "1"
+        }
+      },
+      "acceptance": "Integer optimum; relaxation 1.5 is not accepted.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "عظّم x حيث 2*x≤3 وx عدد صحيح غير سالب."
+    },
+    {
+      "id": "MATH-030",
+      "group": 3,
+      "input_text": "صغر (x-3)^2+2",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "optimize",
+          "expression": "(x-3)^2+2",
+          "variables": [
+            "x"
+          ],
+          "constraints": [],
+          "sense": "min",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "value": "2",
+        "point": {
+          "x": "3"
+        }
+      },
+      "acceptance": "Global minimum from nonnegative square, not sampled local evidence.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "أوجد الحد الأدنى العالمي لـ(x-3)^2+2 على الأعداد الحقيقية."
+    },
+    {
+      "id": "MATH-031",
+      "group": 4,
+      "input_text": "هل تلزم Q من P->Q وP؟",
+      "domain": "boolean",
+      "requests": [
+        {
+          "operation": "entailment",
+          "premises": [
+            "P->Q",
+            "P"
+          ],
+          "conclusion": "Q"
+        }
+      ],
+      "expected": {
+        "entailed": true
+      },
+      "acceptance": "Consistent premises and no countermodel by complete truth table.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "هل تلزم Q من المقدمتين P→Q وP في المنطق الكلاسيكي؟"
+    },
+    {
+      "id": "MATH-032",
+      "group": 4,
+      "input_text": "هل تلزم P من P->Q وQ؟",
+      "domain": "boolean",
+      "requests": [
+        {
+          "operation": "entailment",
+          "premises": [
+            "P->Q",
+            "Q"
+          ],
+          "conclusion": "P"
+        }
+      ],
+      "expected": {
+        "entailed": false,
+        "countermodel": {
+          "P": false,
+          "Q": true
+        }
+      },
+      "acceptance": "Countermodel satisfies premises and negates conclusion.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "هل تلزم P من P→Q وQ؟"
+    },
+    {
+      "id": "MATH-033",
+      "group": 4,
+      "input_text": "هل تلزم not P من P->Q وnot Q؟",
+      "domain": "boolean",
+      "requests": [
+        {
+          "operation": "entailment",
+          "premises": [
+            "P->Q",
+            "not Q"
+          ],
+          "conclusion": "not P"
+        }
+      ],
+      "expected": {
+        "entailed": true
+      },
+      "acceptance": "Modus tollens; complete countermodel search.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "هل تلزم ¬P من P→Q و¬Q؟"
+    },
+    {
+      "id": "MATH-034",
+      "group": 4,
+      "input_text": "قارن لكل x يوجد y>x ويوجد y أكبر من كل x على الحقيقيات",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "quantifier_order",
+          "domain": "real"
+        }
+      ],
+      "expected": {
+        "forall_exists": true,
+        "exists_forall": false
+      },
+      "acceptance": "Construct y=x+1; refute universal bound with x=y+1.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "قارن على الأعداد الحقيقية: «لكل x يوجد y بحيث y>x» و«يوجد y أكبر من كل x»."
+    },
+    {
+      "id": "MATH-035",
+      "group": 4,
+      "input_text": "هل كل عناصر A تنتمي إلى B يستلزم وجود عنصر في A؟",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "existential_import"
+        }
+      ],
+      "expected": {
+        "entailed": false
+      },
+      "acceptance": "Empty A is an explicit countermodel; no existential import.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "من «كل عناصر A تنتمي إلى B»، هل يلزم وجود عنصر في A دون فرض وجود إضافي؟"
+    },
+    {
+      "id": "MATH-036",
+      "group": 4,
+      "input_text": "استنتج R من P وnot P",
+      "domain": "boolean",
+      "requests": [
+        {
+          "operation": "entailment",
+          "premises": [
+            "P",
+            "not P"
+          ],
+          "conclusion": "R"
+        }
+      ],
+      "expected": {
+        "problem_status": "inconsistent"
+      },
+      "acceptance": "Identify inconsistency before useful entailment claims.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "المقدمات P و¬P، ويطلب المستخدم استنتاجًا موثوقًا عن قضية R غير مرتبطة."
+    },
+    {
+      "id": "MATH-037",
+      "group": 4,
+      "input_text": "أثبت أن n^2+n زوجي لكل n صحيح",
+      "domain": "integer",
+      "requests": [
+        {
+          "operation": "polynomial_even",
+          "coefficients": [
+            0,
+            1,
+            1
+          ]
+        }
+      ],
+      "expected": {
+        "always_even": true
+      },
+      "acceptance": "Algebraic/parity argument covering all integers, not finite-value inference.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "أثبت أن n^2+n زوجي لكل عدد صحيح n."
+    },
+    {
+      "id": "MATH-038",
+      "group": 4,
+      "input_text": "هل n^2+n+41 أولي لكل n>=0؟",
+      "domain": "nonnegative_integer",
+      "requests": [
+        {
+          "operation": "prime_counterexample",
+          "coefficients": [
+            41,
+            1,
+            1
+          ],
+          "start": 0,
+          "end": 40
+        }
+      ],
+      "expected": {
+        "n": "40",
+        "value": "1681",
+        "factor": "41"
+      },
+      "acceptance": "A checked composite counterexample refutes the universal claim.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "اختبر الادعاء: n^2+n+41 عدد أولي لكل عدد صحيح n≥0."
+    },
+    {
+      "id": "MATH-039",
+      "group": 4,
+      "input_text": "رتب A وB وC مع A قبل B وB قبل C",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "ordering",
+          "items": [
+            "A",
+            "B",
+            "C"
+          ],
+          "before": [
+            [
+              "A",
+              "B"
+            ],
+            [
+              "B",
+              "C"
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "orders": [
+          [
+            "A",
+            "B",
+            "C"
+          ]
+        ]
+      },
+      "acceptance": "All items exactly once and both precedence constraints; unique order.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "ضع A وB وC في المواضع 1 و2 و3 مرة واحدة لكل مهمة، مع A قبل B وB قبل C."
+    },
+    {
+      "id": "MATH-040",
+      "group": 4,
+      "input_text": "محاكاة موصل يعيد UNKNOWN أو TIMEOUT",
+      "domain": "solver_status",
+      "requests": [],
+      "expected": {
+        "unknown": "unresolved",
+        "timeout": "limits_exceeded"
+      },
+      "acceptance": "Trusted adapter simulation never maps UNKNOWN or timeout to UNSAT.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "محاكاة موصل محلل قيود يعيد UNKNOWN أو يتوقف بسبب المهلة."
+    },
+    {
+      "id": "MATH-041",
+      "group": 5,
+      "input_text": "اشتق x^3*sin(x)",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "differentiate",
+          "expression": "x^3*sin(x)",
+          "variable": "x"
+        }
+      ],
+      "expected": {
+        "derivative": "3*x^2*sin(x)+x^3*cos(x)"
+      },
+      "acceptance": "Equivalent derivative expression under stated domain.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "اشتق x^3*sin(x) بالنسبة إلى x."
+    },
+    {
+      "id": "MATH-042",
+      "group": 5,
+      "input_text": "هل abs(x) قابلة للاشتقاق عند 0؟",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "derivative_at",
+          "expression": "abs(x)",
+          "variable": "x",
+          "point": "0"
+        }
+      ],
+      "expected": {
+        "differentiable": false,
+        "left": "-1",
+        "right": "1"
+      },
+      "acceptance": "One-sided derivatives differ.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "هل الدالة |x| قابلة للاشتقاق عند x=0؟"
+    },
+    {
+      "id": "MATH-043",
+      "group": 5,
+      "input_text": "تكامل x^2 من 0 إلى 1",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "integrate",
+          "expression": "x^2",
+          "variable": "x",
+          "bounds": [
+            "0",
+            "1"
+          ]
+        }
+      ],
+      "expected": {
+        "value": "1/3"
+      },
+      "acceptance": "Exact definite integral.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب التكامل المحدد لـx^2 من 0 إلى 1."
+    },
+    {
+      "id": "MATH-044",
+      "group": 5,
+      "input_text": "تكامل 1/x^2",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "integrate",
+          "expression": "1/x^2",
+          "variable": "x"
+        }
+      ],
+      "expected": {
+        "antiderivative": "-1/x",
+        "constant": true,
+        "exclude": "0"
+      },
+      "acceptance": "Derivative check and integration constants on disconnected intervals.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "أوجد تكامل 1/x^2 بالنسبة إلى x على فترات لا تشمل الصفر."
+    },
+    {
+      "id": "MATH-045",
+      "group": 5,
+      "input_text": "نهاية sin(x)/x عند 0",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "limit",
+          "expression": "sin(x)/x",
+          "variable": "x",
+          "point": "0"
+        }
+      ],
+      "expected": {
+        "value": "1"
+      },
+      "acceptance": "Two-sided radian limit distinguished from undefined value.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب نهاية sin(x)/x عندما x يقترب من صفر، والزوايا بالراديان."
+    },
+    {
+      "id": "MATH-046",
+      "group": 5,
+      "input_text": "التكامل غير الصحيح 1/x من -1 إلى 1",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "integrate",
+          "expression": "1/x",
+          "variable": "x",
+          "bounds": [
+            "-1",
+            "1"
+          ]
+        }
+      ],
+      "expected": {
+        "convergent": false
+      },
+      "acceptance": "Ordinary improper integral diverges; principal value is not a substitute.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب التكامل غير الصحيح المعتاد لـ1/x من -1 إلى 1."
+    },
+    {
+      "id": "MATH-047",
+      "group": 5,
+      "input_text": "حل y'=2*y مع y(0)=3",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "ode_linear",
+          "coefficient": "2",
+          "initial": {
+            "point": "0",
+            "value": "3"
+          }
+        }
+      ],
+      "expected": {
+        "solution": "3*exp(2*x)"
+      },
+      "acceptance": "Check differential equation and initial condition.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل y'=2*y مع الشرط y(0)=3."
+    },
+    {
+      "id": "MATH-048",
+      "group": 5,
+      "input_text": "حل cos(x)-x=0 على [0,1] بخطأ x<=10^-12",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "root",
+          "expression": "cos(x)-x",
+          "variable": "x",
+          "bounds": [
+            "0",
+            "1"
+          ],
+          "tolerance": "0.000000000001"
+        }
+      ],
+      "expected": {
+        "root": "0.7390851332151607",
+        "x_error": "0.000000000001"
+      },
+      "acceptance": "Continuous bracket, convergence, variable error and uniqueness evidence.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "حل cos(x)-x=0 على [0,1] بخطأ مطلق في x لا يتجاوز 10^-12."
+    },
+    {
+      "id": "MATH-049",
+      "group": 5,
+      "input_text": "هل تغير إشارة 1/x بين -1 و1 يثبت جذرا؟",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "continuity_root",
+          "expression": "1/x",
+          "variable": "x",
+          "bounds": [
+            "-1",
+            "1"
+          ]
+        }
+      ],
+      "expected": {
+        "continuous": false,
+        "proves_root": false
+      },
+      "acceptance": "Pole invalidates the intermediate-value argument.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "هل تغير إشارة f(x)=1/x بين -1 و1 يثبت وجود جذر بينهما؟"
+    },
+    {
+      "id": "MATH-050",
+      "group": 5,
+      "input_text": "اختبر x=1.001 للدالة (x-1)^2 مع خطأ x<=10^-6",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "verify_root",
+          "expression": "(x-1)^2",
+          "variable": "x",
+          "point": "1.001",
+          "tolerance": "0.000001"
+        }
+      ],
+      "expected": {
+        "residual": "1/1000000",
+        "root_error": "1/1000",
+        "accepted": false
+      },
+      "acceptance": "Residual smallness is not the requested x error.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "للدالة f(x)=(x-1)^2، اختبر المرشح x=1.001 ومتطلب خطأ في الجذر ≤10^-6."
+    },
+    {
+      "id": "MATH-051",
+      "group": 6,
+      "input_text": "احسب P(A|B) حيث P(A)=0.01 وP(B|A)=0.99 وP(B|not A)=0.05",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "bayes",
+          "prior": "0.01",
+          "likelihood": "0.99",
+          "false_positive": "0.05"
+        }
+      ],
+      "expected": {
+        "value": "1/6",
+        "denominator": "297/5000"
+      },
+      "acceptance": "Correct Bayes denominator and nonzero conditioning event.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "P(A)=0.01 وP(B|A)=0.99 وP(B|¬A)=0.05. احسب P(A|B)."
+    },
+    {
+      "id": "MATH-052",
+      "group": 6,
+      "input_text": "احتمال مجموع 7 لحجري نرد عادلين مستقلين",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "dice_sum",
+          "dice": 2,
+          "sides": 6,
+          "total": 7
+        }
+      ],
+      "expected": {
+        "value": "1/6",
+        "favorable": 6,
+        "outcomes": 36
+      },
+      "acceptance": "36 equiprobable ordered outcomes; 6 favorable.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "نرمي حجرَي نرد عادلين مستقلين. ما احتمال مجموع يساوي 7؟"
+    },
+    {
+      "id": "MATH-053",
+      "group": 6,
+      "input_text": "اختر 3 من 10 دون ترتيب ودون تكرار",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "combinations",
+          "n": 10,
+          "k": 3
+        }
+      ],
+      "expected": {
+        "value": "120"
+      },
+      "acceptance": "Combinations rather than permutations.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "كم طريقة لاختيار 3 عناصر من 10 دون ترتيب ودون تكرار؟"
+    },
+    {
+      "id": "MATH-054",
+      "group": 6,
+      "input_text": "احتمال الصورة مرتين بالضبط في ثلاث رميات عادلة مستقلة",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "binomial",
+          "n": 3,
+          "k": 2,
+          "p": "1/2"
+        }
+      ],
+      "expected": {
+        "value": "3/8"
+      },
+      "acceptance": "Binomial assumptions and exact probability.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "ثلاث رميات مستقلة لقطعة نقد عادلة. ما احتمال ظهور الصورة مرتين بالضبط؟"
+    },
+    {
+      "id": "MATH-055",
+      "group": 6,
+      "input_text": "المتوسط الكلي لمجموعة 10 بمتوسط80 ومجموعة90 بمتوسط20",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "weighted_mean",
+          "groups": [
+            {
+              "count": 10,
+              "mean": "80"
+            },
+            {
+              "count": 90,
+              "mean": "20"
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "value": "26"
+      },
+      "acceptance": "Weights use group counts; reject mean-of-means 50.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "مجموعة حجمها 10 ومتوسطها 80، وأخرى حجمها 90 ومتوسطها 20. احسب المتوسط الكلي."
+    },
+    {
+      "id": "MATH-056",
+      "group": 6,
+      "input_text": "المتوسط والوسيط للقيم 1 و2 و3 و100",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "statistics",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "100"
+          ]
+        }
+      ],
+      "expected": {
+        "mean": "53/2",
+        "median": "5/2"
+      },
+      "acceptance": "No unrequested outlier removal.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "احسب المتوسط والوسيط للقيم 1 و2 و3 و100."
+    },
+    {
+      "id": "MATH-057",
+      "group": 6,
+      "input_text": "مجموع ومتوسط وعدد 0 و10 و20 وقيمة مفقودة",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "statistics",
+          "values": [
+            "0",
+            "10",
+            "20",
+            null
+          ]
+        }
+      ],
+      "expected": {
+        "sum": "30",
+        "mean": "10",
+        "known": 3,
+        "missing": 1
+      },
+      "acceptance": "Zero retained; missing is not zero.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "بيانات 0 و10 و20 وقيمة مفقودة. احسب المجموع ومتوسط القيم المعروفة وعددها."
+    },
+    {
+      "id": "MATH-058",
+      "group": 6,
+      "input_text": "P(A)=0.6 وP(B)=0.5 وP(A intersection B)=0.2؛ الاتحاد وP(A|B)",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "probability",
+          "a": "0.6",
+          "b": "0.5",
+          "intersection": "0.2"
+        }
+      ],
+      "expected": {
+        "union": "9/10",
+        "conditional": "2/5"
+      },
+      "acceptance": "Addition rule and conditional probability with valid event bounds.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "P(A)=0.6 وP(B)=0.5 وP(A∩B)=0.2. احسب P(A∪B) وP(A|B)."
+    },
+    {
+      "id": "MATH-059",
+      "group": 6,
+      "input_text": "مستطيل محيطه30 ومساحته54 وأبعاده موجبة",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "rectangle",
+          "perimeter": "30",
+          "area": "54"
+        }
+      ],
+      "expected": {
+        "dimensions": [
+          "6",
+          "9"
+        ]
+      },
+      "acceptance": "Positive dimensions satisfy perimeter and area; swapping is one rectangle.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "مستطيل محيطه 30 ومساحته 54، والأطوال موجبة وبالوحدة نفسها. أوجد بعديه."
+    },
+    {
+      "id": "MATH-060",
+      "group": 6,
+      "input_text": "قطع سائق 120 كم دون مدة، فما متوسط السرعة؟",
+      "domain": "real",
+      "requests": [
+        {
+          "operation": "speed",
+          "distance": "120"
+        }
+      ],
+      "expected": {
+        "problem_status": "insufficient_data",
+        "relation": "120/t",
+        "condition": "t>0"
+      },
+      "acceptance": "No invented duration or unique speed.",
+      "forbidden": [
+        "wrong_domain",
+        "false_verification",
+        "lost_solutions",
+        "unsupported_reported_as_no_solution"
+      ],
+      "judgment": "Reviewed deterministic predicate over typed output; not literal prose comparison.",
+      "scope": "Known development/acceptance case; structured tool and text interpretation are measured separately.",
+      "source": "User supplied mathematical strengthening prompt v1.0, 2026-11-16",
+      "reference_review": "User supplied expected; executable checks authored by development assistant, not blind human labels.",
+      "source_text": "قطع سائق مسافة 120 كيلومترًا دون ذكر مدة الرحلة. ما متوسط سرعته؟"
+    }
+  ]
+}

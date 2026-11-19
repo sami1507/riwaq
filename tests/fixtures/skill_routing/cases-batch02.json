@@ -1,0 +1,664 @@
+{
+  "version": "2026-11-16-preimplementation-v1",
+  "protocol": "Synthetic authored samples frozen before implementation; development and held_out IDs separate, not a human or all-language evaluation. Acceptance: exact selected workflow and requested outputs, plus specified constraints/intents/references. No model, OCR, or renderer claim.",
+  "development": [
+    {
+      "id": "d01",
+      "language": "ar",
+      "text": "اشرح الخطأ",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": [],
+      "forbidden_intents": [
+        "modify",
+        "test"
+      ]
+    },
+    {
+      "id": "d02",
+      "language": "ar",
+      "text": "أصلحه واختبره",
+      "skills": [
+        "code-generation",
+        "end-to-end-testing"
+      ],
+      "intents": [
+        "modify",
+        "test"
+      ]
+    },
+    {
+      "id": "d03",
+      "language": "mixed",
+      "text": "ترجم هذا PDF واعمله عرضًا",
+      "skills": [
+        "pdf-reading",
+        "translation",
+        "slide-authoring"
+      ],
+      "outputs": [
+        "pptx",
+        "translation"
+      ]
+    },
+    {
+      "id": "d04",
+      "language": "en",
+      "text": "Review src/app.ts; do not modify it",
+      "skills": [
+        "code-review"
+      ],
+      "outputs": [],
+      "constraints": [
+        "read-only"
+      ],
+      "forbidden_intents": [
+        "modify"
+      ]
+    },
+    {
+      "id": "d05",
+      "language": "ar",
+      "text": "راجع الشيفرة ولا تعدلها",
+      "skills": [
+        "code-review"
+      ],
+      "constraints": [
+        "read-only"
+      ],
+      "forbidden_intents": [
+        "modify"
+      ]
+    },
+    {
+      "id": "d06",
+      "language": "he",
+      "text": "סקור את הקוד בלי שינויים",
+      "skills": [
+        "code-review"
+      ],
+      "constraints": [
+        "read-only"
+      ]
+    },
+    {
+      "id": "d07",
+      "language": "en",
+      "text": "Explain the WordPress error",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "d08",
+      "language": "en",
+      "text": "Review notes.docx",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": [],
+      "references": [
+        "notes.docx"
+      ]
+    },
+    {
+      "id": "d09",
+      "language": "en",
+      "text": "Summarize deck.pptx",
+      "skills": [
+        "text-summarization"
+      ],
+      "outputs": [],
+      "references": [
+        "deck.pptx"
+      ]
+    },
+    {
+      "id": "d10",
+      "language": "ar",
+      "text": "اشرح Excel دون تعديل",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": [],
+      "constraints": [
+        "read-only"
+      ]
+    },
+    {
+      "id": "d11",
+      "language": "ar",
+      "text": "عدّل مستند Word",
+      "skills": [
+        "docx-authoring"
+      ],
+      "outputs": [
+        "docx"
+      ],
+      "intents": [
+        "modify"
+      ]
+    },
+    {
+      "id": "d12",
+      "language": "he",
+      "text": "תקן את מסמך Word",
+      "skills": [
+        "docx-authoring"
+      ],
+      "outputs": [
+        "docx"
+      ]
+    },
+    {
+      "id": "d13",
+      "language": "en",
+      "text": "Fix budget.xlsx",
+      "skills": [
+        "spreadsheet-creation"
+      ],
+      "outputs": [
+        "xlsx"
+      ]
+    },
+    {
+      "id": "d14",
+      "language": "en",
+      "text": "Create a Word document and an Excel workbook",
+      "skills": [
+        "spreadsheet-creation",
+        "docx-authoring"
+      ],
+      "outputs": [
+        "xlsx",
+        "docx"
+      ]
+    },
+    {
+      "id": "d15",
+      "language": "he",
+      "text": "תרגם PDF וצור מצגת",
+      "skills": [
+        "pdf-reading",
+        "translation",
+        "slide-authoring"
+      ],
+      "outputs": [
+        "pptx",
+        "translation"
+      ]
+    },
+    {
+      "id": "d16",
+      "language": "en",
+      "text": "Do not translate the file; summarize it",
+      "skills": [
+        "text-summarization"
+      ],
+      "outputs": [],
+      "forbidden_intents": [
+        "translate"
+      ]
+    },
+    {
+      "id": "d17",
+      "language": "ar",
+      "text": "لا تترجم الملف، لخصه فقط",
+      "skills": [
+        "text-summarization"
+      ],
+      "outputs": [],
+      "forbidden_intents": [
+        "translate"
+      ]
+    },
+    {
+      "id": "d18",
+      "language": "he",
+      "text": "אל תתרגם את הקובץ; סכם אותו",
+      "skills": [
+        "text-summarization"
+      ],
+      "outputs": [],
+      "forbidden_intents": [
+        "translate"
+      ]
+    },
+    {
+      "id": "d19",
+      "language": "en",
+      "text": "Explain this test failure; do not run tests",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": [],
+      "forbidden_intents": [
+        "test",
+        "modify"
+      ]
+    },
+    {
+      "id": "d20",
+      "language": "en",
+      "text": "Diagnose the timeout in worker.py",
+      "skills": [
+        "root-cause-debugging"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "d21",
+      "language": "mixed",
+      "text": "بدّي أعمل deploy للمشروع",
+      "skills": [
+        "intent-routing"
+      ],
+      "intents": [
+        "create"
+      ]
+    },
+    {
+      "id": "d22",
+      "language": "mixed",
+      "text": "תקן ואז test",
+      "skills": [
+        "code-generation",
+        "end-to-end-testing"
+      ],
+      "intents": [
+        "modify",
+        "test"
+      ]
+    },
+    {
+      "id": "d23",
+      "language": "en",
+      "text": "Review the code without fixing it",
+      "skills": [
+        "code-review"
+      ],
+      "constraints": [
+        "read-only"
+      ],
+      "forbidden_intents": [
+        "modify"
+      ]
+    },
+    {
+      "id": "d24",
+      "language": "en",
+      "text": "Explain `create slides` in parser.py",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": [],
+      "forbidden_intents": [
+        "create"
+      ]
+    },
+    {
+      "id": "d25",
+      "language": "ar",
+      "text": "كمل",
+      "previous": "ترجم PDF واعمل عرضًا",
+      "skills": [
+        "pdf-reading",
+        "translation",
+        "slide-authoring"
+      ],
+      "same_goal": true
+    },
+    {
+      "id": "d26",
+      "language": "ar",
+      "text": "وين وصلنا؟",
+      "previous": "أصلح الكود واختبره",
+      "skills": [
+        "intent-routing"
+      ],
+      "intents": [
+        "status"
+      ],
+      "constraints": [
+        "read-only"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "d27",
+      "language": "en",
+      "text": "What is the status?",
+      "previous": "Create a Word document",
+      "skills": [
+        "intent-routing"
+      ],
+      "intents": [
+        "status"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "d28",
+      "language": "he",
+      "text": "מה הסטטוס?",
+      "previous": "תקן את הקוד",
+      "skills": [
+        "intent-routing"
+      ],
+      "intents": [
+        "status"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "d29",
+      "language": "en",
+      "text": "Translate the selected file locally only",
+      "document_ids": [
+        "synthetic-file"
+      ],
+      "skills": [
+        "pdf-reading",
+        "translation"
+      ],
+      "constraints": [
+        "local-only"
+      ],
+      "outputs": [
+        "translation"
+      ]
+    },
+    {
+      "id": "d30",
+      "language": "ar",
+      "text": "ابحث في الويب وأنشئ تقرير Word",
+      "skills": [
+        "web-research",
+        "docx-authoring"
+      ],
+      "outputs": [
+        "docx"
+      ]
+    },
+    {
+      "id": "d31",
+      "language": "en",
+      "text": "Explain the source report.pdf",
+      "skills": [
+        "pdf-reading"
+      ],
+      "outputs": [],
+      "references": [
+        "report.pdf"
+      ]
+    },
+    {
+      "id": "d32",
+      "language": "en",
+      "text": "Create report.docx",
+      "skills": [
+        "docx-authoring"
+      ],
+      "outputs": [
+        "docx"
+      ]
+    }
+  ],
+  "held_out": [
+    {
+      "id": "h01",
+      "language": "ar",
+      "text": "اشرح المشكلة وما تصلحها",
+      "skills": [
+        "intent-routing"
+      ],
+      "constraints": [
+        "read-only"
+      ],
+      "forbidden_intents": [
+        "modify"
+      ]
+    },
+    {
+      "id": "h02",
+      "language": "en",
+      "text": "Please review server.py, don't change files",
+      "skills": [
+        "code-review"
+      ],
+      "constraints": [
+        "read-only"
+      ],
+      "forbidden_intents": [
+        "modify"
+      ]
+    },
+    {
+      "id": "h03",
+      "language": "he",
+      "text": "הסבר את התקלה ואל תשנה קבצים",
+      "skills": [
+        "intent-routing"
+      ],
+      "constraints": [
+        "read-only"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "h04",
+      "language": "mixed",
+      "text": "ترجم report.pdf إلى English وبعدين اعمل slides",
+      "skills": [
+        "pdf-reading",
+        "translation",
+        "slide-authoring"
+      ],
+      "outputs": [
+        "pptx",
+        "translation"
+      ],
+      "references": [
+        "report.pdf"
+      ]
+    },
+    {
+      "id": "h05",
+      "language": "en",
+      "text": "Translate source.pdf and make a presentation",
+      "skills": [
+        "pdf-reading",
+        "translation",
+        "slide-authoring"
+      ],
+      "outputs": [
+        "pptx",
+        "translation"
+      ]
+    },
+    {
+      "id": "h06",
+      "language": "he",
+      "text": "תרגם את source.pdf והכן מצגת",
+      "skills": [
+        "pdf-reading",
+        "translation",
+        "slide-authoring"
+      ],
+      "outputs": [
+        "pptx",
+        "translation"
+      ]
+    },
+    {
+      "id": "h07",
+      "language": "ar",
+      "text": "راجع ملف notes.docx فقط",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "h08",
+      "language": "en",
+      "text": "Explain why latest_version is undefined",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": [],
+      "forbidden_intents": [
+        "test"
+      ]
+    },
+    {
+      "id": "h09",
+      "language": "en",
+      "text": "Modify the Word document title",
+      "skills": [
+        "docx-authoring"
+      ],
+      "outputs": [
+        "docx"
+      ]
+    },
+    {
+      "id": "h10",
+      "language": "ar",
+      "text": "أصلح الشيفرة ثم شغّل الاختبارات",
+      "skills": [
+        "code-generation",
+        "end-to-end-testing"
+      ],
+      "intents": [
+        "modify",
+        "test"
+      ]
+    },
+    {
+      "id": "h11",
+      "language": "en",
+      "text": "Do not make slides; translate the paragraph",
+      "skills": [
+        "translation"
+      ],
+      "outputs": [
+        "translation"
+      ],
+      "forbidden_intents": [
+        "create"
+      ]
+    },
+    {
+      "id": "h12",
+      "language": "ar",
+      "text": "لا تعمل عرضًا، ترجم الفقرة",
+      "skills": [
+        "translation"
+      ],
+      "outputs": [
+        "translation"
+      ],
+      "forbidden_intents": [
+        "create"
+      ]
+    },
+    {
+      "id": "h13",
+      "language": "he",
+      "text": "אל תצור מצגת; תרגם את הפסקה",
+      "skills": [
+        "translation"
+      ],
+      "outputs": [
+        "translation"
+      ]
+    },
+    {
+      "id": "h14",
+      "language": "ar",
+      "text": "كمّل من محل ما وقفنا",
+      "previous": "أنشئ مصنف Excel",
+      "skills": [
+        "spreadsheet-creation"
+      ],
+      "same_goal": true
+    },
+    {
+      "id": "h15",
+      "language": "en",
+      "text": "Please continue",
+      "previous": "Translate PDF and create slides",
+      "skills": [
+        "pdf-reading",
+        "translation",
+        "slide-authoring"
+      ],
+      "same_goal": true
+    },
+    {
+      "id": "h16",
+      "language": "he",
+      "text": "המשך בבקשה",
+      "previous": "צור מסמך Word",
+      "skills": [
+        "docx-authoring"
+      ],
+      "same_goal": true
+    },
+    {
+      "id": "h17",
+      "language": "ar",
+      "text": "شو صار بالمهمة؟",
+      "previous": "أنشئ عرضًا",
+      "skills": [
+        "intent-routing"
+      ],
+      "intents": [
+        "status"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "h18",
+      "language": "en",
+      "text": "How far did we get?",
+      "previous": "Fix the code",
+      "skills": [
+        "intent-routing"
+      ],
+      "intents": [
+        "status"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "h19",
+      "language": "mixed",
+      "text": "لخص document.pdf فقط، local only",
+      "skills": [
+        "pdf-reading",
+        "text-summarization"
+      ],
+      "constraints": [
+        "local-only"
+      ],
+      "outputs": []
+    },
+    {
+      "id": "h20",
+      "language": "en",
+      "text": "Review spreadsheet.xlsx; no changes",
+      "skills": [
+        "intent-routing"
+      ],
+      "outputs": [],
+      "constraints": [
+        "read-only"
+      ]
+    }
+  ],
+  "batch02_contract_change": "Skills43 enables actual summarization; five expectations now require its executor instead of the previous unavailable-capability fallback. Inputs and all other checks unchanged. Original fixture preserved in cases.json."
+}

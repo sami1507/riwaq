@@ -1,0 +1,73 @@
+{
+  "version": "sft-original-v1",
+  "created": "2026-11-14",
+  "rights": "Original procedural examples authored for the Riwaq task; training explicitly authorized by the user on 2026-11-14. No third-party or private content.",
+  "private_data": false,
+  "public_knowledge_imported": false,
+  "generated_by_model": false,
+  "human_reviewed": false,
+  "scope": "Targeted Arabic structured responses and source/decision boundaries; 32 authored task families, not broad knowledge training.",
+  "splits": {
+    "train": {
+      "count": 500,
+      "families": 20,
+      "sha256": "962a1aea583822681ac7a2e7f372682264f222a27cfe206ba0f12fc666c777f0"
+    },
+    "validation": {
+      "count": 48,
+      "families": 6,
+      "sha256": "2092a8eb429f3eebdbcb22e34acad57a7ff1b985bcd52ad3e99d278cf6cd38a0"
+    },
+    "test": {
+      "count": 48,
+      "families": 6,
+      "sha256": "bfc12d0830c737c4b8f3f1c4da60ea172900b0d729e2f97da8cc161e5cf98284"
+    }
+  },
+  "acceptance": {
+    "code": "validation exact gain>=3/48, no more than1 lost correct; restored100%; p95<=90s",
+    "adapter": "validation exact gain>=2/48 and no more than1 lost correct, no observed nonstructured retention regression; otherwise retain base",
+    "test": "single final comparison after selection; no tuning on test results"
+  },
+  "family_assignment": {
+    "train": [
+      "receipt_sum",
+      "cash_change",
+      "fraction_scale",
+      "centimeter_conversion",
+      "boolean_all",
+      "implication_counterexample",
+      "sorted_copy",
+      "dictionary_default",
+      "safe_mean",
+      "mutator_return",
+      "source_limit",
+      "source_flag",
+      "source_missing",
+      "version_pick",
+      "unit_agreement",
+      "unresolved_conflict",
+      "decision_pending",
+      "decision_done",
+      "false_premise",
+      "proposal_execution"
+    ],
+    "validation": [
+      "weighted_invoice",
+      "exclusive_or",
+      "set_union_copy",
+      "two_stage_evidence",
+      "unknown_unit",
+      "disjoint_time_windows"
+    ],
+    "test": [
+      "linear_equation",
+      "exactly_two_predicates",
+      "range_boundary",
+      "joined_version_evidence",
+      "different_population",
+      "inconsistent_constraints"
+    ]
+  },
+  "generator_sha256": "b6649fa5db5a8a09114b631c7037aa9dca7481f5ce11c49ddcefc320ca7fb961"
+}

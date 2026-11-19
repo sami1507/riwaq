@@ -1,0 +1,102 @@
+/* Riwaq polish layer: one button system, calmer composer, and a stronger Arabic voice (Kufi headings, khatam star, arch). Loaded last; values come from tokens.css. */
+@font-face{font-family:"Reem Kufi";src:url("/fonts/ReemKufi-Arabic-Medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF}
+@font-face{font-family:"Reem Kufi";src:url("/fonts/ReemKufi-Arabic-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+FB50-FDFF,U+FE70-FEFF}
+:root{
+ --font-display:"Reem Kufi",var(--font-ui);
+ --ring:0 0 0 3px color-mix(in srgb,var(--accent) 26%,transparent);
+ --elev-1:0 1px 2px #172b2a14;
+ --elev-2:0 6px 18px #172b2a14;
+ --khatam:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23126456' stroke-opacity='.11'%3E%3Crect x='19' y='19' width='26' height='26'/%3E%3Crect x='19' y='19' width='26' height='26' transform='rotate(45 32 32)'/%3E%3Cpath d='M0 32h13.6M50.4 32H64M32 0v13.6M32 50.4V64'/%3E%3C/g%3E%3C/svg%3E");
+}
+:root[data-theme=dark]{
+ --elev-1:0 1px 2px #0006; --elev-2:0 8px 22px #0005;
+ --khatam:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%2388C9B2' stroke-opacity='.10'%3E%3Crect x='19' y='19' width='26' height='26'/%3E%3Crect x='19' y='19' width='26' height='26' transform='rotate(45 32 32)'/%3E%3Cpath d='M0 32h13.6M50.4 32H64M32 0v13.6M32 50.4V64'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ---------- Arabic voice ---------- */
+:root[lang=ar] :is(.welcome h1,.modal>header h2,.pairing-card h1,.panel-header h2,.workbench-header h2){font-family:var(--font-display);font-weight:700;letter-spacing:0}
+:root[lang=ar] .welcome h1{font-size:clamp(30px,3.2vw,44px);line-height:1.45}
+.section-heading>span:first-child{color:var(--color-copper-ink);font-weight:600}
+.conversation-scroll.empty{background-image:linear-gradient(180deg,transparent 0,var(--bg) 62%),var(--khatam);background-size:auto,64px 64px;background-position:0 0,center top}
+.pairing-screen{background-image:radial-gradient(ellipse at center,var(--bg) 38%,transparent 100%),var(--khatam);background-size:auto,64px 64px}
+.welcome-kicker{color:var(--color-copper-ink);font-weight:600}
+.welcome-kicker .mini-line{border-color:var(--color-copper)}
+.brand{position:relative}
+.brand:after{content:"";position:absolute;inset-inline:8px;bottom:8px;height:1px;background:linear-gradient(90deg,transparent,var(--color-copper) 20%,var(--color-copper) 80%,transparent);opacity:.55}
+
+/* ---------- Button system ---------- */
+.button{min-height:40px;padding:8px 16px;border-radius:10px;font-size:.875rem;font-weight:600;gap:8px;line-height:1.5;border:1px solid transparent;transition:background var(--duration),border-color var(--duration),box-shadow var(--duration),color var(--duration),transform 80ms}
+.button.primary,.new-chat{background:var(--accent);color:var(--color-on-brand);border-color:var(--accent-dark);box-shadow:inset 0 1px 0 #ffffff2e,var(--elev-1)}
+.button.primary:hover:not(:disabled),.new-chat:hover:not(:disabled){background:var(--accent-dark);color:var(--color-on-brand);box-shadow:inset 0 1px 0 #ffffff24,var(--elev-2)}
+.button.subtle{background:var(--surface);color:var(--text);border-color:var(--color-control-border);box-shadow:var(--elev-1)}
+.button.subtle:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent);color:var(--accent-dark)}
+.button.danger{background:var(--color-error);color:var(--color-on-error);border-color:var(--color-error);box-shadow:var(--elev-1)}
+.button.danger:hover:not(:disabled){filter:brightness(.92);color:var(--color-on-error)}
+:is(.button,.new-chat,.send-button,.icon-button,.suggestion):active:not(:disabled){transform:translateY(1px);box-shadow:none}
+:is(.button,.new-chat,.send-button,.icon-button,.sidebar-action,.project-item,.source-toggle,.model-selector,.text-button,.suggestion):focus-visible{outline:2px solid var(--color-focus);outline-offset:2px;box-shadow:var(--ring)}
+button:disabled,.button:disabled{opacity:.55;box-shadow:none}
+.new-chat{min-height:46px;border-radius:12px;font-size:.9375rem}
+.icon-button{border-radius:10px;color:var(--muted);transition:background var(--duration),color var(--duration),transform 80ms}
+.icon-button:hover:not(:disabled){background:var(--surface2);color:var(--accent-dark)}
+.text-button{font-size:.8125rem;font-weight:600;border-radius:6px;text-underline-offset:4px}
+.text-button:hover:not(:disabled){text-decoration:underline}
+.modal-actions{gap:12px}
+.modal-actions .button{min-width:96px}
+
+/* Send: an arch, the house mark, instead of a plain square */
+.send-button{width:44px;height:46px;border-radius:22px 22px 12px 12px;border:1px solid var(--accent-dark);box-shadow:inset 0 1px 0 #ffffff2e,var(--elev-1);transition:background var(--duration),box-shadow var(--duration),transform 80ms}
+.send-button:hover:not(:disabled){box-shadow:inset 0 1px 0 #ffffff24,var(--elev-2)}
+.send-button:disabled{background:var(--surface2);color:var(--muted);border-color:var(--line);box-shadow:none;opacity:1}
+.send-button.stop{background:var(--color-error);border-color:var(--color-error);color:var(--color-on-error)}
+
+/* ---------- Sidebar ---------- */
+.sidebar{display:flex;flex-direction:column;overflow:hidden}
+.sidebar>:is(.brand,.new-chat,.search-box){flex-shrink:0}
+.sidebar .sidebar-scroll{flex:1 1 auto;min-height:120px;overflow-y:auto;overscroll-behavior:contain}
+.sidebar .sidebar-footer{flex:0 1 auto;max-height:38%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.sidebar-footer .profile-row{position:sticky;bottom:0;z-index:1;background:var(--sidebar);border-top:1px solid var(--line);margin-top:4px;padding-top:4px}
+.sidebar-action,.project-item{border-radius:10px;transition:background var(--duration),color var(--duration)}
+.sidebar-action:hover:not(:disabled){background:var(--surface2);color:var(--accent-dark)}
+.sidebar-action svg{color:var(--muted);transition:color var(--duration)}
+.sidebar-action:hover:not(:disabled) svg{color:var(--accent)}
+.search-box:focus-within{border-color:var(--accent)}
+
+/* ---------- Welcome cards ---------- */
+.welcome .suggestions{gap:12px;border:0}
+.welcome .suggestions .suggestion{border:1px solid var(--line);border-radius:14px;background:var(--surface);min-height:88px;padding:14px 16px;box-shadow:var(--elev-1);transition:border-color var(--duration),box-shadow var(--duration),transform var(--duration)}
+.welcome .suggestions .suggestion:hover:not(:disabled){border-color:var(--accent);box-shadow:var(--elev-2);transform:translateY(-1px);color:inherit}
+.welcome .suggestions .suggestion strong{font-weight:600}
+.welcome .suggestions .suggestion .suggestion-icon{color:var(--color-copper-ink)}
+.welcome-copy{margin-bottom:24px}
+.setup-notice{border-radius:12px}
+
+/* ---------- Composer ---------- */
+.composer-area .answer-mode{display:inline-flex;flex-wrap:nowrap;gap:2px;padding:3px;margin:0 0 8px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);max-width:100%;overflow-x:auto;scrollbar-width:none}
+.composer-area .answer-mode label{position:relative;min-height:32px;padding:4px 14px;border:0;border-radius:9px;background:none;color:var(--muted);font-size:.8125rem;font-weight:500;white-space:nowrap;cursor:pointer;transition:background var(--duration),color var(--duration)}
+.composer-area .answer-mode label:hover{color:var(--accent-dark)}
+.composer-area .answer-mode label.selected{background:var(--surface);color:var(--accent-dark);font-weight:600;box-shadow:var(--elev-1)}
+.composer-area .answer-mode input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.composer-area .answer-mode label:has(input:focus-visible){outline:2px solid var(--color-focus);outline-offset:1px}
+.composer-area .answer-mode:disabled label{opacity:.55;cursor:not-allowed}
+.composer-area .draft-status{font-size:.75rem;color:var(--muted);margin-bottom:6px}
+.composer{border-radius:16px;transition:border-color var(--duration),box-shadow var(--duration)}
+.composer:focus-within{border-color:var(--accent);box-shadow:var(--ring),var(--shadow)}
+.source-toggle,.model-selector{border-radius:10px;transition:background var(--duration),color var(--duration),border-color var(--duration)}
+.source-toggle:hover:not(:disabled),.model-selector:hover:not(:disabled){background:var(--surface2);color:var(--accent-dark)}
+.source-toggle.enabled{background:var(--accent-soft);color:var(--accent-dark);font-weight:600}
+
+/* ---------- Dialogs and inputs ---------- */
+.modal{border-radius:16px;box-shadow:0 24px 70px #172b2a2e}
+.modal>header{border-bottom-color:var(--line)}
+.modal>header:after{content:"";position:absolute;inset-inline:24px;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--color-copper),transparent);opacity:.5}
+.input{transition:border-color var(--duration),box-shadow var(--duration)}
+.input:focus,.input:focus-visible{border-color:var(--accent);box-shadow:var(--ring);outline:0}
+.pairing-card{border-radius:20px;box-shadow:var(--elev-2)}
+
+@media(max-width:760px){
+ .composer-area .answer-mode{display:flex}
+ .composer-area .answer-mode label{flex:1 0 auto;justify-content:center;padding-inline:10px}
+ .welcome .suggestions .suggestion{min-height:76px;padding:12px}
+ .sidebar .sidebar-footer{max-height:50%}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:0ms!important}:is(.button,.new-chat,.send-button,.icon-button,.suggestion):active{transform:none}}

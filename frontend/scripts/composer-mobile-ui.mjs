@@ -1,0 +1,17 @@
+import {chromium,expect} from '../../tests/browser/node_modules/@playwright/test/index.mjs';
+import {execFile} from 'node:child_process';import {promisify} from 'node:util';
+import {mkdir,writeFile} from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';import assert from 'node:assert/strict';
+const root=fileURLToPath(new URL('../../',import.meta.url)),base=process.env.RIWAQ_URL;
+assert.equal(base,'http://127.0.0.1:8795');assert.equal(path.resolve(process.env.RIWAQ_DATA_DIR??''),path.join(root,'reports/core-stabilization-20261118/conversation/ui-data'));
+const out=path.join(root,'reports/core-stabilization-20261118/conversation/ui',new Date().toISOString().replaceAll(':','-'));await mkdir(out,{recursive:true});
+const report={started_at:new Date().toISOString(),synthetic:true,api_mocked:false,provider_used:false,cases:[],page_errors:[]};let browser,page,stage='pair';
+try{
+ browser=await chromium.launch({channel:'chrome',headless:true});const context=await browser.newContext({viewport:{width:1440,height:1000}});page=await context.newPage();page.setDefaultTimeout(20000);page.on('pageerror',e=>report.page_errors.push(e.message));
+ await context.route('**/*',route=>new URL(route.request().url()).origin===base?route.continue():route.abort());
+ await context.addInitScript(()=>{if(!sessionStorage.getItem('draft-test-init')){localStorage.setItem('riwaq.v1.lang','en');sessionStorage.setItem('draft-test-init','1');}});
+ await page.goto(base);await expect(page.locator('#riwaq-pairing-code')).toBeVisible();
+ const pairing=await promisify(execFile)(path.join(root,'.venv/Scripts/python.exe'),['-X','utf8','-B','-c','from backend.local_auth import issue_pairing_code; print(issue_pairing_code())'],{cwd:root,env:process.env,windowsHide:true,timeout:15000});let code=pairing.stdout.trim();pairing.stdout='';pairing.stderr='';assert(/^[A-Za-z0-9_-]{43}$/.test(code));await page.locator('#riwaq-pairing-code').fill(code);code='';await page.getByRole('button',{name:'Pair browser',exact:true}).click();await expect(page.locator('.composer textarea')).toBeEnabled();
+
+ stage='mobile-settled';const input=page.locator('.composer textarea');await expect(input).toBeEnabled();await page.setViewportSize({width:390,height:560});await expect.poll(()=>page.locator('.sidebar').evaluate(el=>{const box=el.getBoundingClientRect();return box.right<=0||box.left>=innerWidth;})).toBe(true);await page.locator('.mobile-menu').click();await expect(page.locator('.sidebar')).toHaveClass(/open/);await page.keyboard.press('Escape');await expect.poll(()=>page.locator('.sidebar').evaluate(el=>{const box=el.getBoundingClientRect();return box.right<=0||box.left>=innerWidth;})).toBe(true);await expect(input).toBeInViewport();const unobscured=await input.evaluate(el=>{const r=el.getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)===el;});assert.equal(unobscured,true);await page.screenshot({path:path.join(out,'mobile-settled.png'),fullPage:true,animations:'disabled'});report.cases.push('sidebar_fully_offscreen_and_composer_unobscured_after_resize_and_escape');report.passed=true;
+}catch(error){report.passed=false;report.failed_stage=stage;report.error=String(error?.stack??error).slice(0,2200);process.exitCode=1;}
+finally{await browser?.close();report.finished_at=new Date().toISOString();await writeFile(path.join(out,'mobile-report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({out,passed:report.passed,error:report.error}));}

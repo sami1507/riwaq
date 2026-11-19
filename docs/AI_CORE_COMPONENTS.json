@@ -1,0 +1,1306 @@
+{
+  "schema_version": "riwaq-ai-core-components-1",
+  "status": "verified_local_profile_partial_readiness",
+  "catalog_version": "5.0.0",
+  "component_count": 8,
+  "axis_count": 12,
+  "components": [
+    {
+      "id": "AI-C01",
+      "name": "عقد الطلب والتوجيه والتلخيص المحدود",
+      "axes": [
+        {
+          "id": 2,
+          "name": "الفهم والتخطيط"
+        },
+        {
+          "id": 10,
+          "name": "تجربة الاستخدام"
+        },
+        {
+          "id": 12,
+          "name": "التقييم والتحسين"
+        }
+      ],
+      "linked_requirements": [
+        "AI-01",
+        "AI-02",
+        "AI-16"
+      ],
+      "implementation": {
+        "files": [
+          "backend/request_contract.py",
+          "backend/skill_core.py",
+          "backend/skills.py"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 1,
+            "slug": "intent-routing",
+            "version": "1.1.0"
+          },
+          {
+            "number": 2,
+            "slug": "task-decomposition",
+            "version": "1.1.0"
+          },
+          {
+            "number": 3,
+            "slug": "acceptance-criteria",
+            "version": "1.1.0"
+          },
+          {
+            "number": 25,
+            "slug": "skill-routing",
+            "version": "1.1.0"
+          },
+          {
+            "number": 43,
+            "slug": "text-summarization",
+            "version": "1.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "طلب المستخدم الحالي",
+        "معرفات الموارد وإصداراتها وترتيب معلوم عند وجوده"
+      ],
+      "outputs": [
+        "قيود ومخرجات مطلوبة",
+        "حاجة إلى توضيح محدد",
+        "تغطية فعلية ومراجع مخرجات"
+      ],
+      "dependencies": [
+        "سجل المهارات الحالي",
+        "جلسة محلية موثوقة",
+        "قارئ ملف مفهرس عند التلخيص"
+      ],
+      "permissions": [
+        "تفويض المشروع والملف",
+        "النص المقتبس لا يمنح إذنًا"
+      ],
+      "supported_scope": [
+        "توجيه وصيغ طلب محدودة بالعربية والإنجليزية",
+        "خمس نقاط اقتباسية لعينة عربية معلومة"
+      ],
+      "gap": [
+        "اتباع المعنى والأسلوب في كل ناتج مولد غير معتمد",
+        "لا إعادة صياغة حرة معتمدة من اختبار الاستخراج"
+      ],
+      "fix": [
+        "قيود متناقضة ترفض قبل الأثر",
+        "حفظ المخرجات الأربع وحالة الاستعلام",
+        "ربط الضمير بالمرفق وتلخيص اقتباسي"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_ai_core_request.py",
+          "tests/test_ai_core_resource_binding.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "resource_binding_scope": "Actual second-file summary, Word export and explicit resume; arbitrary editing remains unproved. Unselected source changes do not invalidate the selected source; selected-source changes/revocation prevent publication or readback.",
+        "source_changed_during_final_run": false
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required"
+      },
+      "blocker": [
+        "اتباع المعنى والأسلوب في كل ناتج مولد غير معتمد",
+        "لا إعادة صياغة حرة معتمدة من اختبار الاستخراج"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial"
+    },
+    {
+      "id": "AI-C02",
+      "name": "ذاكرة المشروع والاسترجاع وهوية المصدر",
+      "axes": [
+        {
+          "id": 3,
+          "name": "الذاكرة والسياق"
+        },
+        {
+          "id": 4,
+          "name": "البحث والمعرفة"
+        },
+        {
+          "id": 9,
+          "name": "الأمن والخصوصية"
+        }
+      ],
+      "linked_requirements": [
+        "AI-03",
+        "AI-10",
+        "AI-19"
+      ],
+      "implementation": {
+        "files": [
+          "backend/context_lineage.py",
+          "backend/skill_content.py",
+          "backend/knowledge.py"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 9,
+            "slug": "hybrid-retrieval",
+            "version": "1.1.0"
+          },
+          {
+            "number": 35,
+            "slug": "file-content-reading",
+            "version": "1.0.0"
+          },
+          {
+            "number": 38,
+            "slug": "memory-retrieval",
+            "version": "1.0.0"
+          },
+          {
+            "number": 39,
+            "slug": "memory-deletion",
+            "version": "1.0.0"
+          },
+          {
+            "number": 40,
+            "slug": "tenant-memory-isolation",
+            "version": "1.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "هوية المشروع والجلسة",
+        "مراجع مصدر ونسخة",
+        "استعلام ضمن النطاق"
+      ],
+      "outputs": [
+        "مقاطع أو ذاكرة مصرح بها",
+        "حجب مصدر متغير أو محذوف",
+        "بيان نطاق الاسترجاع"
+      ],
+      "dependencies": [
+        "SQLite",
+        "Guard",
+        "فهرس المشروع"
+      ],
+      "permissions": [
+        "إعادة تفويض القراءة والتسليم",
+        "الذاكرة الشخصية محجوبة"
+      ],
+      "supported_scope": [
+        "حفظ وقراءة ذاكرة مشروع من نفس قاعدة البيانات",
+        "إبطال النسخ والمشتقات المفحوصة"
+      ],
+      "gap": [
+        "التذكر الدلالي العام ومراقبة كل مشتق خارج النطاق غير مثبتين",
+        "إعادة فتح lifespan ليست اختبار كل خدمة موزعة"
+      ],
+      "fix": [
+        "إعادة استخدام الإصدارات والحذف والعزل القائم",
+        "تغطية موارد مرشحة مع إعلان النقص"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_skill_refinement_memory.py",
+          "tests/test_project_memory_versions.py",
+          "tests/test_ai_core_evidence_api.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "source_changed_during_final_run": false
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required"
+      },
+      "blocker": [
+        "التذكر الدلالي العام ومراقبة كل مشتق خارج النطاق غير مثبتين",
+        "إعادة فتح lifespan ليست اختبار كل خدمة موزعة"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial",
+      "learning_extension": {
+        "version": "learning-v1",
+        "implementation": "implemented_with_explicit_partial_scope",
+        "user_path": "LearningPanel -> learning_api -> existing guard/SQLite -> verifier/evaluator -> conversation context",
+        "files": [
+          "backend/learning.py",
+          "backend/learning_api.py",
+          "backend/learning_verification.py",
+          "backend/learning_evaluation.py",
+          "backend/learning_policy.py",
+          "training/learning_data.py",
+          "frontend/src/LearningPanel.tsx"
+        ],
+        "requirements": [
+          "LEARN-001..040"
+        ],
+        "report": "reports/learning-20261116/evaluation/delivery-v2/LEARNING_RESULTS.json",
+        "totals": {
+          "passed": 22,
+          "partial": 16,
+          "blocked": 2,
+          "failed": 0,
+          "skipped": 0,
+          "not_applicable": 0
+        },
+        "evidence_scope": "189 local tests; separate real Chrome and local Ollama receipts, no generic quality certification",
+        "source_reference": "reports/learning-20261116/final-source-manifest.json",
+        "policy": "docs/LEARNING_STATE.md",
+        "training_started": false,
+        "personal_memory_gate_bypassed": false,
+        "new_skill_count": 0,
+        "remaining": [
+          "downstream chart/file regeneration",
+          "tool contract repair witness",
+          "personal memory security acceptance",
+          "multi-reviewer factual resolution"
+        ],
+        "ci": "reports/learning-20261116/ci-delivery-v2/ci.json",
+        "browser": "reports/learning-20261116/ui/2026-11-16T15-18-49.077Z/report.json",
+        "live_model": "reports/learning-20261116/live-model-final.json"
+      }
+    },
+    {
+      "id": "AI-C03",
+      "name": "المراجع والاقتباسات وتغطية البحث",
+      "axes": [
+        {
+          "id": 4,
+          "name": "البحث والمعرفة"
+        },
+        {
+          "id": 6,
+          "name": "التحقق"
+        },
+        {
+          "id": 9,
+          "name": "الأمن والخصوصية"
+        }
+      ],
+      "linked_requirements": [
+        "AI-08",
+        "AI-09",
+        "AI-10"
+      ],
+      "implementation": {
+        "files": [
+          "backend/research_answer.py",
+          "backend/grounding.py",
+          "backend/research.py"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 7,
+            "slug": "fact-checking",
+            "version": "1.0.0"
+          },
+          {
+            "number": 8,
+            "slug": "citation-grounding",
+            "version": "1.1.0"
+          },
+          {
+            "number": 32,
+            "slug": "primary-source-search",
+            "version": "1.0.0"
+          },
+          {
+            "number": 33,
+            "slug": "freshness-check",
+            "version": "1.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "سؤال",
+        "مقاطع مصرح بها بمواقع وإصدارات",
+        "خرج نموذج غير موثوق"
+      ],
+      "outputs": [
+        "ادعاءات متحققة بنيويًا أو رفض",
+        "اقتباسات دقيقة",
+        "تغطية وحدود حداثة معلنة"
+      ],
+      "dependencies": [
+        "مصادر مسجلة",
+        "محول مزود محلي عند التوليد"
+      ],
+      "permissions": [
+        "صلاحية المصدر الحالية",
+        "لا وصول شبكي دون تفويض"
+      ],
+      "supported_scope": [
+        "أرقام داخل الاقتباس لا في نص بعيد",
+        "رفض إجمالي من نطاق ناقص",
+        "فصل fetch عن publication/event"
+      ],
+      "gap": [
+        "مطابقة الاقتباس ليست استلزامًا دلاليًا عامًا",
+        "النقل المتشابه ليس فحص استقلال بحث كامل"
+      ],
+      "fix": [
+        "منع20/200 عند الاستشهاد",
+        "تحقق قبل بث وحفظ جواب مؤسس على مصادر",
+        "تقييد إجمالي الجدول وتوثيق التغطية"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_ai_core_evidence.py",
+          "tests/test_ai_core_evidence_api.py",
+          "tests/test_ai_core_grounded_chat.py",
+          "tests/test_grounded_repair.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "required_numeric_unit_nodes": [
+          "tests/test_ai_core_evidence.py::test_known_unit_cannot_be_swapped_even_in_inference",
+          "tests/test_ai_core_evidence.py::test_known_unit_cannot_be_borrowed_from_another_number_or_uncited_sentence",
+          "tests/test_ai_core_grounded_chat.py::test_ordinary_grounded_rejects_known_unit_swap_before_stream_and_storage"
+        ],
+        "separate_live_report": "reports/ai-core-continuation-20261116/evidence/fresh-final-live.json",
+        "separate_live_result": "2/3 correction criteria completed; third partial/reference-only; fresh engineering sample, not human-blind benchmark",
+        "revocation_support_nodes": [
+          "tests/test_ai_core_resource_binding.py::test_selected_file_change_or_revocation_withholds_readback_and_replay",
+          "tests/test_ai_core_resource_binding.py::test_selected_file_mutation_during_summary_blocks_publication"
+        ],
+        "source_changed_during_final_run": false
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required"
+      },
+      "blocker": [
+        "مطابقة الاقتباس ليست استلزامًا دلاليًا عامًا",
+        "النقل المتشابه ليس فحص استقلال بحث كامل"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial",
+      "notes": "docs/AI_CORE_EVIDENCE_NOTES.md"
+    },
+    {
+      "id": "AI-C04",
+      "name": "الحساب والمنطق والجداول والرسوم الأصلية",
+      "axes": [
+        {
+          "id": 5,
+          "name": "الأدوات"
+        },
+        {
+          "id": 6,
+          "name": "التحقق"
+        },
+        {
+          "id": 8,
+          "name": "الملفات والوسائط"
+        },
+        {
+          "id": 11,
+          "name": "السرعة والتكلفة"
+        }
+      ],
+      "linked_requirements": [
+        "AI-05",
+        "AI-07",
+        "AI-11",
+        "AI-12",
+        "AI-13",
+        "AI-17",
+        "MATH-001",
+        "MATH-002",
+        "MATH-003",
+        "MATH-004",
+        "MATH-005",
+        "MATH-006",
+        "MATH-007",
+        "MATH-008",
+        "MATH-009",
+        "MATH-010",
+        "MATH-011",
+        "MATH-012",
+        "MATH-013",
+        "MATH-014",
+        "MATH-015",
+        "MATH-016",
+        "MATH-017",
+        "MATH-018",
+        "MATH-019",
+        "MATH-020",
+        "MATH-021",
+        "MATH-022",
+        "MATH-023",
+        "MATH-024",
+        "MATH-025",
+        "MATH-026",
+        "MATH-027",
+        "MATH-028",
+        "MATH-029",
+        "MATH-030",
+        "MATH-031",
+        "MATH-032",
+        "MATH-033",
+        "MATH-034",
+        "MATH-035",
+        "MATH-036",
+        "MATH-037",
+        "MATH-038",
+        "MATH-039",
+        "MATH-040",
+        "MATH-041",
+        "MATH-042",
+        "MATH-043",
+        "MATH-044",
+        "MATH-045",
+        "MATH-046",
+        "MATH-047",
+        "MATH-048",
+        "MATH-049",
+        "MATH-050",
+        "MATH-051",
+        "MATH-052",
+        "MATH-053",
+        "MATH-054",
+        "MATH-055",
+        "MATH-056",
+        "MATH-057",
+        "MATH-058",
+        "MATH-059",
+        "MATH-060"
+      ],
+      "implementation": {
+        "files": [
+          "backend/reasoning_problem.py",
+          "backend/check_worker.py",
+          "backend/skill_data.py",
+          "backend/reasoning_math.py",
+          "backend/math_expression.py",
+          "backend/math_symbolic.py",
+          "backend/math_discrete.py",
+          "backend/math_wording.py",
+          "frontend/src/MathInputHelp.tsx"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 66,
+            "slug": "csv-import-export",
+            "version": "3.0.0"
+          },
+          {
+            "number": 67,
+            "slug": "table-joins",
+            "version": "3.0.0"
+          },
+          {
+            "number": 72,
+            "slug": "descriptive-statistics",
+            "version": "3.0.0"
+          },
+          {
+            "number": 70,
+            "slug": "data-profiling",
+            "version": "3.0.0"
+          },
+          {
+            "number": 69,
+            "slug": "spreadsheet-charts",
+            "version": "3.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "تعبير أو صيغة لغوية حسابية محدودة",
+        "جدول بعقد أنواع وقواعد معلنة",
+        "XLSX محدود"
+      ],
+      "outputs": [
+        "نتيجة دقيقة بوحدة وأساس نسبة",
+        "جدول منظم أو خطأ معلن",
+        "مصنف ورسم ذو مراجع بيانات"
+      ],
+      "dependencies": [
+        "المحرك الحسابي الحالي",
+        "عامل تحويل مثبت للمسار المعزول",
+        "قالب XLSX قائم"
+      ],
+      "permissions": [
+        "مصادر محددة ومصرح بها",
+        "لا صيغ خارجية أو ماكرو"
+      ],
+      "supported_scope": [
+        "نسب ووحدات محددة",
+        "CSV عربي وترميز وفاصل صريح",
+        "ربط ووزن وصفر ونقص",
+        "رسم XML مرتبط بالبيانات"
+      ],
+      "gap": [
+        "التحليل السببي والتوقع والتسرب الزمني غير مثبتة",
+        "العرض الأصلي والتحديث التلقائي لكل المشتقات منفصلان"
+      ],
+      "fix": [
+        "حفظ المعرف العربي وتطبيع الكمي فقط",
+        "رفض فقد دقة عددي صامت",
+        "محور أعمدة يبدأ بصفر عند المناسب ووحدة آلاف صريحة",
+        "قواعد حساب محدودة لا حفظ أجوبة"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_ai_core_data.py",
+          "tests/test_ai_core_reasoning.py",
+          "tests/test_ai_core_data_live.py",
+          "tests/test_ai_core_problem_api.py",
+          "tests/test_ai_core_engine_version.py",
+          "tests/test_ai_core_forecast.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "parameter_binding": "AI-07-T01..T05 explicit pytest IDs; failure of another parameter is not attributed to this case",
+        "separate_live_report": "reports/ai-core-continuation-20261116/data/final/api-live.json",
+        "separate_live_result": "6 synthetic API/Docker operations; declared feature review and supplied scenario; no fitted model evaluation",
+        "engine_compatibility_scope": "The local profile selects seven deterministic version contracts, excludes the opt-in old-image Docker test; incompatible or missing data-engine version cannot publish output.",
+        "engine_live_report": "reports/ai-core-continuation-20261116/data/final/forecast-api.xml",
+        "source_changed_during_final_run": false
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required"
+      },
+      "blocker": [
+        "التحليل السببي والتوقع والتسرب الزمني غير مثبتة",
+        "العرض الأصلي والتحديث التلقائي لكل المشتقات منفصلان"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial",
+      "notes": [
+        "docs/AI_CORE_DATA_NOTES.md",
+        "docs/AI_CORE_REASONING_NOTES.md"
+      ],
+      "mathematics_update": {
+        "version": "math-v1",
+        "date": "2026-11-16",
+        "implementation": "implemented_with_declared_operation_domain_and_resource_limits",
+        "binding": "existing authenticated answer_mode=problem -> fixed checker -> persisted reasoning receipt -> existing chat UI",
+        "input": "Original text preserved; bounded Arabic/English mathematical grammar or strict operation JSON; exact decimal strings",
+        "output": "Separate execution status, problem status, exact/approximate/conditional/parametric kind, checks and completeness",
+        "dependencies": {
+          "sympy": "1.14.0",
+          "mpmath": "1.3.0",
+          "runtime": "source Python, existing Windows process job"
+        },
+        "permissions": "Existing paired local user and conversation/project checks; no model or retrieval or arbitrary user code",
+        "verification_report": "reports/math-reasoning-20261116/evaluation/final-v2/MATH_REASONING_RESULTS.json",
+        "api_test": "tests/test_math_api.py",
+        "ui_report_reference": "reports/math-reasoning-20261116/final-summary.json#/ui",
+        "source_reference": "reports/math-reasoning-20261116/final-source-manifest.json",
+        "configuration_reference": "reports/math-reasoning-20261116/evaluation/final-v2/MATH_REASONING_RESULTS.json#/configuration",
+        "fixes": [
+          "Original denominator/root/log and explicit constraints retained",
+          "Exact large integers and rational decimal transport",
+          "Countermodels and inconsistent premises distinguished",
+          "Numerical variable error bound separate from residual",
+          "Endpoint root does not imply complete root set",
+          "Incompatible unit additions retain HTTP422 before save"
+        ],
+        "remaining": [
+          "General natural-language and equation OCR not certified",
+          "No general SMT or formal proof assistant; MATH040 explicitly mocked",
+          "Bounded algebra/calculus/optimization scope; unresolved sets retained",
+          "Native Windows package acceptance deferred; source runtime only",
+          "Some engine verification explanations remain English"
+        ],
+        "notes": "docs/MATH_REASONING_STATE.md",
+        "not_evidence_of_model_training_or_general_intelligence": true,
+        "old_ai_core_100_statuses_not_promoted": true
+      }
+    },
+    {
+      "id": "AI-C05",
+      "name": "تنفيذ المهمة والإلغاء والاستئناف",
+      "axes": [
+        {
+          "id": 5,
+          "name": "الأدوات"
+        },
+        {
+          "id": 7,
+          "name": "المهام الطويلة"
+        },
+        {
+          "id": 9,
+          "name": "الأمن والخصوصية"
+        },
+        {
+          "id": 11,
+          "name": "السرعة والتكلفة"
+        }
+      ],
+      "linked_requirements": [
+        "AI-14",
+        "AI-15",
+        "AI-16",
+        "AI-20"
+      ],
+      "implementation": {
+        "files": [
+          "backend/skill_execution.py",
+          "backend/skill_lifecycle.py",
+          "backend/skills.py",
+          "backend/skill_operations.py"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 47,
+            "slug": "task-cancellation",
+            "version": "1.0.0"
+          },
+          {
+            "number": 48,
+            "slug": "task-checkpoints",
+            "version": "1.0.0"
+          },
+          {
+            "number": 49,
+            "slug": "cost-budgeting",
+            "version": "1.0.0"
+          },
+          {
+            "number": 112,
+            "slug": "idempotent-actions",
+            "version": "5.0.0"
+          },
+          {
+            "number": 113,
+            "slug": "execution-timeouts",
+            "version": "5.0.0"
+          },
+          {
+            "number": 117,
+            "slug": "workflow-state-machine",
+            "version": "5.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "عملية موثوقة وهوية ومفتاح طلب",
+        "نسخة checkpoint",
+        "حد وقت وميزانية"
+      ],
+      "outputs": [
+        "حالة وإيصال حقيقيان",
+        "مخرجات محفوظة أو أثر مجهول",
+        "استئناف مسموح أو رفض"
+      ],
+      "dependencies": [
+        "معاملات SQLite",
+        "سياج الحجز",
+        "العامل الحالي"
+      ],
+      "permissions": [
+        "إعادة فحص المصدر والجلسة",
+        "لا إعادة أثر مجهول تلقائيًا"
+      ],
+      "supported_scope": [
+        "احتفاظ بمخرج ملتزم قبل مهلة مفحوصة",
+        "استئناف لا يعيد ذلك الملف",
+        "إلغاء يتتبع توقف العامل"
+      ],
+      "gap": [
+        "كل نافذة فقد رد خارجي لا يغطيها السيناريو المحلي",
+        "تغيير لغة فرع دون إعادة تحليل غير مثبت"
+      ],
+      "fix": [
+        "حفظ مخرج ناجح ونقطة استئناف عند المهلة ضمن السياسة",
+        "عدم تجاوز سحب الصلاحية عند الاحتفاظ"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_ai_core_recovery.py",
+          "tests/test_skill_batch05_execution.py",
+          "tests/test_skill_batch02_lifecycle.py",
+          "tests/test_ai_core_report_revision.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "source_changed_during_final_run": false,
+        "presentation_scope": "Saved narrative/analysis tables to new DOCX; no repeated analysis, not all source derivative propagation"
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required"
+      },
+      "blocker": [
+        "كل نافذة فقد رد خارجي لا يغطيها السيناريو المحلي",
+        "تغيير لغة فرع دون إعادة تحليل غير مثبت"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial"
+    },
+    {
+      "id": "AI-C06",
+      "name": "الملفات والتسليم والصوت والرؤية",
+      "axes": [
+        {
+          "id": 6,
+          "name": "التحقق"
+        },
+        {
+          "id": 8,
+          "name": "الملفات والوسائط"
+        },
+        {
+          "id": 10,
+          "name": "تجربة الاستخدام"
+        }
+      ],
+      "linked_requirements": [
+        "AI-04",
+        "AI-13",
+        "AI-17",
+        "AI-18"
+      ],
+      "implementation": {
+        "files": [
+          "backend/skill_artifacts.py",
+          "backend/skill_files.py",
+          "backend/document_extract.py",
+          "backend/voice_audio.py"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 13,
+            "slug": "pdf-reading",
+            "version": "1.0.0"
+          },
+          {
+            "number": 14,
+            "slug": "ocr-extraction",
+            "version": "1.0.0"
+          },
+          {
+            "number": 63,
+            "slug": "spreadsheet-reading",
+            "version": "3.0.0"
+          },
+          {
+            "number": 46,
+            "slug": "artifact-delivery",
+            "version": "1.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "ملف أو صورة أو صوت مصرح",
+        "الصيغة والنطاق واللغة"
+      ],
+      "outputs": [
+        "ملف أو قراءة محفوظة بهوية ونسخة",
+        "روابط تخضع للتفويض",
+        "حدود قراءة أو عرض معلنة"
+      ],
+      "dependencies": [
+        "قارئات وكتّاب مثبتة",
+        "عامل التحويل/الصوت وفق الإعداد",
+        "خطوط ومحركات عرض مناسبة"
+      ],
+      "permissions": [
+        "عدم نقل خاص إلى مزود غير معتمد",
+        "الروابط تعيد تفويض المصدر"
+      ],
+      "supported_scope": [
+        "فحص البنية والعدد والصيغ والهوية",
+        "مسار صوت/رؤية محلي محدود بحسب المحرك"
+      ],
+      "gap": [
+        "لا قبول شامل لتخطيط Office أو OCR العربي أو نطق عربي",
+        "العينة المصورة/الصوت البشري الملتبس تحتاج مراجعة"
+      ],
+      "fix": [
+        "إعادة استخدام التسليم والهوية والنسخ",
+        "عدم تحويل فحص XML إلى ادعاء عرض أصلي"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_skill_artifacts.py",
+          "tests/test_document_extract.py",
+          "tests/test_document_vision.py",
+          "tests/test_voice_audio.py",
+          "tests/test_ai_core_visual.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "source_changed_during_final_run": false,
+        "visual_evidence": "reports/ai-core-continuation-20261116/visual/visual-review-final.json"
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required"
+      },
+      "blocker": [
+        "لا قبول شامل لتخطيط Office أو OCR العربي أو نطق عربي",
+        "العينة المصورة/الصوت البشري الملتبس تحتاج مراجعة"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial"
+    },
+    {
+      "id": "AI-C07",
+      "name": "المزود والسياق والحدود",
+      "axes": [
+        {
+          "id": 1,
+          "name": "جودة النموذج"
+        },
+        {
+          "id": 3,
+          "name": "الذاكرة والسياق"
+        },
+        {
+          "id": 9,
+          "name": "الأمن والخصوصية"
+        },
+        {
+          "id": 11,
+          "name": "السرعة والتكلفة"
+        }
+      ],
+      "linked_requirements": [
+        "AI-06",
+        "AI-20"
+      ],
+      "implementation": {
+        "files": [
+          "backend/providers.py",
+          "backend/reasoning.py",
+          "backend/grounding.py"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 107,
+            "slug": "model-capability-check",
+            "version": "5.0.0"
+          },
+          {
+            "number": 108,
+            "slug": "token-budgeting",
+            "version": "5.0.0"
+          },
+          {
+            "number": 109,
+            "slug": "structured-output-validation",
+            "version": "5.0.0"
+          },
+          {
+            "number": 110,
+            "slug": "provider-fallback",
+            "version": "5.0.0"
+          },
+          {
+            "number": 111,
+            "slug": "retry-backoff",
+            "version": "5.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "طلب وإعداد محلي معلوم",
+        "قدرات معلنة أو مفحوصة",
+        "ميزانية وقيود خصوصية"
+      ],
+      "outputs": [
+        "خرج محدد أو عائق",
+        "إيصال استخدام وحدود",
+        "حالة فشل أو إلغاء صادقة"
+      ],
+      "dependencies": [
+        "نموذج محلي مثبت عند الاستدلال",
+        "محول المزود الحالي"
+      ],
+      "permissions": [
+        "لا بديل سحابي ضمن local-only",
+        "لا زيادة ميزانية تلقائية"
+      ],
+      "supported_scope": [
+        "عقود وسياق وبديل محلي وحدود مثبتة بعينات",
+        "تقييم حي فقط بإيصال مستقل حديث"
+      ],
+      "gap": [
+        "اختبار العقد ليس جودة النموذج",
+        "لا تغيير أوزان أو اعتماد استدلال عام"
+      ],
+      "fix": [
+        "إعادة استخدام طبقة المزود والميزانية",
+        "حفظ قيود السياق أثناء التحقق المؤسس على مصادر"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_skill_batch05_providers.py",
+          "tests/test_ai_core_evidence.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "separate_live_report": "reports/ai-core-20261116/logic-semantic-review.json",
+        "separate_live_result": "Four original logical conclusions met, fifth partial before and after; six varied conclusions met according to developer-agent semantic review, not blind/human benchmark",
+        "source_changed_during_final_run": false
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required",
+        "separate_live_model": {
+          "provider": "Ollama",
+          "provider_version": "0.40.16",
+          "model": "qwen3:4b-instruct",
+          "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+          "contract_suite_uses_this_model": false,
+          "full_settings_reference": "docs/AI_CORE_REASONING_NOTES.md"
+        }
+      },
+      "blocker": [
+        "اختبار العقد ليس جودة النموذج",
+        "لا تغيير أوزان أو اعتماد استدلال عام"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial",
+      "notes": "docs/AI_CORE_REASONING_NOTES.md"
+    },
+    {
+      "id": "AI-C08",
+      "name": "بيانات التقييم وCI وبصمة الأدلة",
+      "axes": [
+        {
+          "id": 12,
+          "name": "التقييم والتحسين"
+        },
+        {
+          "id": 11,
+          "name": "السرعة والتكلفة"
+        }
+      ],
+      "linked_requirements": [
+        "AI-01",
+        "AI-02",
+        "AI-03",
+        "AI-04",
+        "AI-05",
+        "AI-06",
+        "AI-07",
+        "AI-08",
+        "AI-09",
+        "AI-10",
+        "AI-11",
+        "AI-12",
+        "AI-13",
+        "AI-14",
+        "AI-15",
+        "AI-16",
+        "AI-17",
+        "AI-18",
+        "AI-19",
+        "AI-20"
+      ],
+      "implementation": {
+        "files": [
+          "backend/ai_core_evaluation.py",
+          "scripts/run_ai_core_evaluation.py",
+          "scripts/run_skill_regression.py",
+          "scripts/run_math_evaluation.py",
+          "evaluation/math/MATH_REASONING_EVALS.json",
+          "evaluation/math/independent-sample.json"
+        ],
+        "state": "implemented_in_current_source_not_a_release_claim"
+      },
+      "registration": {
+        "catalog": "config/skills-batch-01.json",
+        "catalog_version": "5.0.0",
+        "existing_skills": [
+          {
+            "number": 124,
+            "slug": "llm-evaluation-dataset",
+            "version": "5.0.0"
+          },
+          {
+            "number": 125,
+            "slug": "skill-regression-suite",
+            "version": "5.0.0"
+          },
+          {
+            "number": 120,
+            "slug": "ci-pipeline",
+            "version": "5.0.0"
+          }
+        ],
+        "new_skill_registry_created": false
+      },
+      "inputs": [
+        "100 حالة ثابتة",
+        "12 عينة حتمية جديدة مجمدة",
+        "محددات pytest موثوقة"
+      ],
+      "outputs": [
+        "100 نتيجة بست حالات منفصلة",
+        "بصمة مصدر/بيانات/تكوين",
+        "XML حديث وتقرير نطاق"
+      ],
+      "dependencies": [
+        "pytest الموجود",
+        "بيئة Python الحالية",
+        "هوية Windows لاختبارات DPAPI الاصطناعية"
+      ],
+      "permissions": [
+        "لا أمر أو تقرير خارجي كمدخل تشغيل",
+        "لا بيانات إنتاج أو اعتماد نشر"
+      ],
+      "supported_scope": [
+        "مكون/API/mock مصنّف",
+        "CI محلي بنفس عملية pytest",
+        "ملفات النتائج الحالية فقط"
+      ],
+      "gap": [
+        "الفحوص الحية والدلالية والبصرية خارج الملف المحلي",
+        "تغير المصدر أثناء التشغيل يمنع المقارنة النهائية"
+      ],
+      "fix": [
+        "عدم ترقية اختبار مقارب إلى قبول الحالة",
+        "لا نجاح للمتجاوز والمتعذر",
+        "لا مضاعفة workflow أو تشغيل الاختبار مرتين في CI"
+      ],
+      "verification": {
+        "tests": [
+          "tests/test_ai_core_evaluation.py"
+        ],
+        "result": "local_contracts_executed; overall readiness remains partial; consult per-case evidence and unverified criteria",
+        "current_contract_report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+        "model_or_native_visual_certification": false,
+        "binding_registry": "backend/ai_core_evaluation.py::EXACT/RELATED",
+        "binding_policy": "Every declared required node must be present in the fresh run; missing is blocked, any failure fails. Related legacy contracts remain partial.",
+        "source_changed_during_final_run": false
+      },
+      "source": {
+        "baseline_manifest": "reports/ai-core-continuation-20261116/baseline-manifest.json",
+        "reason": "Fingerprint resolved from fresh execution receipt; not embedded recursively in fingerprinted source.",
+        "final_source_fingerprint_reference": "reports/ai-core-continuation-20261116/ci-final/ci.json#/source_fingerprint"
+      },
+      "configuration": {
+        "python": "3.12.10",
+        "platform": "Windows host; local source execution",
+        "contract_provider": "none or explicitly mocked",
+        "model_version": null,
+        "live_configuration": "separate current receipt required"
+      },
+      "blocker": [
+        "الفحوص الحية والدلالية والبصرية خارج الملف المحلي",
+        "تغير المصدر أثناء التشغيل يمنع المقارنة النهائية"
+      ],
+      "technical_prompt_mapping": {
+        "state": "unmapped",
+        "reason": "Independent TECH prompt files were not found in the inspected repository; no225-skill claim"
+      },
+      "state": "partial",
+      "mathematics_evaluation": {
+        "dataset": "evaluation/math/MATH_REASONING_EVALS.json",
+        "cases": 60,
+        "profile": "structured operation + concise text + original reference wording; MATH040 trusted adapter simulation only",
+        "additional_sample": "evaluation/math/independent-sample.json",
+        "additional_scope": "12 frozen visible engineering variants; not blind or family-disjoint",
+        "report": "reports/math-reasoning-20261116/evaluation/final-v2/MATH_REASONING_RESULTS.json",
+        "baseline": "reports/math-reasoning-20261116/evaluation/baseline/baseline.json",
+        "ci": "reports/math-reasoning-20261116/ci-final-v2/ci.json",
+        "gates": "Missing or failed checks are not passed; source changes invalidate the final run; no release seal or publishing",
+        "source_reference": "reports/math-reasoning-20261116/final-source-manifest.json",
+        "old_ai_core_100_statuses_not_promoted": true
+      },
+      "learning_extension": {
+        "version": "learning-v1",
+        "implementation": "implemented_with_explicit_partial_scope",
+        "user_path": "LearningPanel -> learning_api -> existing guard/SQLite -> verifier/evaluator -> conversation context",
+        "files": [
+          "backend/learning.py",
+          "backend/learning_api.py",
+          "backend/learning_verification.py",
+          "backend/learning_evaluation.py",
+          "backend/learning_policy.py",
+          "training/learning_data.py",
+          "frontend/src/LearningPanel.tsx"
+        ],
+        "requirements": [
+          "LEARN-001..040"
+        ],
+        "report": "reports/learning-20261116/evaluation/delivery-v2/LEARNING_RESULTS.json",
+        "totals": {
+          "passed": 22,
+          "partial": 16,
+          "blocked": 2,
+          "failed": 0,
+          "skipped": 0,
+          "not_applicable": 0
+        },
+        "evidence_scope": "189 local tests; separate real Chrome and local Ollama receipts, no generic quality certification",
+        "source_reference": "reports/learning-20261116/final-source-manifest.json",
+        "policy": "docs/LEARNING_STATE.md",
+        "training_started": false,
+        "personal_memory_gate_bypassed": false,
+        "new_skill_count": 0,
+        "remaining": [
+          "downstream chart/file regeneration",
+          "tool contract repair witness",
+          "personal memory security acceptance",
+          "multi-reviewer factual resolution"
+        ],
+        "ci": "reports/learning-20261116/ci-delivery-v2/ci.json",
+        "browser": "reports/learning-20261116/ui/2026-11-16T15-18-49.077Z/report.json",
+        "live_model": "reports/learning-20261116/live-model-final.json"
+      }
+    }
+  ],
+  "ui_evidence": {
+    "path": "reports/ai-core-continuation-20261116/ui/2026-11-16T13-36-23.261Z/report.json",
+    "scope": "6 actual Chromium/API/Docker scenarios; local prose translation plus deterministic EN/HE reports; AR mobile; no native Windows test",
+    "inherited_as_general_acceptance": false
+  },
+  "counting_policy": "Eight shared implementation records, not eight new engines. Existing skill references link to catalog definitions and are not counted as new capabilities.",
+  "final_local_evidence": {
+    "report": "reports/ai-core-continuation-20261116/ci-final/AI_CORE_EVAL_RESULTS.json",
+    "source_and_configuration": "reports/ai-core-continuation-20261116/ci-final/ci.json",
+    "overall": "partial",
+    "accepted_as_release": false
+  }
+}

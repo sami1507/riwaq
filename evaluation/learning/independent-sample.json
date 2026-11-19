@@ -1,0 +1,142 @@
+{
+  "version": "learning-engineering-extra-1",
+  "status": "frozen_before_candidate_evaluator_implementation",
+  "blind": false,
+  "scope": "evaluator-only synthetic resolver samples; not available to application, retrieval, candidates, training or tuning",
+  "time_reference": "2026-11-16T15:00:00+00:00",
+  "cases": [
+    {
+      "id": "LEARN-EXTRA-001",
+      "rule": {
+        "id": "h-project",
+        "version": 1,
+        "scope": "project",
+        "conversation_id": null,
+        "applicability": {
+          "task": "any",
+          "expires_at": null
+        },
+        "rule": {
+          "kind": "language",
+          "value": "he"
+        }
+      },
+      "question": "Compare the two supplied figures.",
+      "conversation_id": "session-k",
+      "task": "comparison",
+      "at": "2026-11-16T15:00:00+00:00",
+      "expected_selected": true
+    },
+    {
+      "id": "LEARN-EXTRA-002",
+      "rule": {
+        "id": "h-project",
+        "version": 1,
+        "scope": "project",
+        "conversation_id": null,
+        "applicability": {
+          "task": "any",
+          "expires_at": null
+        },
+        "rule": {
+          "kind": "language",
+          "value": "en"
+        }
+      },
+      "question": "قارن الخيارين واكتب بالعربية.",
+      "conversation_id": "session-k",
+      "task": "comparison",
+      "at": "2026-11-16T15:00:00+00:00",
+      "expected_selected": false
+    },
+    {
+      "id": "LEARN-EXTRA-003",
+      "rule": {
+        "id": "h-project",
+        "version": 1,
+        "scope": "conversation",
+        "conversation_id": "different-session",
+        "applicability": {
+          "task": "any",
+          "expires_at": null
+        },
+        "rule": {
+          "kind": "tone",
+          "value": "formal"
+        }
+      },
+      "question": "Describe the evidence.",
+      "conversation_id": "session-k",
+      "task": "comparison",
+      "at": "2026-11-16T15:00:00+00:00",
+      "expected_selected": false
+    },
+    {
+      "id": "LEARN-EXTRA-004",
+      "rule": {
+        "id": "h-project",
+        "version": 1,
+        "scope": "project",
+        "conversation_id": null,
+        "applicability": {
+          "task": "translation",
+          "expires_at": null
+        },
+        "rule": {
+          "kind": "brevity",
+          "value": "detailed"
+        }
+      },
+      "question": "Describe the evidence.",
+      "conversation_id": "session-k",
+      "task": "comparison",
+      "at": "2026-11-16T15:00:00+00:00",
+      "expected_selected": false
+    },
+    {
+      "id": "LEARN-EXTRA-005",
+      "rule": {
+        "id": "h-project",
+        "version": 1,
+        "scope": "project",
+        "conversation_id": null,
+        "applicability": {
+          "task": "any",
+          "expires_at": null
+        },
+        "rule": {
+          "kind": "terminology",
+          "source": "latent orbit",
+          "target": "مدار كامن"
+        }
+      },
+      "question": "Explain latent orbit.",
+      "conversation_id": "session-k",
+      "task": "comparison",
+      "at": "2026-11-16T15:00:00+00:00",
+      "expected_selected": true
+    },
+    {
+      "id": "LEARN-EXTRA-006",
+      "rule": {
+        "id": "h-project",
+        "version": 1,
+        "scope": "project",
+        "conversation_id": null,
+        "applicability": {
+          "task": "any",
+          "expires_at": "2026-11-16T15:00:00+00:00"
+        },
+        "rule": {
+          "kind": "language",
+          "value": "ar"
+        }
+      },
+      "question": "Explain the observations.",
+      "conversation_id": "session-k",
+      "task": "comparison",
+      "at": "2026-11-16T15:00:00+00:00",
+      "expected_selected": false
+    }
+  ]
+}

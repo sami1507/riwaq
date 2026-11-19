@@ -1,0 +1,19 @@
+{
+  "version": "ai-core-independent-sample-2026-11-16.1",
+  "provenance": "New synthetic engineering sample authored before this AI-core implementation. Visible to developers; not a blinded holdout or human-reviewed semantic gold set.",
+  "reference_policy": "Do not replace expectations with model or implementation output.",
+  "cases": [
+    {"id": "AI-FRESH-01", "executor": "arithmetic", "input": "240*(1-0.15)", "exact": "204"},
+    {"id": "AI-FRESH-02", "executor": "arithmetic", "input": "750+1.25*1000", "exact": "2000"},
+    {"id": "AI-FRESH-03", "executor": "arithmetic", "input": "(70-56)/56*100", "exact": "25"},
+    {"id": "AI-FRESH-04", "executor": "arithmetic", "input": "(4*25+6*70)/10", "exact": "52"},
+    {"id": "AI-FRESH-05", "executor": "arithmetic", "input": "(2+0+8)/3", "exact": "10/3"},
+    {"id": "AI-FRESH-06", "executor": "arithmetic_rejection", "input": "9/0", "expected": "rejected"},
+    {"id": "AI-FRESH-07", "executor": "arithmetic", "input": "١٨٫٢٥ × ٤", "exact": "73"},
+    {"id": "AI-FRESH-08", "executor": "arithmetic", "input": "0.07+0.14", "exact": "21/100"},
+    {"id": "AI-FRESH-09", "executor": "structured_integer", "input": "{\"count\":0}", "valid": true},
+    {"id": "AI-FRESH-10", "executor": "structured_integer", "input": "{\"count\":null}", "valid": false},
+    {"id": "AI-FRESH-11", "executor": "structured_integer", "input": "{\"count\":false}", "valid": false},
+    {"id": "AI-FRESH-12", "executor": "structured_integer", "input": "{\"count\":7,\"comment\":\"extra\"}", "valid": false}
+  ]
+}

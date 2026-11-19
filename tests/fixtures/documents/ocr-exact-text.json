@@ -1,0 +1,44 @@
+{
+  "purpose": "Synthetic extraction evaluation only; not training or production knowledge. Exact source text hashes do not establish OCR accuracy.",
+  "fixtures": [
+    {
+      "id": "eng",
+      "text": "The project contains 12 files.",
+      "direction": "ltr",
+      "font": "IBM Plex Sans",
+      "file": "IBMPlexSans-Regular.woff2",
+      "path": "tests/fixtures/documents/ocr-eng.png",
+      "width": 1200,
+      "height": 300,
+      "font_size": 48,
+      "text_sha256": "484c25da401a56a1e0e705b83e242b1e58f6d6c804570d78fa281c84d70d07a0",
+      "image_sha256": "61ac5ce8a134943f2b74d283487bda7ab6ad51e73423b914bd32a3687aac36c0"
+    },
+    {
+      "id": "ara",
+      "text": "يحتوي المشروع على 12 ملفا.",
+      "direction": "rtl",
+      "font": "IBM Plex Sans Arabic",
+      "file": "IBMPlexSansArabic-Regular.woff2",
+      "path": "tests/fixtures/documents/ocr-ara.png",
+      "width": 1200,
+      "height": 300,
+      "font_size": 48,
+      "text_sha256": "fdf11cfbf897d683e5bbd7c81c2ad1904089e9991fb08361194bac93e24b4a5b",
+      "image_sha256": "a39c6c14d91eb3545464045973305734236e2faafeb025ebac7350a27af9bf32"
+    },
+    {
+      "id": "heb",
+      "text": "הפרויקט מכיל 12 קבצים.",
+      "direction": "rtl",
+      "font": "IBM Plex Sans Hebrew",
+      "file": "IBMPlexSansHebrew-Regular.woff2",
+      "path": "tests/fixtures/documents/ocr-heb.png",
+      "width": 1200,
+      "height": 300,
+      "font_size": 48,
+      "text_sha256": "5d31765ef2c98fdd8ef02f6b01bc87018f0d5f6c71bdd48338fe3c8251f81838",
+      "image_sha256": "7a6020785fd3b70d78134e319140d17419a752d1ce1c4309fe1154e13e6b770c"
+    }
+  ]
+}

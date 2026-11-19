@@ -1,0 +1,1108 @@
+{
+  "version": "voice-languages-v1",
+  "reviewed_on": "2026-11-15",
+  "sources": [
+    "https://github.com/openai/whisper/blob/main/whisper/tokenizer.py",
+    "https://github.com/SYSTRAN/faster-whisper",
+    "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+    "https://www.rfc-editor.org/rfc/rfc5646.html"
+  ],
+  "standard": "BCP 47 preferred tags for UI; legacy Whisper jw maps from standard jv. This is a curated subset, not a general BCP47 parser.",
+  "notice": "Regions and groups are user preferences, not validated accent models or coverage. Every Arabic regional preference routes to engine ar. No dialect quality results exist. Chinese region/script preference does not prove Cantonese or output-script control.",
+  "aliases": {
+    "jw": "jv",
+    "iw": "he",
+    "in": "id"
+  },
+  "languages": [
+    {
+      "tag": "af",
+      "engine_code": "af",
+      "label_en": "Afrikaans",
+      "label_ar": "Afrikaans",
+      "kind": "language"
+    },
+    {
+      "tag": "am",
+      "engine_code": "am",
+      "label_en": "Amharic",
+      "label_ar": "Amharic",
+      "kind": "language"
+    },
+    {
+      "tag": "ar",
+      "engine_code": "ar",
+      "label_en": "Arabic",
+      "label_ar": "العربية",
+      "kind": "language"
+    },
+    {
+      "tag": "as",
+      "engine_code": "as",
+      "label_en": "Assamese",
+      "label_ar": "Assamese",
+      "kind": "language"
+    },
+    {
+      "tag": "az",
+      "engine_code": "az",
+      "label_en": "Azerbaijani",
+      "label_ar": "Azerbaijani",
+      "kind": "language"
+    },
+    {
+      "tag": "ba",
+      "engine_code": "ba",
+      "label_en": "Bashkir",
+      "label_ar": "Bashkir",
+      "kind": "language"
+    },
+    {
+      "tag": "be",
+      "engine_code": "be",
+      "label_en": "Belarusian",
+      "label_ar": "Belarusian",
+      "kind": "language"
+    },
+    {
+      "tag": "bg",
+      "engine_code": "bg",
+      "label_en": "Bulgarian",
+      "label_ar": "Bulgarian",
+      "kind": "language"
+    },
+    {
+      "tag": "bn",
+      "engine_code": "bn",
+      "label_en": "Bengali",
+      "label_ar": "Bengali",
+      "kind": "language"
+    },
+    {
+      "tag": "bo",
+      "engine_code": "bo",
+      "label_en": "Tibetan",
+      "label_ar": "Tibetan",
+      "kind": "language"
+    },
+    {
+      "tag": "br",
+      "engine_code": "br",
+      "label_en": "Breton",
+      "label_ar": "Breton",
+      "kind": "language"
+    },
+    {
+      "tag": "bs",
+      "engine_code": "bs",
+      "label_en": "Bosnian",
+      "label_ar": "Bosnian",
+      "kind": "language"
+    },
+    {
+      "tag": "ca",
+      "engine_code": "ca",
+      "label_en": "Catalan",
+      "label_ar": "Catalan",
+      "kind": "language"
+    },
+    {
+      "tag": "cs",
+      "engine_code": "cs",
+      "label_en": "Czech",
+      "label_ar": "Czech",
+      "kind": "language"
+    },
+    {
+      "tag": "cy",
+      "engine_code": "cy",
+      "label_en": "Welsh",
+      "label_ar": "Welsh",
+      "kind": "language"
+    },
+    {
+      "tag": "da",
+      "engine_code": "da",
+      "label_en": "Danish",
+      "label_ar": "Danish",
+      "kind": "language"
+    },
+    {
+      "tag": "de",
+      "engine_code": "de",
+      "label_en": "German",
+      "label_ar": "German",
+      "kind": "language"
+    },
+    {
+      "tag": "el",
+      "engine_code": "el",
+      "label_en": "Greek",
+      "label_ar": "Greek",
+      "kind": "language"
+    },
+    {
+      "tag": "en",
+      "engine_code": "en",
+      "label_en": "English",
+      "label_ar": "الإنجليزية",
+      "kind": "language"
+    },
+    {
+      "tag": "es",
+      "engine_code": "es",
+      "label_en": "Spanish",
+      "label_ar": "الإسبانية",
+      "kind": "language"
+    },
+    {
+      "tag": "et",
+      "engine_code": "et",
+      "label_en": "Estonian",
+      "label_ar": "Estonian",
+      "kind": "language"
+    },
+    {
+      "tag": "eu",
+      "engine_code": "eu",
+      "label_en": "Basque",
+      "label_ar": "Basque",
+      "kind": "language"
+    },
+    {
+      "tag": "fa",
+      "engine_code": "fa",
+      "label_en": "Persian",
+      "label_ar": "Persian",
+      "kind": "language"
+    },
+    {
+      "tag": "fi",
+      "engine_code": "fi",
+      "label_en": "Finnish",
+      "label_ar": "Finnish",
+      "kind": "language"
+    },
+    {
+      "tag": "fo",
+      "engine_code": "fo",
+      "label_en": "Faroese",
+      "label_ar": "Faroese",
+      "kind": "language"
+    },
+    {
+      "tag": "fr",
+      "engine_code": "fr",
+      "label_en": "French",
+      "label_ar": "الفرنسية",
+      "kind": "language"
+    },
+    {
+      "tag": "gl",
+      "engine_code": "gl",
+      "label_en": "Galician",
+      "label_ar": "Galician",
+      "kind": "language"
+    },
+    {
+      "tag": "gu",
+      "engine_code": "gu",
+      "label_en": "Gujarati",
+      "label_ar": "Gujarati",
+      "kind": "language"
+    },
+    {
+      "tag": "ha",
+      "engine_code": "ha",
+      "label_en": "Hausa",
+      "label_ar": "Hausa",
+      "kind": "language"
+    },
+    {
+      "tag": "haw",
+      "engine_code": "haw",
+      "label_en": "Hawaiian",
+      "label_ar": "Hawaiian",
+      "kind": "language"
+    },
+    {
+      "tag": "he",
+      "engine_code": "he",
+      "label_en": "Hebrew",
+      "label_ar": "العبرية",
+      "kind": "language"
+    },
+    {
+      "tag": "hi",
+      "engine_code": "hi",
+      "label_en": "Hindi",
+      "label_ar": "الهندية",
+      "kind": "language"
+    },
+    {
+      "tag": "hr",
+      "engine_code": "hr",
+      "label_en": "Croatian",
+      "label_ar": "Croatian",
+      "kind": "language"
+    },
+    {
+      "tag": "ht",
+      "engine_code": "ht",
+      "label_en": "Haitian Creole",
+      "label_ar": "Haitian Creole",
+      "kind": "language"
+    },
+    {
+      "tag": "hu",
+      "engine_code": "hu",
+      "label_en": "Hungarian",
+      "label_ar": "Hungarian",
+      "kind": "language"
+    },
+    {
+      "tag": "hy",
+      "engine_code": "hy",
+      "label_en": "Armenian",
+      "label_ar": "Armenian",
+      "kind": "language"
+    },
+    {
+      "tag": "id",
+      "engine_code": "id",
+      "label_en": "Indonesian",
+      "label_ar": "Indonesian",
+      "kind": "language"
+    },
+    {
+      "tag": "is",
+      "engine_code": "is",
+      "label_en": "Icelandic",
+      "label_ar": "Icelandic",
+      "kind": "language"
+    },
+    {
+      "tag": "it",
+      "engine_code": "it",
+      "label_en": "Italian",
+      "label_ar": "Italian",
+      "kind": "language"
+    },
+    {
+      "tag": "ja",
+      "engine_code": "ja",
+      "label_en": "Japanese",
+      "label_ar": "اليابانية",
+      "kind": "language"
+    },
+    {
+      "tag": "jv",
+      "engine_code": "jw",
+      "label_en": "Javanese",
+      "label_ar": "Javanese",
+      "kind": "language"
+    },
+    {
+      "tag": "ka",
+      "engine_code": "ka",
+      "label_en": "Georgian",
+      "label_ar": "Georgian",
+      "kind": "language"
+    },
+    {
+      "tag": "kk",
+      "engine_code": "kk",
+      "label_en": "Kazakh",
+      "label_ar": "Kazakh",
+      "kind": "language"
+    },
+    {
+      "tag": "km",
+      "engine_code": "km",
+      "label_en": "Khmer",
+      "label_ar": "Khmer",
+      "kind": "language"
+    },
+    {
+      "tag": "kn",
+      "engine_code": "kn",
+      "label_en": "Kannada",
+      "label_ar": "Kannada",
+      "kind": "language"
+    },
+    {
+      "tag": "ko",
+      "engine_code": "ko",
+      "label_en": "Korean",
+      "label_ar": "الكورية",
+      "kind": "language"
+    },
+    {
+      "tag": "la",
+      "engine_code": "la",
+      "label_en": "Latin",
+      "label_ar": "Latin",
+      "kind": "language"
+    },
+    {
+      "tag": "lb",
+      "engine_code": "lb",
+      "label_en": "Luxembourgish",
+      "label_ar": "Luxembourgish",
+      "kind": "language"
+    },
+    {
+      "tag": "ln",
+      "engine_code": "ln",
+      "label_en": "Lingala",
+      "label_ar": "Lingala",
+      "kind": "language"
+    },
+    {
+      "tag": "lo",
+      "engine_code": "lo",
+      "label_en": "Lao",
+      "label_ar": "Lao",
+      "kind": "language"
+    },
+    {
+      "tag": "lt",
+      "engine_code": "lt",
+      "label_en": "Lithuanian",
+      "label_ar": "Lithuanian",
+      "kind": "language"
+    },
+    {
+      "tag": "lv",
+      "engine_code": "lv",
+      "label_en": "Latvian",
+      "label_ar": "Latvian",
+      "kind": "language"
+    },
+    {
+      "tag": "mg",
+      "engine_code": "mg",
+      "label_en": "Malagasy",
+      "label_ar": "Malagasy",
+      "kind": "language"
+    },
+    {
+      "tag": "mi",
+      "engine_code": "mi",
+      "label_en": "Maori",
+      "label_ar": "Maori",
+      "kind": "language"
+    },
+    {
+      "tag": "mk",
+      "engine_code": "mk",
+      "label_en": "Macedonian",
+      "label_ar": "Macedonian",
+      "kind": "language"
+    },
+    {
+      "tag": "ml",
+      "engine_code": "ml",
+      "label_en": "Malayalam",
+      "label_ar": "Malayalam",
+      "kind": "language"
+    },
+    {
+      "tag": "mn",
+      "engine_code": "mn",
+      "label_en": "Mongolian",
+      "label_ar": "Mongolian",
+      "kind": "language"
+    },
+    {
+      "tag": "mr",
+      "engine_code": "mr",
+      "label_en": "Marathi",
+      "label_ar": "Marathi",
+      "kind": "language"
+    },
+    {
+      "tag": "ms",
+      "engine_code": "ms",
+      "label_en": "Malay",
+      "label_ar": "Malay",
+      "kind": "language"
+    },
+    {
+      "tag": "mt",
+      "engine_code": "mt",
+      "label_en": "Maltese",
+      "label_ar": "Maltese",
+      "kind": "language"
+    },
+    {
+      "tag": "my",
+      "engine_code": "my",
+      "label_en": "Burmese",
+      "label_ar": "Burmese",
+      "kind": "language"
+    },
+    {
+      "tag": "ne",
+      "engine_code": "ne",
+      "label_en": "Nepali",
+      "label_ar": "Nepali",
+      "kind": "language"
+    },
+    {
+      "tag": "nl",
+      "engine_code": "nl",
+      "label_en": "Dutch",
+      "label_ar": "Dutch",
+      "kind": "language"
+    },
+    {
+      "tag": "nn",
+      "engine_code": "nn",
+      "label_en": "Norwegian Nynorsk",
+      "label_ar": "Norwegian Nynorsk",
+      "kind": "language"
+    },
+    {
+      "tag": "no",
+      "engine_code": "no",
+      "label_en": "Norwegian",
+      "label_ar": "Norwegian",
+      "kind": "language"
+    },
+    {
+      "tag": "oc",
+      "engine_code": "oc",
+      "label_en": "Occitan",
+      "label_ar": "Occitan",
+      "kind": "language"
+    },
+    {
+      "tag": "pa",
+      "engine_code": "pa",
+      "label_en": "Punjabi",
+      "label_ar": "Punjabi",
+      "kind": "language"
+    },
+    {
+      "tag": "pl",
+      "engine_code": "pl",
+      "label_en": "Polish",
+      "label_ar": "Polish",
+      "kind": "language"
+    },
+    {
+      "tag": "ps",
+      "engine_code": "ps",
+      "label_en": "Pashto",
+      "label_ar": "Pashto",
+      "kind": "language"
+    },
+    {
+      "tag": "pt",
+      "engine_code": "pt",
+      "label_en": "Portuguese",
+      "label_ar": "البرتغالية",
+      "kind": "language"
+    },
+    {
+      "tag": "ro",
+      "engine_code": "ro",
+      "label_en": "Romanian",
+      "label_ar": "Romanian",
+      "kind": "language"
+    },
+    {
+      "tag": "ru",
+      "engine_code": "ru",
+      "label_en": "Russian",
+      "label_ar": "Russian",
+      "kind": "language"
+    },
+    {
+      "tag": "sa",
+      "engine_code": "sa",
+      "label_en": "Sanskrit",
+      "label_ar": "Sanskrit",
+      "kind": "language"
+    },
+    {
+      "tag": "sd",
+      "engine_code": "sd",
+      "label_en": "Sindhi",
+      "label_ar": "Sindhi",
+      "kind": "language"
+    },
+    {
+      "tag": "si",
+      "engine_code": "si",
+      "label_en": "Sinhala",
+      "label_ar": "Sinhala",
+      "kind": "language"
+    },
+    {
+      "tag": "sk",
+      "engine_code": "sk",
+      "label_en": "Slovak",
+      "label_ar": "Slovak",
+      "kind": "language"
+    },
+    {
+      "tag": "sl",
+      "engine_code": "sl",
+      "label_en": "Slovenian",
+      "label_ar": "Slovenian",
+      "kind": "language"
+    },
+    {
+      "tag": "sn",
+      "engine_code": "sn",
+      "label_en": "Shona",
+      "label_ar": "Shona",
+      "kind": "language"
+    },
+    {
+      "tag": "so",
+      "engine_code": "so",
+      "label_en": "Somali",
+      "label_ar": "Somali",
+      "kind": "language"
+    },
+    {
+      "tag": "sq",
+      "engine_code": "sq",
+      "label_en": "Albanian",
+      "label_ar": "Albanian",
+      "kind": "language"
+    },
+    {
+      "tag": "sr",
+      "engine_code": "sr",
+      "label_en": "Serbian",
+      "label_ar": "Serbian",
+      "kind": "language"
+    },
+    {
+      "tag": "su",
+      "engine_code": "su",
+      "label_en": "Sundanese",
+      "label_ar": "Sundanese",
+      "kind": "language"
+    },
+    {
+      "tag": "sv",
+      "engine_code": "sv",
+      "label_en": "Swedish",
+      "label_ar": "Swedish",
+      "kind": "language"
+    },
+    {
+      "tag": "sw",
+      "engine_code": "sw",
+      "label_en": "Swahili",
+      "label_ar": "السواحيلية",
+      "kind": "language"
+    },
+    {
+      "tag": "ta",
+      "engine_code": "ta",
+      "label_en": "Tamil",
+      "label_ar": "Tamil",
+      "kind": "language"
+    },
+    {
+      "tag": "te",
+      "engine_code": "te",
+      "label_en": "Telugu",
+      "label_ar": "Telugu",
+      "kind": "language"
+    },
+    {
+      "tag": "tg",
+      "engine_code": "tg",
+      "label_en": "Tajik",
+      "label_ar": "Tajik",
+      "kind": "language"
+    },
+    {
+      "tag": "th",
+      "engine_code": "th",
+      "label_en": "Thai",
+      "label_ar": "Thai",
+      "kind": "language"
+    },
+    {
+      "tag": "tk",
+      "engine_code": "tk",
+      "label_en": "Turkmen",
+      "label_ar": "Turkmen",
+      "kind": "language"
+    },
+    {
+      "tag": "tl",
+      "engine_code": "tl",
+      "label_en": "Tagalog",
+      "label_ar": "Tagalog",
+      "kind": "language"
+    },
+    {
+      "tag": "tr",
+      "engine_code": "tr",
+      "label_en": "Turkish",
+      "label_ar": "التركية",
+      "kind": "language"
+    },
+    {
+      "tag": "tt",
+      "engine_code": "tt",
+      "label_en": "Tatar",
+      "label_ar": "Tatar",
+      "kind": "language"
+    },
+    {
+      "tag": "uk",
+      "engine_code": "uk",
+      "label_en": "Ukrainian",
+      "label_ar": "Ukrainian",
+      "kind": "language"
+    },
+    {
+      "tag": "ur",
+      "engine_code": "ur",
+      "label_en": "Urdu",
+      "label_ar": "الأردية",
+      "kind": "language"
+    },
+    {
+      "tag": "uz",
+      "engine_code": "uz",
+      "label_en": "Uzbek",
+      "label_ar": "Uzbek",
+      "kind": "language"
+    },
+    {
+      "tag": "vi",
+      "engine_code": "vi",
+      "label_en": "Vietnamese",
+      "label_ar": "Vietnamese",
+      "kind": "language"
+    },
+    {
+      "tag": "yi",
+      "engine_code": "yi",
+      "label_en": "Yiddish",
+      "label_ar": "Yiddish",
+      "kind": "language"
+    },
+    {
+      "tag": "yo",
+      "engine_code": "yo",
+      "label_en": "Yoruba",
+      "label_ar": "Yoruba",
+      "kind": "language"
+    },
+    {
+      "tag": "zh",
+      "engine_code": "zh",
+      "label_en": "Chinese",
+      "label_ar": "الصينية",
+      "kind": "language"
+    },
+    {
+      "tag": "yue",
+      "engine_code": "yue",
+      "label_en": "Cantonese",
+      "label_ar": "الكانتونية",
+      "kind": "language"
+    },
+    {
+      "tag": "ar-PS",
+      "engine_code": "ar",
+      "label_en": "Arabic - Palestine",
+      "label_ar": "العربية — فلسطين",
+      "kind": "regional_preference",
+      "group": "levant"
+    },
+    {
+      "tag": "ar-JO",
+      "engine_code": "ar",
+      "label_en": "Arabic - Jordan",
+      "label_ar": "العربية — الأردن",
+      "kind": "regional_preference",
+      "group": "levant"
+    },
+    {
+      "tag": "ar-LB",
+      "engine_code": "ar",
+      "label_en": "Arabic - Lebanon",
+      "label_ar": "العربية — لبنان",
+      "kind": "regional_preference",
+      "group": "levant"
+    },
+    {
+      "tag": "ar-SY",
+      "engine_code": "ar",
+      "label_en": "Arabic - Syria",
+      "label_ar": "العربية — سوريا",
+      "kind": "regional_preference",
+      "group": "levant"
+    },
+    {
+      "tag": "ar-IL",
+      "engine_code": "ar",
+      "label_en": "Arabic - Israel",
+      "label_ar": "العربية — إسرائيل",
+      "kind": "regional_preference",
+      "group": "levant"
+    },
+    {
+      "tag": "ar-EG",
+      "engine_code": "ar",
+      "label_en": "Arabic - Egypt",
+      "label_ar": "العربية — مصر",
+      "kind": "regional_preference",
+      "group": "egypt"
+    },
+    {
+      "tag": "ar-SA",
+      "engine_code": "ar",
+      "label_en": "Arabic - Saudi Arabia",
+      "label_ar": "العربية — السعودية",
+      "kind": "regional_preference",
+      "group": "gulf"
+    },
+    {
+      "tag": "ar-AE",
+      "engine_code": "ar",
+      "label_en": "Arabic - UAE",
+      "label_ar": "العربية — الإمارات",
+      "kind": "regional_preference",
+      "group": "gulf"
+    },
+    {
+      "tag": "ar-KW",
+      "engine_code": "ar",
+      "label_en": "Arabic - Kuwait",
+      "label_ar": "العربية — الكويت",
+      "kind": "regional_preference",
+      "group": "gulf"
+    },
+    {
+      "tag": "ar-QA",
+      "engine_code": "ar",
+      "label_en": "Arabic - Qatar",
+      "label_ar": "العربية — قطر",
+      "kind": "regional_preference",
+      "group": "gulf"
+    },
+    {
+      "tag": "ar-BH",
+      "engine_code": "ar",
+      "label_en": "Arabic - Bahrain",
+      "label_ar": "العربية — البحرين",
+      "kind": "regional_preference",
+      "group": "gulf"
+    },
+    {
+      "tag": "ar-OM",
+      "engine_code": "ar",
+      "label_en": "Arabic - Oman",
+      "label_ar": "العربية — عُمان",
+      "kind": "regional_preference",
+      "group": "gulf"
+    },
+    {
+      "tag": "ar-IQ",
+      "engine_code": "ar",
+      "label_en": "Arabic - Iraq",
+      "label_ar": "العربية — العراق",
+      "kind": "regional_preference",
+      "group": "iraq"
+    },
+    {
+      "tag": "ar-MA",
+      "engine_code": "ar",
+      "label_en": "Arabic - Morocco",
+      "label_ar": "العربية — المغرب",
+      "kind": "regional_preference",
+      "group": "maghreb"
+    },
+    {
+      "tag": "ar-DZ",
+      "engine_code": "ar",
+      "label_en": "Arabic - Algeria",
+      "label_ar": "العربية — الجزائر",
+      "kind": "regional_preference",
+      "group": "maghreb"
+    },
+    {
+      "tag": "ar-TN",
+      "engine_code": "ar",
+      "label_en": "Arabic - Tunisia",
+      "label_ar": "العربية — تونس",
+      "kind": "regional_preference",
+      "group": "maghreb"
+    },
+    {
+      "tag": "ar-LY",
+      "engine_code": "ar",
+      "label_en": "Arabic - Libya",
+      "label_ar": "العربية — ليبيا",
+      "kind": "regional_preference",
+      "group": "maghreb"
+    },
+    {
+      "tag": "ar-MR",
+      "engine_code": "ar",
+      "label_en": "Arabic - Mauritania",
+      "label_ar": "العربية — موريتانيا",
+      "kind": "regional_preference",
+      "group": "maghreb"
+    },
+    {
+      "tag": "ar-YE",
+      "engine_code": "ar",
+      "label_en": "Arabic - Yemen",
+      "label_ar": "العربية — اليمن",
+      "kind": "regional_preference",
+      "group": "yemen"
+    },
+    {
+      "tag": "en-US",
+      "engine_code": "en",
+      "label_en": "English - United States",
+      "label_ar": "الإنجليزية — الولايات المتحدة",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "en-GB",
+      "engine_code": "en",
+      "label_en": "English - United Kingdom",
+      "label_ar": "الإنجليزية — بريطانيا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "en-AU",
+      "engine_code": "en",
+      "label_en": "English - Australia",
+      "label_ar": "الإنجليزية — أستراليا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "en-CA",
+      "engine_code": "en",
+      "label_en": "English - Canada",
+      "label_ar": "الإنجليزية — كندا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "en-IN",
+      "engine_code": "en",
+      "label_en": "English - India",
+      "label_ar": "الإنجليزية — الهند",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "en-NZ",
+      "engine_code": "en",
+      "label_en": "English - New Zealand",
+      "label_ar": "الإنجليزية — نيوزيلندا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "es-ES",
+      "engine_code": "es",
+      "label_en": "Spanish - Spain",
+      "label_ar": "الإسبانية — إسبانيا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "es-MX",
+      "engine_code": "es",
+      "label_en": "Spanish - Mexico",
+      "label_ar": "الإسبانية — المكسيك",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "es-AR",
+      "engine_code": "es",
+      "label_en": "Spanish - Argentina",
+      "label_ar": "الإسبانية — الأرجنتين",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "es-CO",
+      "engine_code": "es",
+      "label_en": "Spanish - Colombia",
+      "label_ar": "الإسبانية — كولومبيا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "es-419",
+      "engine_code": "es",
+      "label_en": "Spanish - Latin America",
+      "label_ar": "الإسبانية — أمريكا اللاتينية",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "fr-FR",
+      "engine_code": "fr",
+      "label_en": "French - France",
+      "label_ar": "الفرنسية — فرنسا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "fr-CA",
+      "engine_code": "fr",
+      "label_en": "French - Canada",
+      "label_ar": "الفرنسية — كندا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "pt-PT",
+      "engine_code": "pt",
+      "label_en": "Portuguese - Portugal",
+      "label_ar": "البرتغالية — البرتغال",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "pt-BR",
+      "engine_code": "pt",
+      "label_en": "Portuguese - Brazil",
+      "label_ar": "البرتغالية — البرازيل",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "zh-CN",
+      "engine_code": "zh",
+      "label_en": "Chinese - China",
+      "label_ar": "الصينية — الصين",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "zh-TW",
+      "engine_code": "zh",
+      "label_en": "Chinese - Taiwan",
+      "label_ar": "الصينية — تايوان",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "zh-HK",
+      "engine_code": "zh",
+      "label_en": "Chinese - Hong Kong",
+      "label_ar": "الصينية — هونغ كونغ",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "zh-Hans",
+      "engine_code": "zh",
+      "label_en": "Chinese - Simplified script preference",
+      "label_ar": "الصينية — كتابة مبسطة",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "zh-Hant",
+      "engine_code": "zh",
+      "label_en": "Chinese - Traditional script preference",
+      "label_ar": "الصينية — كتابة تقليدية",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "he-IL",
+      "engine_code": "he",
+      "label_en": "Hebrew - Israel",
+      "label_ar": "العبرية — إسرائيل",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "ja-JP",
+      "engine_code": "ja",
+      "label_en": "Japanese - Japan",
+      "label_ar": "اليابانية — اليابان",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "ko-KR",
+      "engine_code": "ko",
+      "label_en": "Korean - South Korea",
+      "label_ar": "الكورية — كوريا الجنوبية",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "hi-IN",
+      "engine_code": "hi",
+      "label_en": "Hindi - India",
+      "label_ar": "الهندية — الهند",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "ur-PK",
+      "engine_code": "ur",
+      "label_en": "Urdu - Pakistan",
+      "label_ar": "الأردية — باكستان",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "tr-TR",
+      "engine_code": "tr",
+      "label_en": "Turkish - Turkey",
+      "label_ar": "التركية — تركيا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "sw-KE",
+      "engine_code": "sw",
+      "label_en": "Swahili - Kenya",
+      "label_ar": "السواحيلية — كينيا",
+      "kind": "regional_preference",
+      "group": null
+    },
+    {
+      "tag": "sw-TZ",
+      "engine_code": "sw",
+      "label_en": "Swahili - Tanzania",
+      "label_ar": "السواحيلية — تنزانيا",
+      "kind": "regional_preference",
+      "group": null
+    }
+  ],
+  "measurement": {
+    "measured": false,
+    "evaluation": null,
+    "dialect_verified": false
+  },
+  "unsupported": [
+    "direct_audio_model",
+    "speaker_diarization",
+    "speaker_identity",
+    "emotion_inference",
+    "voice_cloning",
+    "automatic_dialect_identification"
+  ]
+}

@@ -1,0 +1,39 @@
+import {useEffect,useRef,useState} from 'react';
+import {api} from './api';
+import {Dialog} from './ui';
+import type {Lang} from './ui';
+
+type Rule={kind:'language'|'tone'|'brevity';value:string}|{kind:'terminology';source:string;target:string};
+type Gate={available:boolean;code:string;blockers:{id:string;status:string}[]};
+type Policy={enabled:boolean;version:number;consent_epoch:number;automatic_saving:boolean;gate:Gate};
+type Entry={id:string;content:string;rule:Rule|Record<string,never>;status:string;version:number};
+const options={language:[['ar','العربية'],['en','English'],['he','עברית']],tone:[['formal','رسمي · Formal'],['friendly','ودي · Friendly'],['neutral','محايد · Neutral']],brevity:[['short','مختصر · Short'],['standard','متوسط · Standard'],['detailed','مفصل · Detailed']]} as const;
+
+export default function PersonalMemoryPanel({lang,onClose}:{lang:Lang;onClose:()=>void}){
+ const ar=lang==='ar',t=(arabic:string,english:string)=>ar?arabic:english;
+ const [policy,setPolicy]=useState<Policy|null>(null),[entries,setEntries]=useState<Entry[]>([]),[error,setError]=useState(''),[notice,setNotice]=useState('');
+ const [busy,setBusy]=useState(false),[kind,setKind]=useState<Rule['kind']>('language'),[value,setValue]=useState('ar'),[source,setSource]=useState(''),[target,setTarget]=useState(''),[editing,setEditing]=useState<Entry|null>(null);
+ const running=useRef(false),key=useRef(crypto.randomUUID());
+ useEffect(()=>{let live=true;Promise.all([api<Policy>('/personal-memory/settings'),api<Entry[]>('/personal-memory')]).then(([p,e])=>{if(live){setPolicy(p);setEntries(e);}}).catch(e=>{if(live)setError(String(e));});return()=>{live=false;};},[]);
+ async function refresh(){const [p,e]=await Promise.all([api<Policy>('/personal-memory/settings'),api<Entry[]>('/personal-memory')]);setPolicy(p);setEntries(e);}
+ async function perform(action:()=>Promise<void>){if(running.current)return;running.current=true;setBusy(true);setError('');setNotice('');try{await action();await refresh();}catch(e){setError(String(e));}finally{running.current=false;setBusy(false);}}
+ async function changeConsent(enabled:boolean){if(!policy)return;await perform(async()=>{await api('/personal-memory/settings',{method:'PATCH',body:JSON.stringify({enabled,expected_version:policy.version})});setNotice(enabled?t('فُعّل استخدام التفضيلات المحفوظة.','Saved preferences enabled.'):t('أُوقف استخدام التفضيلات؛ تبقى قابلة للمراجعة والحذف.','Preference use stopped; saved entries remain reviewable and deletable.'));});}
+ async function save(){if(!policy)return;const rule:Rule=kind==='terminology'?{kind,source:source.trim(),target:target.trim()}:{kind,value};await perform(async()=>{await api(editing?`/personal-memory/${encodeURIComponent(editing.id)}`:'/personal-memory',{method:editing?'PATCH':'POST',body:JSON.stringify(editing?{rule,expected_version:editing.version,consent_version:policy.version}:{rule,idempotency_key:key.current,consent_version:policy.version})});setEditing(null);key.current=crypto.randomUUID();setNotice(t('حُفظ التفضيل بإصداره الحالي.','Preference saved at its current version.'));});}
+ function edit(entry:Entry){if(!('kind' in entry.rule))return;setEditing(entry);setKind(entry.rule.kind);if(entry.rule.kind==='terminology'){setSource(entry.rule.source);setTarget(entry.rule.target);}else setValue(entry.rule.value);}
+ const canWrite=Boolean(policy?.gate.available&&policy.enabled&&!busy);
+ return <Dialog title={t('التفضيلات الشخصية','Personal preferences')} onClose={onClose}><div className="form-body" data-testid="personal-memory-panel">
+  <p>{t('حفظ صريح فقط. يمكنك مراجعة كل تفضيل وتصحيحه أو حذفه؛ تعليمات طلبك الحالي تتقدم عليه.','Saved only by an explicit action. Review, correct or delete each preference; current instructions take precedence.')}</p>
+  {error&&<p role="alert" className="inline-error">{error}</p>}{notice&&<p role="status">{notice}</p>}
+  {!policy?<p role="status">{t('جارٍ قراءة الحالة…','Loading status…')}</p>:<>
+   {!policy.gate.available&&<div role="status" className="inline-warning"><strong>{t('الحفظ الجديد والاستخدام في الإجابات محجوبان حاليًا.','New saves and use in answers are currently blocked.')}</strong><p>{t('لم يكتمل القبول الأمني المستقل. تبقى قراءة المحفوظ سابقًا وحذفه متاحتين.','Independent security acceptance is incomplete. Existing entries remain available to read and delete.')}</p></div>}
+   <label className="preference-row"><span>{t('استخدام التفضيلات في المحادثة','Use preferences in conversation')}</span><input type="checkbox" checked={policy.enabled} disabled={busy||(!policy.gate.available&&!policy.enabled)} onChange={e=>void changeConsent(e.target.checked)} aria-label={t('استخدام التفضيلات في المحادثة','Use preferences in conversation')}/></label>
+   <p className="muted">{t('لا حفظ تلقائي، ولا تدريب للنموذج من هذه التفضيلات.','No automatic saving or model training from these preferences.')}</p>
+   <fieldset disabled={!canWrite} style={{border:0,padding:0,margin:0}}><legend>{editing?t('تصحيح التفضيل','Edit preference'):t('تفضيل جديد','New preference')}</legend>
+    <label className="field-label">{t('النوع','Type')}<select className="input" value={kind} onChange={e=>{const next=e.target.value as Rule['kind'];setKind(next);if(next!=='terminology')setValue(options[next][0][0]);key.current=crypto.randomUUID();}}><option value="language">{t('لغة الرد','Response language')}</option><option value="tone">{t('النبرة','Tone')}</option><option value="brevity">{t('طول الشرح','Explanation length')}</option><option value="terminology">{t('مصطلح مفضل','Preferred term')}</option></select></label>
+    {kind==='terminology'?<><label className="field-label">{t('المصطلح','Term')}<input className="input" maxLength={80} value={source} onChange={e=>{setSource(e.target.value);key.current=crypto.randomUUID();}}/></label><label className="field-label">{t('التسمية المفضلة','Preferred label')}<input className="input" maxLength={80} value={target} onChange={e=>{setTarget(e.target.value);key.current=crypto.randomUUID();}}/></label></>:<label className="field-label">{t('القيمة','Value')}<select className="input" value={value} onChange={e=>{setValue(e.target.value);key.current=crypto.randomUUID();}}>{options[kind].map(([v,label])=><option key={v} value={v}>{label}</option>)}</select></label>}
+    <button className="button primary" disabled={kind==='terminology'&&(!source.trim()||!target.trim())} onClick={()=>void save()}>{editing?t('حفظ التصحيح','Save correction'):t('حفظ صريح','Save explicitly')}</button>
+   </fieldset>{editing&&<button className="text-button" disabled={busy} onClick={()=>setEditing(null)}>{t('إلغاء التصحيح','Cancel edit')}</button>}
+   <section aria-label={t('التفضيلات المحفوظة','Saved preferences')}><h3>{t('المحفوظ','Saved')}</h3>{!entries.length&&<p>{t('لا توجد تفضيلات شخصية محفوظة.','No personal preferences saved.')}</p>}{entries.map(entry=><article key={entry.id} className="memory-card"><p dir="auto">{'kind' in entry.rule?(entry.rule.kind==='terminology'?`${entry.rule.source} → ${entry.rule.target}`:`${entry.rule.kind}: ${entry.rule.value}`):entry.content}</p><small>{t('الإصدار','Version')} {entry.version} · {entry.status==='legacy_read_only'?t('قديم — للمراجعة فقط','Legacy — review only'):entry.status==='active'?t('محفوظ','Saved'):t('يحتاج مراجعة','Needs review')}</small><div><button className="text-button" disabled={!canWrite||!('kind' in entry.rule)} onClick={()=>edit(entry)}>{t('تصحيح','Edit')}</button><button className="text-button" disabled={busy} onClick={()=>void perform(async()=>{await api(`/personal-memory/${encodeURIComponent(entry.id)}?expected_version=${entry.version}`,{method:'DELETE'});if(editing?.id===entry.id)setEditing(null);setNotice(t('حُذف التفضيل وأُبطل استخدام نسخته القديمة.','Preference deleted; its old version can no longer be used.'));})}>{t('حذف','Delete')}</button></div></article>)}</section>
+  </>}
+ </div></Dialog>;
+}

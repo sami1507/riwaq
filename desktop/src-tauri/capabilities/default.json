@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main-capability",
+  "description": "The remote local-service UI receives no Tauri commands or filesystem permissions.",
+  "windows": ["main"],
+  "permissions": []
+}

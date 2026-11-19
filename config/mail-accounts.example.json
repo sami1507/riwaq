@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "accounts": {
+    "00000000000000000000000000000000": {
+      "enabled": false,
+      "host": "smtp.example.invalid",
+      "port": 465,
+      "tls": "implicit",
+      "username": "account@example.invalid",
+      "fromAddress": "account@example.invalid",
+      "allowedRecipients": ["reviewed-recipient@example.invalid"]
+    }
+  }
+}

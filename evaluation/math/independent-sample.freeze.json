@@ -1,0 +1,9 @@
+{
+  "sha256": "1af0ef5ea632e5bfd7d40724bf4bd5a7e30518fdda3b1c7c2638a06419afce61",
+  "frozen_at": "2026-11-16T13:51:28.304484+00:00",
+  "source_record": "reports/math-reasoning-20261116/evaluation/fixture-freeze.json",
+  "unchanged_copy": true,
+  "case_count": 12,
+  "blind": false,
+  "family_disjoint": false
+}
