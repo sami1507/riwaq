@@ -40,7 +40,34 @@ fn service_ready() -> bool {
         && response.contains("\"authenticated\"")
 }
 
-fn launch_service(app: &tauri::App) -> Result<Option<Child>, Box<dyn std::error::Error>> {
+/// Ask the bundled service for a one-use pairing code, exactly as the documented local command does
+/// (`riwaq-service.exe --pair-browser --show`). The code is handed only to this app's own window in the
+/// URL fragment, which is never sent over the network. The web content still receives no Tauri commands.
+fn pairing_code(binary: &std::path::Path) -> Option<String> {
+    let mut command = Command::new(binary);
+    command.args(["--pair-browser", "--show"]).stdin(Stdio::null()).stdout(Stdio::piped()).stderr(Stdio::null());
+    #[cfg(target_os = "windows")]
+    {
+        use std::os::windows::process::CommandExt;
+        command.creation_flags(0x08000000);
+    }
+    let mut child = command.spawn().ok()?;
+    let started = Instant::now();
+    loop {
+        match child.try_wait() {
+            Ok(Some(status)) if status.success() => break,
+            Ok(Some(_)) | Err(_) => return None,
+            Ok(None) if started.elapsed() > Duration::from_secs(25) => { let _ = child.kill(); let _ = child.wait(); return None; }
+            Ok(None) => std::thread::sleep(Duration::from_millis(100)),
+        }
+    }
+    let mut text = String::new();
+    child.stdout.take()?.read_to_string(&mut text).ok()?;
+    let code = text.trim();
+    (code.len() == 43 && code.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'-' || b == b'_')).then(|| code.to_string())
+}
+
+fn launch_service(app: &tauri::App) -> Result<(Option<Child>, std::path::PathBuf), Box<dyn std::error::Error>> {
     let addr: SocketAddr = "127.0.0.1:8765".parse()?;
     // Windows on this host reports a refused loopback connection after about
     // two seconds. A shorter timeout cannot distinguish a closed port. Keep
@@ -66,7 +93,7 @@ fn launch_service(app: &tauri::App) -> Result<Option<Child>, Box<dyn std::error:
     let started = Instant::now();
     while started.elapsed() < Duration::from_secs(30) {
         if child.try_wait()?.is_some() { return Err("Riwaq local service exited before startup.".into()); }
-        if service_ready() { return Ok(Some(child)); }
+        if service_ready() { return Ok((Some(child), binary.clone())); }
         std::thread::sleep(Duration::from_millis(200));
     }
     stop_service(child);
@@ -88,7 +115,14 @@ fn main() {
             }).build())
         .setup(move |app| {
             let (service, url) = match launch_service(app) {
-                Ok(service) => (service, WebviewUrl::External("http://127.0.0.1:8765".parse()?)),
+                Ok((service, binary)) => {
+                    // Without a code the window simply shows the pairing screen, as before.
+                    let address = match pairing_code(&binary) {
+                        Some(code) => format!("http://127.0.0.1:8765/#pair={code}"),
+                        None => "http://127.0.0.1:8765".to_string(),
+                    };
+                    (service, WebviewUrl::External(address.parse()?))
+                }
                 Err(error) => {
                     if let Ok(folder) = app.path().app_log_dir() {
                         let _ = std::fs::create_dir_all(&folder);

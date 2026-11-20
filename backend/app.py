@@ -19,6 +19,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from backend.db import get_db, init_db, uid, now, event, settings, message_dict, DEFAULTS
 from backend import providers, knowledge, public_knowledge, workspace, sync_client, snapshots, media, grounding, reasoning
 from backend import learning, learning_policy, personal_memory
+from backend import code_run, quran_reference, text_checks
 from backend import generation_requests,conversation_library
 
 ACTIVE = {}
@@ -253,7 +254,7 @@ async def status():
         'stt':media_info['stt'],
         'tts':{'available':bool(local_voices),'processing':'local','scope':'Explicit voice sessions; only discovered matching Windows voices','voices':local_voices,'arabic_available':any(v.get('language','').split('-')[0]=='ar' for v in local_voices),'reason':voice.VOICE_CACHE['error'] or 'Voice discovery is not a language quality benchmark'},
         'web_search':{'available':cfg['mode']=='hybrid' and bool(providers.secret('brave')),'reason':'Requires hybrid mode and Brave API key in OS keyring.'},
-        'code_execution':{**execution,'reason':execution.get('reason_en'),'scope':'Explicit bounded checks in the coding workbench; no general model shell tool.'},
+        'code_execution':{**execution,'reason':execution.get('reason_en'),'scope':'Explicit bounded checks in the coding workbench, and one short Python block in chat when asked what it prints (isolated worker only, never the host); no general model shell tool.'},
         'sync':{'available':cfg['mode']=='hybrid','reason':'Manual encrypted project backup; requires a configured account server and explicit sign-in.'}
     },'providers':{name:{'configured':bool(providers.secret(name)),'tested':False} for name in ('openai','anthropic')}}
 
@@ -451,7 +452,7 @@ def generation_request_status(id:str,request_id:str):
 
 async def generate_prepared(id,body,request,job):
     cfg=settings(); provider=body.provider or cfg['provider']; model=body.model or cfg['model']
-    task_run=None; research_receipt=None; ordinary_grounded=False; grounded_options=None
+    task_run=None; research_receipt=None; ordinary_grounded=False; grounded_options=None; quran_context=''; check_context=''; code_result=None
     with get_db() as c:
         require(c,'conversations',id,job['actor'])
         prior=[dict(x) for x in c.execute('SELECT * FROM messages WHERE conversation_id=? ORDER BY rowid',(id,))]
@@ -684,7 +685,11 @@ async def generate_prepared(id,body,request,job):
                     # whole source excerpts, rather than overflowing afterward.
                     skill_guidance+='\n'+research_answer.context_instructions(language)
                 cfg['_accounting_provider']=provider; cfg['_accounting_model']=model
-                messages, chunks = grounding.compose(proj, memories, history, question, chunks, cfg, body.use_files or body.use_knowledge, system_extra=(task_run.instructions() if task_run else '')+skill_guidance,fact_context=fact_context['text'],structured_evidence=ordinary_grounded)
+                quran_context='' if task_run else quran_reference.context(question)
+                # A question about what a Python block prints is answered by running it in the isolated worker, never on the host.
+                code_result=None if task_run else await code_run.check(question)
+                check_context='' if task_run else text_checks.context(question,code_run.context(code_result))
+                messages, chunks = grounding.compose(proj, memories, history, question, chunks, cfg, body.use_files or body.use_knowledge, system_extra=(task_run.instructions() if task_run else '')+skill_guidance,tool_context=check_context,fact_context=fact_context['text'],structured_evidence=ordinary_grounded)
             except ValueError as exc:
                 raise HTTPException(413, str(exc)) from exc
             if ordinary_grounded:
@@ -793,7 +798,18 @@ async def generate_prepared(id,body,request,job):
                     else:
                         await authorize_dispatch()
                         async with aclosing(providers.stream(provider,model,messages,runtime_cfg)) as output:
-                            async for packet in output:yield packet
+                            source=output
+                            if text_checks.constraint(question):
+                                # A stated word count is checked on the finished answer; one corrective attempt, then an honest note.
+                                async def again(draft,feedback):
+                                    await authorize_dispatch()
+                                    async with aclosing(providers.stream(provider,model,messages+[{'role':'assistant','content':draft},{'role':'user','content':feedback}],runtime_cfg)) as second:
+                                        async for packet in second:yield packet
+                                source=text_checks.enforce(output,question,again)
+                            if code_result is not None:source=code_run.guard_stream(source,code_result)
+                            # Qur'an requests: the application, not the model, decides which vocalised wording is released.
+                            if quran_context:source=quran_reference.guard_stream(source,question)
+                            async for packet in text_checks.flag_stream(source):yield packet
                 iterator=produce().__aiter__()
                 async def access_changed():
                     while True:
