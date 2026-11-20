@@ -29,6 +29,7 @@
 | المشغّلات الستة تُنشأ بوسائط عزل متطابقة | `tests/test_core_worker_inventory.py::test_core_every_runner_gets_the_same_container_boundary` | قائم |
 | السياسة المطبقة تُفحص قبل وصول المدخل | `backend/isolated_worker.py::verify_container` واختباراتها | قائم |
 | لا موضع تشغيل جديد دون مراجعة، ولا تشغيل عبر الصدفة | `tests/test_core_worker_inventory.py` | قائم |
+| توليد صورة حقيقية عبر عامل الجهاز تحت القيود | رحلة `VIS-001` في `scripts/core_acceptance.py` | نجحت على Windows في 19 نوفمبر (القسم 17) |
 | قيود الواجهة مطبقة فعلًا على مهمة العامل (منع إنشاء سطح مكتب وقراءة الحافظة)، وعامل الكلام الحقيقي يعمل تحتها | `tests/test_core_host_worker_job.py` (Windows) | نجح على Windows في 19 نوفمبر (القسم 16) |
 
 ## ما لم يُنجز

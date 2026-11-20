@@ -53,6 +53,9 @@ if (-not (Up)) {
     if (-not (Up)) { Say "لم تبدأ خدمة رواق خلال 90 ثانية. التفاصيل في:`n$logs\service.err.log" 'Error'; exit 1 }
   }
 }
+# The desktop application pairs its own window (the shell asks its bundled service for a one-use code),
+# so nothing is put on the clipboard and no dialog is shown for it.
+if ($App -and -not $Check) { exit 0 }
 Push-Location $Repo
 $code = (& $Py -X utf8 -m backend.local_auth pair --show 2>$null | Select-Object -Last 1)
 Pop-Location
