@@ -1,19 +1,40 @@
-{
-  "upstream": "https://github.com/aliftype/reem-kufi",
-  "package": "@fontsource/reem-kufi@5.3.0",
-  "license": "OFL-1.1",
-  "license_file": "ReemKufi-OFL.txt",
-  "use": "Arabic display headings only",
-  "files": [
-    {
-      "file": "ReemKufi-Arabic-Medium.woff2",
-      "bytes": 9232,
-      "sha256": "474d6088df966006402c3a9aceaf9775c3525ac84974b82131b345b92a8a351c"
-    },
-    {
-      "file": "ReemKufi-Arabic-Bold.woff2",
-      "bytes": 9092,
-      "sha256": "83476ed9efbae512f34a50166f9b992584674e14045bea4d1da698e4ae64a661"
-    }
-  ]
-}
+[
+  {
+    "upstream": "https://github.com/aliftype/reem-kufi",
+    "package": "@fontsource/reem-kufi@5.3.0",
+    "license": "OFL-1.1",
+    "license_file": "ReemKufi-OFL.txt",
+    "use": "Arabic display headings only",
+    "files": [
+      {
+        "file": "ReemKufi-Arabic-Medium.woff2",
+        "bytes": 9232,
+        "sha256": "474d6088df966006402c3a9aceaf9775c3525ac84974b82131b345b92a8a351c"
+      },
+      {
+        "file": "ReemKufi-Arabic-Bold.woff2",
+        "bytes": 9092,
+        "sha256": "83476ed9efbae512f34a50166f9b992584674e14045bea4d1da698e4ae64a661"
+      }
+    ]
+  },
+  {
+    "upstream": "https://github.com/notofonts/arabic",
+    "package": "@fontsource/noto-naskh-arabic@5.3.0",
+    "license": "OFL-1.1",
+    "license_file": "NotoNaskhArabic-OFL.txt",
+    "use": "Reading text of answers (manuscript voice)",
+    "files": [
+      {
+        "file": "NotoNaskhArabic-Regular.woff2",
+        "bytes": 52668,
+        "sha256": "9cc2d2e90f7b51904468558b4ed529de8a8206497c8edb5e33122bd077e0158c"
+      },
+      {
+        "file": "NotoNaskhArabic-Bold.woff2",
+        "bytes": 53024,
+        "sha256": "d2d8e6b155248d6706e2e9c6019e88d435873801efe3d5a3ed6f0ab69aa1511e"
+      }
+    ]
+  }
+]

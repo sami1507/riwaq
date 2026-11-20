@@ -8,4 +8,5 @@ import './tokens.css';
 import './fonts.css';
 import './identity.css';
 import './polish.css';
+import './signature.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><PairingGate>{import.meta.env.DEV&&location.pathname==='/dev/design'?<DevGallery/>:<App/>}</PairingGate></React.StrictMode>);

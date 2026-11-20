@@ -1,0 +1,139 @@
+/* Riwaq signature layer — «المخطوطة تحت الرواق».
+   A riwaq is an arcade: the sidebar is the shaded arcade, the workspace is a manuscript page under it.
+   Answers are set like a book (Naskh text, Kufi rubrics, star bullets, a ruled margin), questions are marginal
+   headings instead of chat bubbles, and arches carry the entrances: the suggestions, the composer, the gate.
+   Colours stay the brand's teal, paper and copper. Loaded last. */
+@font-face{font-family:"Noto Naskh Arabic";src:url("/fonts/NotoNaskhArabic-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:"Noto Naskh Arabic";src:url("/fonts/NotoNaskhArabic-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+:root{
+ --font-reading:"Noto Naskh Arabic",var(--font-ui);
+ --arcade:#0E3A33; --arcade-raised:#16493F; --arcade-ink:#F4ECDD; --arcade-muted:#B4C8BD; --arcade-line:#2B5B50; --arcade-copper:#E0B479;
+ --star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1l3.2 3.3 4.600-.1-.1 4.600L23 12l-3.300 3.200.1 4.600-4.600-.1L12 23l-3.200-3.300-4.600.1.1-4.600L1 12l3.300-3.200-.1-4.600 4.600.1z'/%3E%3C/svg%3E");
+ --arch:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 23V11.500a8 8 0 0 1 16 0V23h-3.200V11.500a4.800 4.800 0 0 0-9.600 0V23z'/%3E%3C/svg%3E");
+ --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .18 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+ --frieze:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='20' viewBox='0 0 28 20'%3E%3Cpath d='M3 20V10.500a11 11 0 0 1 22 0V20' fill='none' stroke='%23E0B479' stroke-opacity='.55' stroke-width='1.2'/%3E%3Ccircle cx='0' cy='4' r='1.1' fill='%23E0B479' fill-opacity='.55'/%3E%3Ccircle cx='28' cy='4' r='1.1' fill='%23E0B479' fill-opacity='.55'/%3E%3C/svg%3E");
+}
+:root[data-theme=dark]{--arcade:#0A1614; --arcade-raised:#13231F; --arcade-line:#24403A;
+ --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .8 0 0 0 0 .9 0 0 0 0 .85 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+/* ============ The arcade: sidebar ============ */
+.sidebar{
+ --sidebar:var(--arcade); --text:var(--arcade-ink); --muted:var(--arcade-muted); --line:var(--arcade-line);
+ --surface:var(--arcade-raised); --surface2:#1B5347; --panel:var(--arcade-raised); --accent:var(--arcade-copper); --accent-dark:#F2D6A8; --accent-soft:#1B5347;
+ --color-copper:var(--arcade-copper); --color-copper-ink:var(--arcade-copper); --color-control-border:#5E887B; --color-focus:var(--arcade-copper); --color-text:var(--arcade-ink); --color-secondary:var(--arcade-muted);
+ background-color:var(--arcade); color:var(--arcade-ink); border-inline-end:0; padding-top:32px;
+ background-image:var(--frieze),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23F4ECDD' stroke-opacity='.045'%3E%3Crect x='19' y='19' width='26' height='26'/%3E%3Crect x='19' y='19' width='26' height='26' transform='rotate(45 32 32)'/%3E%3C/g%3E%3C/svg%3E");background-repeat:repeat-x,repeat;background-position:center top,0 0;background-size:28px 20px,64px 64px;
+}
+:root[data-theme=dark] .sidebar{--surface2:#1A3530;--accent-soft:#1A3530}
+.sidebar .wordmark-light{display:none}
+.sidebar .wordmark-dark{display:block}
+.sidebar .brand small{color:var(--arcade-muted)}
+.sidebar .new-chat{background:var(--arcade-copper);color:#102E29;border-color:#B98A52;box-shadow:inset 0 1px 0 #ffffff55,0 1px 2px #0005}
+.sidebar .new-chat:hover:not(:disabled){background:#EDC892;color:#102E29}
+.sidebar .search-box input{color:var(--arcade-ink)}
+.sidebar .search-box input::placeholder{color:var(--arcade-muted)}
+.sidebar .sidebar-action svg{color:var(--arcade-muted)}
+.sidebar .sidebar-action:hover:not(:disabled){background:var(--arcade-raised);color:var(--arcade-ink)}
+.sidebar .sidebar-action:hover:not(:disabled) svg{color:var(--arcade-copper)}
+.sidebar .section-heading>span:first-child{color:var(--arcade-copper);letter-spacing:.02em}
+.sidebar-footer .profile-row{background:var(--arcade);border-top-color:var(--arcade-line)}
+.sidebar ::-webkit-scrollbar-thumb{background:#2f6659}
+
+/* ============ The page: workspace ============ */
+.workspace{background-image:var(--grain)}
+.topbar{position:relative;background:transparent}
+.topbar::after{content:"";position:absolute;inset-inline:24px;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--color-copper) 18%,var(--color-copper) 82%,transparent);opacity:.45}
+.conversation-scroll{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--color-copper) 55%,transparent) transparent}
+
+/* Questions are marginal headings, answers are set like a book. No avatars, no bubbles. */
+.messages .message{display:block;margin-bottom:28px}
+.messages .message-avatar{display:none}
+.messages .message.user{position:relative;padding-inline-start:18px;border-inline-start:3px double var(--color-copper);margin-top:8px}
+.messages .message.user:not(:first-child){margin-top:64px}
+.messages .message.user:not(:first-child)::before{content:"";position:absolute;inset-inline:-18px 0;top:-40px;height:14px;
+ background:linear-gradient(90deg,transparent,var(--line) 22%,var(--line) 44%,transparent 44%,transparent 56%,var(--line) 56%,var(--line) 78%,transparent) center/100% 1px no-repeat}
+.messages .message.user:not(:first-child)::after{content:"";position:absolute;inset-inline:0;margin-inline:auto;top:-40px;width:14px;height:14px;background:var(--color-copper);-webkit-mask:var(--star) center/contain no-repeat;mask:var(--star) center/contain no-repeat;transform:translateX(calc(9px * var(--flip,1)))}
+[dir=rtl] .messages .message.user::after{--flip:1}
+[dir=ltr] .messages .message.user::after{--flip:-1}
+.messages .message.user .message-meta strong{font-family:var(--font-display);font-weight:700;font-size:.8125rem;color:var(--color-copper-ink)}
+.messages .message.user .markdown{font-size:1.125rem;font-weight:600;line-height:1.8;color:var(--text)}
+.messages .message.assistant .message-meta{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.messages .message.assistant .message-meta strong{font-family:var(--font-display);font-weight:700;font-size:.9375rem;color:var(--accent-dark);display:inline-flex;align-items:center;gap:6px}
+.messages .message.assistant .message-meta strong::before{content:"";width:14px;height:15px;background:var(--accent);-webkit-mask:var(--arch) center/contain no-repeat;mask:var(--arch) center/contain no-repeat}
+.messages .message.assistant .message-meta span{font-family:var(--font-code);font-size:.6875rem;color:var(--muted);direction:ltr}
+.messages .message.assistant .markdown{font-family:var(--font-reading);font-size:1.1875rem;line-height:2.05}
+.messages .message.assistant .markdown :is(h3,h4){font-family:var(--font-reading)!important}
+.messages .message.assistant .markdown :is(h1,h2,h3,h4){font-family:var(--font-display);font-weight:700;color:var(--color-copper-ink);line-height:1.6;margin-block:1.3em .5em;letter-spacing:0}
+.messages .message.assistant .markdown h1{font-size:1.5rem}
+.messages .message.assistant .markdown h2{font-size:1.3125rem}
+.messages .message.assistant .markdown h3{font-size:1.125rem}
+.messages .message.assistant .markdown :is(h1,h2)::after{content:"";display:block;width:56px;height:3px;margin-top:6px;border-block:1px solid var(--color-copper)}
+.messages .message.assistant .markdown strong{font-weight:700;color:var(--text)}
+.messages .message.assistant .markdown ol{list-style:arabic-indic;padding-inline-start:1.9em}
+:root[lang=en] .messages .message.assistant .markdown ol{list-style:decimal}
+.messages .message.assistant .markdown ol>li::marker{font-family:var(--font-display);font-weight:700;color:var(--color-copper-ink)}
+.messages .message.assistant .markdown ul{list-style:none;padding-inline-start:1.9em}
+.messages .message.assistant .markdown ul>li{position:relative}
+.messages .message.assistant .markdown ul>li::before{content:"";position:absolute;inset-inline-start:-1.45em;top:.78em;width:.6em;height:.6em;background:var(--color-copper);-webkit-mask:var(--star) center/contain no-repeat;mask:var(--star) center/contain no-repeat}
+.messages .message.assistant .markdown blockquote{margin-inline:0;padding:6px 18px;border:0;border-inline-start:3px double var(--color-copper);background:color-mix(in srgb,var(--color-copper) 7%,transparent);border-radius:0 10px 10px 0;color:var(--text)}
+[dir=rtl] .messages .message.assistant .markdown blockquote{border-radius:10px 0 0 10px}
+.messages .message.assistant .markdown pre{border-radius:12px;border-top:2px solid var(--color-copper);font-family:var(--font-code);font-size:.9375rem;line-height:1.7}
+.messages .message.assistant .markdown :not(pre)>code{font-family:var(--font-code);font-size:.875em;padding:1px 6px;border-radius:6px;background:var(--surface2)}
+.messages .message.assistant .markdown table{font-family:var(--font-ui);font-size:1rem}
+.messages .message-actions{opacity:.75;transition:opacity var(--duration)}
+.messages .message:hover .message-actions,.messages .message:focus-within .message-actions{opacity:1}
+/* Thinking: a slowly turning star instead of bouncing dots */
+.typing{gap:0;padding:6px 0;align-items:center}
+.typing i{display:none}
+.typing::before{content:"";width:18px;height:18px;background:var(--color-copper);-webkit-mask:var(--star) center/contain no-repeat;mask:var(--star) center/contain no-repeat;animation:riwaq-turn 2.6s linear infinite}
+@keyframes riwaq-turn{to{transform:rotate(360deg)}}
+
+/* ============ The entrance: welcome as an arcade of four bays ============ */
+.welcome::before{display:none}
+.welcome h1{position:relative}
+.welcome-kicker{font-family:var(--font-display);font-weight:500;font-size:.9375rem}
+.welcome .suggestions{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch;margin-top:8px}
+.welcome .suggestions .suggestion{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:10px;min-height:204px;padding:46px 14px 18px;border-radius:999px 999px 14px 14px;border:1px solid var(--color-control-border);background:var(--surface);box-shadow:inset 0 0 0 4px var(--surface),inset 0 0 0 5px color-mix(in srgb,var(--color-copper) 55%,transparent),var(--elev-1);animation:riwaq-rise .5s both cubic-bezier(.2,.7,.2,1)}
+.welcome .suggestions .suggestion:nth-child(1){animation-delay:.05s}
+.welcome .suggestions .suggestion:nth-child(2){animation-delay:.12s}
+.welcome .suggestions .suggestion:nth-child(3){animation-delay:.19s}
+.welcome .suggestions .suggestion:nth-child(4){animation-delay:.26s}
+@keyframes riwaq-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.welcome .suggestions .suggestion:hover:not(:disabled){transform:translateY(-3px);border-color:var(--accent);box-shadow:inset 0 0 0 4px var(--surface),inset 0 0 0 5px var(--color-copper),var(--elev-2)}
+.welcome .suggestions .suggestion .suggestion-icon{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:var(--accent-soft);color:var(--accent-dark);flex-shrink:0}
+.welcome .suggestions .suggestion strong{font-family:var(--font-display);font-weight:700;font-size:1rem;line-height:1.6}
+.welcome .suggestions .suggestion small,.welcome .suggestions .suggestion span:not(.suggestion-icon){font-size:.8125rem;line-height:1.7;color:var(--muted)}
+
+/* ============ The mihrab: composer ============ */
+.composer-area{display:flex;flex-wrap:wrap;align-items:center;column-gap:12px}
+.composer-area>*{flex:0 0 100%;min-width:0}
+.composer-area>.answer-mode{flex:0 1 auto;margin-bottom:8px}
+.composer-area>.composer-options{flex:1 1 180px;margin-bottom:8px}
+.composer-area>.composer-options[open]{flex-basis:100%}
+.composer-area>.composer-options>summary{min-height:38px;border:0}
+.composer-area .draft-status{font-size:.6875rem;margin-bottom:4px;opacity:.85}
+.composer{border-radius:30px 30px 16px 16px;box-shadow:inset 0 0 0 4px var(--surface),inset 0 0 0 5px color-mix(in srgb,var(--color-copper) 50%,transparent),var(--shadow)}
+.composer:focus-within{box-shadow:inset 0 0 0 4px var(--surface),inset 0 0 0 5px var(--color-copper),var(--ring),var(--shadow)}
+.composer textarea{min-height:58px;padding-top:18px;font-size:1.0625rem}
+.composer .composer-toolbar{padding-block:6px 10px}
+
+/* ============ The gate ============ */
+.pairing-card{border-radius:170px 170px 22px 22px;padding-top:72px;box-shadow:inset 0 0 0 6px var(--surface),inset 0 0 0 7px color-mix(in srgb,var(--color-copper) 55%,transparent),var(--elev-2)}
+
+/* Dialog titles carry the copper rule; panels keep the paper */
+.modal{box-shadow:inset 0 0 0 4px var(--surface),inset 0 0 0 5px color-mix(in srgb,var(--color-copper) 35%,transparent),0 24px 70px #172b2a2e}
+
+@media(max-width:900px){
+ .welcome .suggestions{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .welcome .suggestions .suggestion{min-height:168px;padding:34px 12px 14px}
+}
+@media(max-width:760px){
+ .messages .message.assistant .markdown{font-size:1.125rem;line-height:2}
+ .composer{border-radius:24px 24px 14px 14px}
+ .pairing-card{border-radius:120px 120px 20px 20px;padding-top:56px}
+ .composer-area>.composer-options{flex:1 1 90px}
+ .composer-area>.composer-options:not([open])>summary small{display:none}
+ .composer-area>.answer-mode label{padding-inline:8px;font-size:.8125rem}
+ .composer textarea{min-height:46px;padding-top:14px}
+}
+@media(prefers-reduced-motion:reduce){.typing::before,.welcome .suggestions .suggestion{animation:none}}
