@@ -137,3 +137,21 @@
  .composer textarea{min-height:46px;padding-top:14px}
 }
 @media(prefers-reduced-motion:reduce){.typing::before,.welcome .suggestions .suggestion{animation:none}}
+
+/* ============ Teach Riwaq: the lesson notebook ============ */
+.lessons input,.lessons textarea{width:100%;padding:10px 12px;border:1px solid var(--color-control-border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;font-size:.9375rem;line-height:1.8}
+.lessons textarea{resize:vertical;font-family:var(--font-reading);font-size:1.0625rem}
+.lessons-head{display:flex;align-items:center;gap:12px;margin-top:26px;padding-top:16px;border-top:3px double var(--color-copper)}
+.lessons-head strong{font-family:var(--font-display);color:var(--color-copper-ink);white-space:nowrap}
+.lessons-head input{flex:1;min-width:0;padding-block:7px}
+.lessons-empty{color:var(--muted);font-size:.875rem;margin-top:14px}
+.lessons-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px;max-height:38vh;overflow:auto}
+.lessons-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-inline-start:3px double var(--color-copper);border-radius:10px;background:var(--surface)}
+.lessons-list li.off{opacity:.6}
+.lesson-text{flex:1;min-width:0}
+.lesson-text strong{display:block;font-weight:600;line-height:1.7}
+.lesson-text p{margin:4px 0;font-family:var(--font-reading);font-size:1rem;line-height:1.9;white-space:pre-wrap;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.lesson-text small{color:var(--muted);font-size:.75rem}
+.lesson-actions{display:flex;gap:6px;flex-shrink:0}
+.lesson-actions button{min-width:34px;height:34px;padding-inline:8px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--muted);font:inherit;font-size:.75rem;cursor:pointer}
+.lesson-actions button:hover:not(:disabled){color:var(--accent-dark);border-color:var(--accent)}

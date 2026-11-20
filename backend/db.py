@@ -101,6 +101,7 @@ def init_db():
         init_skills(c)
         from backend.learning import init_learning
         init_learning(c)
+        from backend import lessons;lessons.init(c)
         from backend.personal_memory import init_personal_memory
         init_personal_memory(c)
         from backend import generation_requests,conversation_library

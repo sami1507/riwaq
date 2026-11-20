@@ -61,3 +61,18 @@ def test_app_variant_measures_riwaqs_own_pipeline(monkeypatch):
     sent.clear()
     ae.ask('http://127.0.0.1:1', 'm', 'رتب تصاعديًا: 9، 2، 5', 5, system=ae.APP)
     assert '"sorted": ["2", "5", "9"]' in sent[0][-1]['content']
+
+
+def test_multilingual_items_cover_hebrew_english_and_eu_languages():
+    import json as _json
+    import pathlib as _pathlib
+    import subprocess as _subprocess
+    import sys as _sys
+    root = _pathlib.Path(__file__).resolve().parents[1]
+    path = root / 'training' / 'multilingual_eval' / 'items.json'
+    items = _json.loads(path.read_text(encoding='utf-8'))['items']
+    codes = {i['id'].split('-')[0] for i in items}
+    eu = set('bg hr cs da nl en et fi fr de el hu ga it lv lt mt pl pt ro sk sl es sv'.split())
+    assert eu | {'he'} <= codes and len(items) == 3 * len(codes)
+    run = _subprocess.run([_sys.executable, str(root / 'scripts' / 'arabic_eval.py'), '--items', str(path), '--selftest'], capture_output=True, text=True, encoding='utf-8')
+    assert '"ok": true' in run.stdout, run.stdout[-400:]

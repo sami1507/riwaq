@@ -117,3 +117,67 @@ def test_source_absence_does_not_generate_fabrication(client,monkeypatch):
     id=new_chat(client)
     res=client.post(f'/api/conversations/{id}/generate',json={'content':'unknown source fact','use_files':True})
     assert 'No relevant source' in res.text
+
+def test_lessons_notebook_round_trip(client):
+    made=client.post('/api/lessons',json={'title':'موعد صيانة الضاغط','content':'كل 500 ساعة تشغيل.'})
+    assert made.status_code==200,made.text
+    identifier=made.json()['id']
+    assert [x['id'] for x in client.get('/api/lessons').json()]==[identifier]
+    assert client.patch(f'/api/lessons/{identifier}',json={'enabled':False}).json()['enabled'] is False
+    assert client.post('/api/lessons',json={'title':'x','content':'y','owner_id':'someone'}).status_code==422
+    assert client.delete(f'/api/lessons/{identifier}').json()=={'ok':True}
+    assert client.delete(f'/api/lessons/{identifier}').status_code==404
+
+def test_taught_lesson_reaches_the_model_and_marks_the_answer(client,monkeypatch):
+    # Deterministic wiring test with a fake model, explicitly not evidence for real model quality.
+    seen={}
+    async def validate(*args): pass
+    async def stream(provider,model,messages,*args):
+        seen['prompt']=json.dumps(messages,ensure_ascii=False)
+        yield {'content':'كل 500 ساعة تشغيل.'}
+    monkeypatch.setattr(service.providers,'validate_provider',validate)
+    monkeypatch.setattr(service.providers,'stream',stream)
+    client.post('/api/lessons',json={'title':'موعد صيانة الضاغط','content':'كل 500 ساعة تشغيل.'})
+    id=new_chat(client)
+    client.post(f'/api/conversations/{id}/generate',json={'content':'متى موعد صيانة الضاغط؟'})
+    assert 'saved_lessons' in seen['prompt'] and 'كل 500 ساعة تشغيل.' in seen['prompt']
+    saved=client.get('/api/conversations/'+id).json()['messages'][-1]['content']
+    assert saved.startswith('⟦من دروسك المحفوظة: «موعد صيانة الضاغط»⟧') and saved.endswith('كل 500 ساعة تشغيل.')
+    assert client.get('/api/lessons').json()[0]['uses']==1
+    other=new_chat(client)
+    client.post(f'/api/conversations/{other}/generate',json={'content':'ما عاصمة فرنسا؟'})
+    assert 'saved_lessons' not in seen['prompt']
+    assert '⟦من دروسك' not in client.get('/api/conversations/'+other).json()['messages'][-1]['content']
+
+def test_wikipedia_sources_need_consent_and_are_listed_by_the_application(client,monkeypatch):
+    # Deterministic wiring test with a fake model and a fake fetch, explicitly not evidence for real model quality.
+    seen={}
+    async def validate(*args): pass
+    async def stream(provider,model,messages,*args):
+        seen['prompt']=json.dumps(messages,ensure_ascii=False)
+        yield {'content':'اكتمل بناؤه عام 1889 [1].'}
+    async def fetch(question,preferred=None,client=None):
+        seen['asked']=question
+        return [{'n':1,'title':'برج إيفل','url':'https://ar.wikipedia.org/wiki/x','lang':'ar','text':'اكتمل بناؤه عام 1889.','retrieved':'2026-11-20'}]
+    monkeypatch.setattr(service.providers,'validate_provider',validate)
+    monkeypatch.setattr(service.providers,'stream',stream)
+    monkeypatch.setattr(service.wiki_sources,'fetch',fetch)
+    id=new_chat(client)
+    blocked=client.post(f'/api/conversations/{id}/generate',json={'content':'متى اكتمل برج إيفل؟','web_sources':True})
+    assert 'asked' not in seen and blocked.status_code==403 and 'محجوبة' in blocked.text
+    assert client.patch('/api/settings',json={'mode':'hybrid'}).status_code==200
+    plain=new_chat(client)
+    client.post(f'/api/conversations/{plain}/generate',json={'content':'متى اكتمل برج إيفل؟'})
+    assert 'asked' not in seen and 'web_sources' not in seen['prompt']
+    other=new_chat(client)
+    client.post(f'/api/conversations/{other}/generate',json={'content':'متى اكتمل برج إيفل؟','web_sources':True})
+    assert seen['asked']=='متى اكتمل برج إيفل؟' and 'web_sources' in seen['prompt'] and 'ar.wikipedia.org' not in seen['prompt']
+    saved=client.get('/api/conversations/'+other).json()['messages'][-1]['content']
+    assert saved.startswith('اكتمل بناؤه عام 1889 [1].') and '1. [برج إيفل](https://ar.wikipedia.org/wiki/x)' in saved
+    # Passages that do not fit beside the request are dropped, never an error: the answer is generated and marked unsourced.
+    async def huge(question,preferred=None,client=None):
+        return [{'n':n,'title':'صفحة','url':'https://ar.wikipedia.org/wiki/y','lang':'ar','text':'نص '*20000,'retrieved':'2026-11-20'} for n in (1,2)]
+    monkeypatch.setattr(service.wiki_sources,'fetch',huge)
+    big=new_chat(client)
+    assert client.post(f'/api/conversations/{big}/generate',json={'content':'متى اكتمل برج إيفل؟','web_sources':True}).status_code==200
+    assert 'لم يجد صفحة مطابقة' in client.get('/api/conversations/'+big).json()['messages'][-1]['content']

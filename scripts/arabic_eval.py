@@ -53,8 +53,22 @@ def grade(check, answer):
         found = numbers(lines[-1]) if lines else []
         return bool(found) and abs(found[-1] - check['answer']) < 1e-6
     if kind == 'contains':
-        ok = all(norm(t) in text for t in check.get('all', []))
+        ok = all(norm(t) in text for t in check.get('all', [])) and not any(norm(t) in text for t in check.get('none', []))
         return ok and all(any(norm(t) in text for t in group) for group in check.get('any_groups', []))
+    if kind == 'language':
+        # Same-language reply: the right script, several of the language's commonest words, and not an English answer.
+        plain = re.sub(r'<think>.*?</think>', '', answer or '', flags=re.S).lower()
+        letters = [c for c in plain if c.isalpha()]
+        if len(letters) < 20:
+            return False
+        ranges = {'hebrew': ('\u0590', '\u05ff'), 'greek': ('\u0370', '\u03ff'), 'cyrillic': ('\u0400', '\u04ff'), 'latin': ('a', '\u024f')}
+        lo, hi = ranges[check.get('script', 'latin')]
+        if sum(lo <= c <= hi for c in letters) / len(letters) < 0.7:
+            return False
+        tokens = set(re.split(r"[^\w'-]+", plain))
+        hits = sum(1 for w in set(check['words']) if w in tokens or (w.endswith('-') and any(t.startswith(w) for t in tokens)))
+        english = sum(1 for w in ('the', 'and', 'is', 'of', 'because', 'than', 'we', 'before') if w in tokens)
+        return hits >= 3 and (check.get('english') or english < 3)
     if kind == 'refusal':
         # Strict: the denial must open the answer. An answer that first asserts something and then takes it back,
         # or that degenerates into a repeated character, fabricated before it refused and fails.
@@ -92,7 +106,7 @@ def grade(check, answer):
 
 
 def load():
-    return json.loads(ITEMS.read_text(encoding='utf-8'))['items']
+    return json.loads(Path(ITEMS).read_text(encoding='utf-8'))['items']
 
 
 def selftest():
@@ -238,9 +252,13 @@ def main():
     parser.add_argument('--models', nargs='+'); parser.add_argument('--out', default=str(ROOT / 'reports' / 'arabic-eval'))
     parser.add_argument('--endpoint', default='http://127.0.0.1:11434'); parser.add_argument('--timeout', type=float, default=240)
     parser.add_argument('--selftest', action='store_true')
+    parser.add_argument('--items', help='another items file in the same format (for example training/multilingual_eval/items.json)')
     parser.add_argument('--rescore', help='re-grade a saved arabic_eval.json with the current graders (saved answers are truncated to 1200 characters)')
     parser.add_argument('--variants', nargs='+', help='name=system_prompt_file, name=none, or name=app for Riwaq\'s own chat pipeline; a name ending in +verify adds a self-review pass')
     args = parser.parse_args()
+    if args.items:
+        global ITEMS
+        ITEMS = Path(args.items)
     if args.selftest:
         bad = selftest()
         print(json.dumps({'ok': not bad, 'problems': bad}, ensure_ascii=False))

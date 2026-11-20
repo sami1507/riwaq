@@ -1,0 +1,1607 @@
+{
+ "version": 1,
+ "language": "multi",
+ "note": "Hebrew, English, the 24 official EU languages (incl. Irish and Maltese), Norwegian, Russian, Ukrainian, Turkish. Three items each: arithmetic word problem, ordering logic, and a short explanation that must come back in the same language. Prompts were written by the assistant, not by native reviewers.",
+ "items": [
+  {
+   "id": "en-math",
+   "category": "English",
+   "prompt": "A notebook costs 7 euros and a pen costs 3 euros. I buy 4 notebooks and 5 pens. How much do I pay in total? Answer with the number only.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "en-logic",
+   "category": "English",
+   "prompt": "Tom is taller than Anna. Anna is taller than Ben. Who is the shortest? Answer with the name only.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "en-write",
+   "category": "English",
+   "prompt": "Explain in two short sentences why we see lightning before we hear thunder.",
+   "check": {
+    "type": "language",
+    "words": [
+     "the",
+     "and",
+     "is",
+     "of",
+     "to",
+     "we",
+     "before",
+     "because",
+     "light",
+     "sound",
+     "than"
+    ],
+    "script": "latin",
+    "english": true
+   },
+   "ref": "the and is of to we before because light sound than",
+   "bad": "Parce que la lumière est plus rapide que le son."
+  },
+  {
+   "id": "he-math",
+   "category": "Hebrew",
+   "prompt": "מחברת עולה 7 אירו ועט עולה 3 אירו. אני קונה 4 מחברות ו-5 עטים. כמה אני משלם בסך הכול? ענה במספר בלבד.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "he-logic",
+   "category": "Hebrew",
+   "prompt": "תום גבוה מאנה. אנה גבוהה מבן. מי הנמוך ביותר? ענה בשם בלבד.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "בן"
+     ]
+    ],
+    "none": [
+     "Tom",
+     "תום"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "he-write",
+   "category": "Hebrew",
+   "prompt": "הסבר בשני משפטים קצרים מדוע רואים את הברק לפני ששומעים את הרעם.",
+   "check": {
+    "type": "language",
+    "words": [
+     "את",
+     "של",
+     "האור",
+     "הקול",
+     "מהירות",
+     "לפני",
+     "יותר",
+     "ולכן",
+     "אנחנו",
+     "הרעם",
+     "הברק"
+    ],
+    "script": "hebrew",
+    "english": false
+   },
+   "ref": "את של האור הקול מהירות לפני יותר ולכן אנחנו הרעם הברק",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "fr-math",
+   "category": "French",
+   "prompt": "Un cahier coûte 7 euros et un stylo coûte 3 euros. J'achète 4 cahiers et 5 stylos. Combien dois-je payer au total ? Réponds uniquement par le nombre.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "fr-logic",
+   "category": "French",
+   "prompt": "Tom est plus grand qu'Anna. Anna est plus grande que Ben. Qui est le plus petit ? Réponds uniquement par le prénom.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "fr-write",
+   "category": "French",
+   "prompt": "Explique en deux phrases courtes pourquoi on voit l'éclair avant d'entendre le tonnerre.",
+   "check": {
+    "type": "language",
+    "words": [
+     "le",
+     "la",
+     "les",
+     "que",
+     "plus",
+     "vite",
+     "lumière",
+     "son",
+     "avant",
+     "nous",
+     "est"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "le la les que plus vite lumière son avant nous est",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "de-math",
+   "category": "German",
+   "prompt": "Ein Heft kostet 7 Euro und ein Stift kostet 3 Euro. Ich kaufe 4 Hefte und 5 Stifte. Wie viel bezahle ich insgesamt? Antworte nur mit der Zahl.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "de-logic",
+   "category": "German",
+   "prompt": "Tom ist größer als Anna. Anna ist größer als Ben. Wer ist am kleinsten? Antworte nur mit dem Namen.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "de-write",
+   "category": "German",
+   "prompt": "Erkläre in zwei kurzen Sätzen, warum wir den Blitz sehen, bevor wir den Donner hören.",
+   "check": {
+    "type": "language",
+    "words": [
+     "der",
+     "die",
+     "das",
+     "und",
+     "ist",
+     "als",
+     "wir",
+     "schneller",
+     "licht",
+     "schall",
+     "bevor"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "der die das und ist als wir schneller licht schall bevor",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "es-math",
+   "category": "Spanish",
+   "prompt": "Un cuaderno cuesta 7 euros y un bolígrafo cuesta 3 euros. Compro 4 cuadernos y 5 bolígrafos. ¿Cuánto pago en total? Responde solo con el número.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "es-logic",
+   "category": "Spanish",
+   "prompt": "Tom es más alto que Ana. Ana es más alta que Ben. ¿Quién es el más bajo? Responde solo con el nombre.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "es-write",
+   "category": "Spanish",
+   "prompt": "Explica en dos frases cortas por qué vemos el relámpago antes de oír el trueno.",
+   "check": {
+    "type": "language",
+    "words": [
+     "el",
+     "la",
+     "que",
+     "más",
+     "luz",
+     "sonido",
+     "antes",
+     "porque",
+     "es",
+     "los",
+     "rápido"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "el la que más luz sonido antes porque es los rápido",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "it-math",
+   "category": "Italian",
+   "prompt": "Un quaderno costa 7 euro e una penna costa 3 euro. Compro 4 quaderni e 5 penne. Quanto pago in totale? Rispondi solo con il numero.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "it-logic",
+   "category": "Italian",
+   "prompt": "Tom è più alto di Anna. Anna è più alta di Ben. Chi è il più basso? Rispondi solo con il nome.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "it-write",
+   "category": "Italian",
+   "prompt": "Spiega in due frasi brevi perché vediamo il lampo prima di sentire il tuono.",
+   "check": {
+    "type": "language",
+    "words": [
+     "il",
+     "la",
+     "che",
+     "più",
+     "luce",
+     "suono",
+     "prima",
+     "perché",
+     "di",
+     "del",
+     "velocemente"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "il la che più luce suono prima perché di del velocemente",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "pt-math",
+   "category": "Portuguese",
+   "prompt": "Um caderno custa 7 euros e uma caneta custa 3 euros. Compro 4 cadernos e 5 canetas. Quanto pago no total? Responde apenas com o número.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "pt-logic",
+   "category": "Portuguese",
+   "prompt": "O Tom é mais alto do que a Ana. A Ana é mais alta do que o Ben. Quem é o mais baixo? Responde apenas com o nome.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "pt-write",
+   "category": "Portuguese",
+   "prompt": "Explica em duas frases curtas por que vemos o relâmpago antes de ouvir o trovão.",
+   "check": {
+    "type": "language",
+    "words": [
+     "o",
+     "a",
+     "que",
+     "mais",
+     "luz",
+     "som",
+     "antes",
+     "porque",
+     "do",
+     "muito",
+     "rápido"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "o a que mais luz som antes porque do muito rápido",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "nl-math",
+   "category": "Dutch",
+   "prompt": "Een schrift kost 7 euro en een pen kost 3 euro. Ik koop 4 schriften en 5 pennen. Hoeveel betaal ik in totaal? Antwoord alleen met het getal.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "nl-logic",
+   "category": "Dutch",
+   "prompt": "Tom is langer dan Anna. Anna is langer dan Ben. Wie is het kortst? Antwoord alleen met de naam.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "nl-write",
+   "category": "Dutch",
+   "prompt": "Leg in twee korte zinnen uit waarom we de bliksem zien voordat we de donder horen.",
+   "check": {
+    "type": "language",
+    "words": [
+     "de",
+     "het",
+     "een",
+     "dan",
+     "sneller",
+     "licht",
+     "geluid",
+     "voordat",
+     "we",
+     "omdat",
+     "is"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "de het een dan sneller licht geluid voordat we omdat is",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "pl-math",
+   "category": "Polish",
+   "prompt": "Zeszyt kosztuje 7 euro, a długopis kosztuje 3 euro. Kupuję 4 zeszyty i 5 długopisów. Ile płacę łącznie? Odpowiedz tylko liczbą.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "pl-logic",
+   "category": "Polish",
+   "prompt": "Tomek jest wyższy od Anny. Anna jest wyższa od Bena. Kto jest najniższy? Odpowiedz tylko imieniem.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "pl-write",
+   "category": "Polish",
+   "prompt": "Wyjaśnij w dwóch krótkich zdaniach, dlaczego widzimy błyskawicę, zanim usłyszymy grzmot.",
+   "check": {
+    "type": "language",
+    "words": [
+     "się",
+     "niż",
+     "światło",
+     "dźwięk",
+     "szybciej",
+     "ponieważ",
+     "jest",
+     "na",
+     "że",
+     "zanim",
+     "więc"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "się niż światło dźwięk szybciej ponieważ jest na że zanim więc",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "ro-math",
+   "category": "Romanian",
+   "prompt": "Un caiet costă 7 euro și un pix costă 3 euro. Cumpăr 4 caiete și 5 pixuri. Cât plătesc în total? Răspunde doar cu numărul.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "ro-logic",
+   "category": "Romanian",
+   "prompt": "Tom este mai înalt decât Ana. Ana este mai înaltă decât Ben. Cine este cel mai scund? Răspunde doar cu numele.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "ro-write",
+   "category": "Romanian",
+   "prompt": "Explică în două propoziții scurte de ce vedem fulgerul înainte să auzim tunetul.",
+   "check": {
+    "type": "language",
+    "words": [
+     "și",
+     "mai",
+     "decât",
+     "lumina",
+     "sunetul",
+     "înainte",
+     "deoarece",
+     "este",
+     "se",
+     "de",
+     "repede"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "și mai decât lumina sunetul înainte deoarece este se de repede",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "el-math",
+   "category": "Greek",
+   "prompt": "Ένα τετράδιο κοστίζει 7 ευρώ και ένα στυλό κοστίζει 3 ευρώ. Αγοράζω 4 τετράδια και 5 στυλό. Πόσα πληρώνω συνολικά; Απάντησε μόνο με τον αριθμό.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "el-logic",
+   "category": "Greek",
+   "prompt": "Ο Τομ είναι ψηλότερος από την Άννα. Η Άννα είναι ψηλότερη από τον Μπεν. Ποιος είναι ο πιο κοντός; Απάντησε μόνο με το όνομα.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Μπεν"
+     ]
+    ],
+    "none": [
+     "Tom",
+     "Τομ"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "el-write",
+   "category": "Greek",
+   "prompt": "Εξήγησε σε δύο σύντομες προτάσεις γιατί βλέπουμε την αστραπή πριν ακούσουμε τη βροντή.",
+   "check": {
+    "type": "language",
+    "words": [
+     "το",
+     "και",
+     "από",
+     "φως",
+     "ήχος",
+     "πριν",
+     "επειδή",
+     "είναι",
+     "την",
+     "πιο",
+     "γρήγορα"
+    ],
+    "script": "greek",
+    "english": false
+   },
+   "ref": "το και από φως ήχος πριν επειδή είναι την πιο γρήγορα",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "sv-math",
+   "category": "Swedish",
+   "prompt": "Ett häfte kostar 7 euro och en penna kostar 3 euro. Jag köper 4 häften och 5 pennor. Hur mycket betalar jag totalt? Svara bara med talet.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "sv-logic",
+   "category": "Swedish",
+   "prompt": "Tom är längre än Anna. Anna är längre än Ben. Vem är kortast? Svara bara med namnet.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "sv-write",
+   "category": "Swedish",
+   "prompt": "Förklara i två korta meningar varför vi ser blixten innan vi hör åskan.",
+   "check": {
+    "type": "language",
+    "words": [
+     "och",
+     "är",
+     "än",
+     "ljuset",
+     "ljudet",
+     "innan",
+     "eftersom",
+     "vi",
+     "det",
+     "snabbare",
+     "därför"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "och är än ljuset ljudet innan eftersom vi det snabbare därför",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "da-math",
+   "category": "Danish",
+   "prompt": "Et hæfte koster 7 euro, og en kuglepen koster 3 euro. Jeg køber 4 hæfter og 5 kuglepenne. Hvor meget betaler jeg i alt? Svar kun med tallet.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "da-logic",
+   "category": "Danish",
+   "prompt": "Tom er højere end Anna. Anna er højere end Ben. Hvem er lavest? Svar kun med navnet.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "da-write",
+   "category": "Danish",
+   "prompt": "Forklar i to korte sætninger, hvorfor vi ser lynet, før vi hører tordenen.",
+   "check": {
+    "type": "language",
+    "words": [
+     "og",
+     "er",
+     "end",
+     "lyset",
+     "lyden",
+     "før",
+     "fordi",
+     "vi",
+     "det",
+     "hurtigere",
+     "derfor"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "og er end lyset lyden før fordi vi det hurtigere derfor",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "fi-math",
+   "category": "Finnish",
+   "prompt": "Vihko maksaa 7 euroa ja kynä maksaa 3 euroa. Ostan 4 vihkoa ja 5 kynää. Kuinka paljon maksan yhteensä? Vastaa pelkällä luvulla.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "fi-logic",
+   "category": "Finnish",
+   "prompt": "Tom on pidempi kuin Anna. Anna on pidempi kuin Ben. Kuka on lyhin? Vastaa pelkällä nimellä.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "fi-write",
+   "category": "Finnish",
+   "prompt": "Selitä kahdella lyhyellä lauseella, miksi näemme salaman ennen kuin kuulemme ukkosen.",
+   "check": {
+    "type": "language",
+    "words": [
+     "ja",
+     "on",
+     "kuin",
+     "valo",
+     "ääni",
+     "ennen",
+     "koska",
+     "että",
+     "nopeammin",
+     "siksi",
+     "me"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "ja on kuin valo ääni ennen koska että nopeammin siksi me",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "cs-math",
+   "category": "Czech",
+   "prompt": "Sešit stojí 7 eur a pero stojí 3 eura. Koupím 4 sešity a 5 per. Kolik zaplatím celkem? Odpověz pouze číslem.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "cs-logic",
+   "category": "Czech",
+   "prompt": "Tom je vyšší než Anna. Anna je vyšší než Ben. Kdo je nejnižší? Odpověz pouze jménem.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "cs-write",
+   "category": "Czech",
+   "prompt": "Vysvětli dvěma krátkými větami, proč vidíme blesk dříve, než uslyšíme hrom.",
+   "check": {
+    "type": "language",
+    "words": [
+     "se",
+     "než",
+     "světlo",
+     "zvuk",
+     "dříve",
+     "protože",
+     "je",
+     "že",
+     "rychleji",
+     "proto",
+     "na"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "se než světlo zvuk dříve protože je že rychleji proto na",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "hu-math",
+   "category": "Hungarian",
+   "prompt": "Egy füzet 7 euróba kerül, egy toll pedig 3 euróba. Veszek 4 füzetet és 5 tollat. Mennyit fizetek összesen? Csak a számmal válaszolj.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "hu-logic",
+   "category": "Hungarian",
+   "prompt": "Tom magasabb, mint Anna. Anna magasabb, mint Ben. Ki a legalacsonyabb? Csak a névvel válaszolj.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "hu-write",
+   "category": "Hungarian",
+   "prompt": "Magyarázd el két rövid mondatban, miért látjuk a villámot, mielőtt halljuk a mennydörgést.",
+   "check": {
+    "type": "language",
+    "words": [
+     "a",
+     "az",
+     "és",
+     "mint",
+     "fény",
+     "hang",
+     "mert",
+     "hogy",
+     "gyorsabban",
+     "ezért",
+     "előbb"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "a az és mint fény hang mert hogy gyorsabban ezért előbb",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "bg-math",
+   "category": "Bulgarian",
+   "prompt": "Една тетрадка струва 7 евро, а една химикалка струва 3 евро. Купувам 4 тетрадки и 5 химикалки. Колко плащам общо? Отговори само с числото.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "bg-logic",
+   "category": "Bulgarian",
+   "prompt": "Том е по-висок от Анна. Анна е по-висока от Бен. Кой е най-нисък? Отговори само с името.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Бен"
+     ]
+    ],
+    "none": [
+     "Tom",
+     "Том"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "bg-write",
+   "category": "Bulgarian",
+   "prompt": "Обясни с две кратки изречения защо виждаме светкавицата, преди да чуем гръмотевицата.",
+   "check": {
+    "type": "language",
+    "words": [
+     "се",
+     "от",
+     "светлината",
+     "звукът",
+     "преди",
+     "защото",
+     "по-бързо",
+     "на",
+     "да",
+     "затова",
+     "че"
+    ],
+    "script": "cyrillic",
+    "english": false
+   },
+   "ref": "се от светлината звукът преди защото по-бързо на да затова че",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "hr-math",
+   "category": "Croatian",
+   "prompt": "Bilježnica košta 7 eura, a olovka košta 3 eura. Kupujem 4 bilježnice i 5 olovaka. Koliko plaćam ukupno? Odgovori samo brojem.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "hr-logic",
+   "category": "Croatian",
+   "prompt": "Tom je viši od Ane. Ana je viša od Bena. Tko je najniži? Odgovori samo imenom.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "hr-write",
+   "category": "Croatian",
+   "prompt": "Objasni u dvije kratke rečenice zašto vidimo munju prije nego što čujemo grmljavinu.",
+   "check": {
+    "type": "language",
+    "words": [
+     "se",
+     "od",
+     "svjetlost",
+     "zvuk",
+     "prije",
+     "jer",
+     "je",
+     "brže",
+     "zato",
+     "nego",
+     "što"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "se od svjetlost zvuk prije jer je brže zato nego što",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "sk-math",
+   "category": "Slovak",
+   "prompt": "Zošit stojí 7 eur a pero stojí 3 eurá. Kúpim 4 zošity a 5 pier. Koľko zaplatím spolu? Odpovedz iba číslom.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "sk-logic",
+   "category": "Slovak",
+   "prompt": "Tom je vyšší ako Anna. Anna je vyššia ako Ben. Kto je najnižší? Odpovedz iba menom.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "sk-write",
+   "category": "Slovak",
+   "prompt": "Vysvetli dvoma krátkymi vetami, prečo vidíme blesk skôr, než počujeme hrom.",
+   "check": {
+    "type": "language",
+    "words": [
+     "sa",
+     "ako",
+     "svetlo",
+     "zvuk",
+     "skôr",
+     "pretože",
+     "je",
+     "že",
+     "rýchlejšie",
+     "preto",
+     "než"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "sa ako svetlo zvuk skôr pretože je že rýchlejšie preto než",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "sl-math",
+   "category": "Slovenian",
+   "prompt": "Zvezek stane 7 evrov, svinčnik pa 3 evre. Kupim 4 zvezke in 5 svinčnikov. Koliko plačam skupaj? Odgovori samo s številom.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "sl-logic",
+   "category": "Slovenian",
+   "prompt": "Tom je višji od Ane. Ana je višja od Bena. Kdo je najnižji? Odgovori samo z imenom.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "sl-write",
+   "category": "Slovenian",
+   "prompt": "V dveh kratkih povedih pojasni, zakaj strelo vidimo, preden slišimo grom.",
+   "check": {
+    "type": "language",
+    "words": [
+     "se",
+     "in",
+     "od",
+     "svetloba",
+     "zvok",
+     "preden",
+     "ker",
+     "je",
+     "hitreje",
+     "zato",
+     "kot"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "se in od svetloba zvok preden ker je hitreje zato kot",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "lt-math",
+   "category": "Lithuanian",
+   "prompt": "Sąsiuvinis kainuoja 7 eurus, o rašiklis kainuoja 3 eurus. Perku 4 sąsiuvinius ir 5 rašiklius. Kiek iš viso sumoku? Atsakyk tik skaičiumi.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "lt-logic",
+   "category": "Lithuanian",
+   "prompt": "Tomas yra aukštesnis už Aną. Ana yra aukštesnė už Beną. Kas yra žemiausias? Atsakyk tik vardu.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "lt-write",
+   "category": "Lithuanian",
+   "prompt": "Dviem trumpais sakiniais paaiškink, kodėl žaibą pamatome anksčiau, nei išgirstame griaustinį.",
+   "check": {
+    "type": "language",
+    "words": [
+     "ir",
+     "yra",
+     "nei",
+     "šviesa",
+     "garsas",
+     "nes",
+     "kad",
+     "greičiau",
+     "todėl",
+     "už",
+     "anksčiau"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "ir yra nei šviesa garsas nes kad greičiau todėl už anksčiau",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "lv-math",
+   "category": "Latvian",
+   "prompt": "Burtnīca maksā 7 eiro, un pildspalva maksā 3 eiro. Es pērku 4 burtnīcas un 5 pildspalvas. Cik man kopā jāmaksā? Atbildi tikai ar skaitli.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "lv-logic",
+   "category": "Latvian",
+   "prompt": "Toms ir garāks par Annu. Anna ir garāka par Benu. Kurš ir visīsākais? Atbildi tikai ar vārdu.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "lv-write",
+   "category": "Latvian",
+   "prompt": "Divos īsos teikumos paskaidro, kāpēc mēs redzam zibeni, pirms dzirdam pērkonu.",
+   "check": {
+    "type": "language",
+    "words": [
+     "un",
+     "ir",
+     "nekā",
+     "gaisma",
+     "skaņa",
+     "pirms",
+     "jo",
+     "ka",
+     "ātrāk",
+     "tāpēc",
+     "par"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "un ir nekā gaisma skaņa pirms jo ka ātrāk tāpēc par",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "et-math",
+   "category": "Estonian",
+   "prompt": "Vihik maksab 7 eurot ja pastakas maksab 3 eurot. Ostan 4 vihikut ja 5 pastakat. Kui palju ma kokku maksan? Vasta ainult arvuga.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "et-logic",
+   "category": "Estonian",
+   "prompt": "Tom on pikem kui Anna. Anna on pikem kui Ben. Kes on kõige lühem? Vasta ainult nimega.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "et-write",
+   "category": "Estonian",
+   "prompt": "Selgita kahe lühikese lausega, miks me näeme välku enne, kui kuuleme äikest.",
+   "check": {
+    "type": "language",
+    "words": [
+     "ja",
+     "on",
+     "kui",
+     "valgus",
+     "heli",
+     "enne",
+     "sest",
+     "et",
+     "kiiremini",
+     "seetõttu",
+     "me"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "ja on kui valgus heli enne sest et kiiremini seetõttu me",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "ga-math",
+   "category": "Irish",
+   "prompt": "Cosnaíonn cóipleabhar 7 euro agus cosnaíonn peann 3 euro. Ceannaím 4 chóipleabhar agus 5 pheann. Cé mhéad a íocaim san iomlán? Freagair leis an uimhir amháin.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "ga-logic",
+   "category": "Irish",
+   "prompt": "Tá Tom níos airde ná Anna. Tá Anna níos airde ná Ben. Cé hé an duine is ísle? Freagair leis an ainm amháin.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "ga-write",
+   "category": "Irish",
+   "prompt": "Mínigh in dhá abairt ghearra cén fáth a bhfeicimid an tintreach sula gcloisimid an toirneach.",
+   "check": {
+    "type": "language",
+    "words": [
+     "agus",
+     "an",
+     "ná",
+     "tá",
+     "solas",
+     "fuaim",
+     "sula",
+     "mar",
+     "go",
+     "níos",
+     "is"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "agus an ná tá solas fuaim sula mar go níos is",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "mt-math",
+   "category": "Maltese",
+   "prompt": "Pitazz jiswa 7 ewro u pinna tiswa 3 ewro. Nixtri 4 pitazzi u 5 pinen. Kemm inħallas b'kollox? Wieġeb bin-numru biss.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "mt-logic",
+   "category": "Maltese",
+   "prompt": "Tom huwa ogħla minn Anna. Anna hija ogħla minn Ben. Min hu l-iqsar? Wieġeb bl-isem biss.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "mt-write",
+   "category": "Maltese",
+   "prompt": "Spjega f'żewġ sentenzi qosra għaliex naraw is-sajjetta qabel ma nisimgħu r-ragħad.",
+   "check": {
+    "type": "language",
+    "words": [
+     "u",
+     "li",
+     "minn",
+     "dawl",
+     "ħoss",
+     "qabel",
+     "għax",
+     "huwa",
+     "aktar",
+     "ma",
+     "il-"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "u li minn dawl ħoss qabel għax huwa aktar ma il-",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "no-math",
+   "category": "Norwegian",
+   "prompt": "Et hefte koster 7 euro og en penn koster 3 euro. Jeg kjøper 4 hefter og 5 penner. Hvor mye betaler jeg totalt? Svar bare med tallet.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "no-logic",
+   "category": "Norwegian",
+   "prompt": "Tom er høyere enn Anna. Anna er høyere enn Ben. Hvem er lavest? Svar bare med navnet.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "no-write",
+   "category": "Norwegian",
+   "prompt": "Forklar i to korte setninger hvorfor vi ser lynet før vi hører tordenen.",
+   "check": {
+    "type": "language",
+    "words": [
+     "og",
+     "er",
+     "enn",
+     "lyset",
+     "lyden",
+     "før",
+     "fordi",
+     "vi",
+     "det",
+     "raskere",
+     "derfor"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "og er enn lyset lyden før fordi vi det raskere derfor",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "ru-math",
+   "category": "Russian",
+   "prompt": "Тетрадь стоит 7 евро, а ручка стоит 3 евро. Я покупаю 4 тетради и 5 ручек. Сколько я плачу всего? Ответь только числом.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "ru-logic",
+   "category": "Russian",
+   "prompt": "Том выше Анны. Анна выше Бена. Кто самый низкий? Ответь только именем.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Бен"
+     ]
+    ],
+    "none": [
+     "Tom",
+     "Том"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "ru-write",
+   "category": "Russian",
+   "prompt": "Объясни в двух коротких предложениях, почему мы видим молнию раньше, чем слышим гром.",
+   "check": {
+    "type": "language",
+    "words": [
+     "и",
+     "чем",
+     "свет",
+     "звук",
+     "потому",
+     "что",
+     "быстрее",
+     "поэтому",
+     "мы",
+     "раньше",
+     "что"
+    ],
+    "script": "cyrillic",
+    "english": false
+   },
+   "ref": "и чем свет звук потому что быстрее поэтому мы раньше что",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "uk-math",
+   "category": "Ukrainian",
+   "prompt": "Зошит коштує 7 євро, а ручка коштує 3 євро. Я купую 4 зошити і 5 ручок. Скільки я плачу загалом? Відповідай лише числом.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "uk-logic",
+   "category": "Ukrainian",
+   "prompt": "Том вищий за Анну. Анна вища за Бена. Хто найнижчий? Відповідай лише іменем.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Бен"
+     ]
+    ],
+    "none": [
+     "Tom",
+     "Том"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "uk-write",
+   "category": "Ukrainian",
+   "prompt": "Поясни двома короткими реченнями, чому ми бачимо блискавку раніше, ніж чуємо грім.",
+   "check": {
+    "type": "language",
+    "words": [
+     "і",
+     "ніж",
+     "світло",
+     "звук",
+     "тому",
+     "що",
+     "швидше",
+     "ми",
+     "раніше",
+     "за",
+     "набагато"
+    ],
+    "script": "cyrillic",
+    "english": false
+   },
+   "ref": "і ніж світло звук тому що швидше ми раніше за набагато",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  },
+  {
+   "id": "tr-math",
+   "category": "Turkish",
+   "prompt": "Bir defter 7 euro, bir kalem 3 euro. 4 defter ve 5 kalem alıyorum. Toplam ne kadar öderim? Yalnızca sayıyla cevap ver.",
+   "check": {
+    "type": "number",
+    "answer": 43
+   },
+   "ref": "43",
+   "bad": "50"
+  },
+  {
+   "id": "tr-logic",
+   "category": "Turkish",
+   "prompt": "Tom, Anna'dan daha uzun. Anna, Ben'den daha uzun. En kısa kim? Yalnızca isimle cevap ver.",
+   "check": {
+    "type": "contains",
+    "any_groups": [
+     [
+      "Ben",
+      "Ben"
+     ]
+    ],
+    "none": [
+     "Tom"
+    ]
+   },
+   "ref": "Ben",
+   "bad": "Tom"
+  },
+  {
+   "id": "tr-write",
+   "category": "Turkish",
+   "prompt": "Şimşeği gök gürültüsünü duymadan önce neden gördüğümüzü iki kısa cümleyle açıkla.",
+   "check": {
+    "type": "language",
+    "words": [
+     "ve",
+     "bir",
+     "çünkü",
+     "ışık",
+     "ses",
+     "daha",
+     "önce",
+     "için",
+     "hızlı",
+     "bu",
+     "nedenle"
+    ],
+    "script": "latin",
+    "english": false
+   },
+   "ref": "ve bir çünkü ışık ses daha önce için hızlı bu nedenle",
+   "bad": "The light travels faster than the sound, and that is why we see it before the thunder."
+  }
+ ]
+}

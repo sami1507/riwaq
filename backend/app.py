@@ -19,7 +19,7 @@ from starlette.middleware.trustedhost import TrustedHostMiddleware
 from backend.db import get_db, init_db, uid, now, event, settings, message_dict, DEFAULTS
 from backend import providers, knowledge, public_knowledge, workspace, sync_client, snapshots, media, grounding, reasoning
 from backend import learning, learning_policy, personal_memory
-from backend import code_run, quran_reference, text_checks
+from backend import code_run, lessons, quran_reference, text_checks, wiki_sources
 from backend import generation_requests,conversation_library
 
 ACTIVE = {}
@@ -210,6 +210,7 @@ class GenerateInput(BaseModel):
     use_files:bool=False
     file_scope:list[reasoning.FileSelection]=Field(default_factory=list,max_length=20)
     use_knowledge:bool=False
+    web_sources:bool=False
     knowledge_filters:KnowledgeFilters|None=None
     research:ResearchOptions|None=None
     depth:Literal['auto','quick','analytical','research']|None=None
@@ -452,7 +453,7 @@ def generation_request_status(id:str,request_id:str):
 
 async def generate_prepared(id,body,request,job):
     cfg=settings(); provider=body.provider or cfg['provider']; model=body.model or cfg['model']
-    task_run=None; research_receipt=None; ordinary_grounded=False; grounded_options=None; quran_context=''; check_context=''; code_result=None
+    task_run=None; research_receipt=None; ordinary_grounded=False; grounded_options=None; quran_context=''; check_context=''; code_result=None; lesson_found=[]; web_found=None
     with get_db() as c:
         require(c,'conversations',id,job['actor'])
         prior=[dict(x) for x in c.execute('SELECT * FROM messages WHERE conversation_id=? ORDER BY rowid',(id,))]
@@ -688,8 +689,24 @@ async def generate_prepared(id,body,request,job):
                 quran_context='' if task_run else quran_reference.context(question)
                 # A question about what a Python block prints is answered by running it in the isolated worker, never on the host.
                 code_result=None if task_run else await code_run.check(question)
-                check_context='' if task_run else text_checks.context(question,code_run.context(code_result))
-                messages, chunks = grounding.compose(proj, memories, history, question, chunks, cfg, body.use_files or body.use_knowledge, system_extra=(task_run.instructions() if task_run else '')+skill_guidance,tool_context=check_context,fact_context=fact_context['text'],structured_evidence=ordinary_grounded)
+                # Lessons the user taught and stored locally are recalled by the application and handed over as data.
+                lesson_owner=local_auth.current_principal()['owner_id'];lesson_found=[] if (task_run or research_receipt) else lessons.recall(c,lesson_owner,question)
+                lessons.mark_used(c,lesson_owner,lesson_found)
+                # Wikipedia sources are fetched only when this message asks for them and the user has allowed internet use.
+                if body.web_sources and not task_run and not research_receipt:
+                    if settings()['mode']!='hybrid':raise HTTPException(403,'مصادر الإنترنت محجوبة في الوضع المحلي فقط. فعّل الوضع المختلط من الإعدادات. / Internet sources are blocked in local-only mode.')
+                    try:web_found=await wiki_sources.fetch(question)
+                    except wiki_sources.SourceError:raise HTTPException(502,'تعذّر الوصول إلى ويكيبيديا؛ لم يُولَّد جواب بلا مصادر. / Wikipedia could not be reached; no unsourced answer was generated.')
+                # Passages are extra help: when they do not fit beside the conversation, use fewer, then none; the answer is then marked unsourced.
+                web_tries=[web_found] if not web_found else [web_found,web_found[:1],[]]
+                for web_try in web_tries:
+                    web_found=web_try
+                    check_context='' if task_run else text_checks.context(question,{**code_run.context(code_result),**lessons.context(lesson_found),**wiki_sources.context(web_found)})
+                    try:
+                        messages, chunks = grounding.compose(proj, memories, history, question, chunks, cfg, body.use_files or body.use_knowledge, system_extra=(task_run.instructions() if task_run else '')+skill_guidance,tool_context=check_context,fact_context=fact_context['text'],structured_evidence=ordinary_grounded)
+                        break
+                    except ValueError:
+                        if web_try is web_tries[-1]:raise
             except ValueError as exc:
                 raise HTTPException(413, str(exc)) from exc
             if ordinary_grounded:
@@ -809,7 +826,7 @@ async def generate_prepared(id,body,request,job):
                             if code_result is not None:source=code_run.guard_stream(source,code_result)
                             # Qur'an requests: the application, not the model, decides which vocalised wording is released.
                             if quran_context:source=quran_reference.guard_stream(source,question)
-                            async for packet in text_checks.flag_stream(source):yield packet
+                            async for packet in lessons.mark_stream(wiki_sources.cite_stream(text_checks.flag_stream(source),web_found),lesson_found):yield packet
                 iterator=produce().__aiter__()
                 async def access_changed():
                     while True:
@@ -985,6 +1002,38 @@ def validate_memory_content(content):
     if not content.strip():raise HTTPException(422,'Memory must not be blank')
     from backend.coding_context import scan_secrets
     if scan_secrets(content):raise HTTPException(422,'Possible credential content cannot be saved as memory')
+
+class LessonInput(BaseModel):
+    model_config={'extra':'forbid'}
+    title:str=Field(min_length=1,max_length=400)
+    content:str=Field(min_length=1,max_length=4000)
+
+class LessonPatch(BaseModel):
+    model_config={'extra':'forbid'}
+    title:str|None=Field(default=None,min_length=1,max_length=400)
+    content:str|None=Field(default=None,min_length=1,max_length=4000)
+    enabled:bool|None=None
+
+def lesson_call(action):
+    """Lessons are the signed-in owner's own notebook; every call runs under that owner."""
+    with get_db() as c:
+        actor=memory_actor(c)
+        try:return action(c,actor.owner_id)
+        except KeyError:raise HTTPException(404,'Lesson not found')
+        except lessons.LessonError as exc:raise HTTPException(422,str(exc))
+
+@app.get('/api/lessons')
+def list_lessons():return lesson_call(lambda c,owner:lessons.list_lessons(c,owner))
+
+@app.post('/api/lessons')
+def add_lesson(body:LessonInput):return lesson_call(lambda c,owner:lessons.add(c,owner,body.title,body.content))
+
+@app.patch('/api/lessons/{id}')
+def edit_lesson(id:str,body:LessonPatch):return lesson_call(lambda c,owner:lessons.update(c,owner,id,body.title,body.content,body.enabled))
+
+@app.delete('/api/lessons/{id}')
+def remove_lesson(id:str):
+    lesson_call(lambda c,owner:lessons.delete(c,owner,id));return {'ok':True}
 
 @app.get('/api/memories')
 def memories(project_id:str|None=None):
